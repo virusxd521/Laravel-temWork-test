@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('first_name', 25)->nullable();
             $table->string('last_name', 30)->nullable();
             $table->date('date_of_birth');
-            $table->foreingId('nationality_id');
+            $table->foreignId('nationality_id');
             $table->timestamps();
         });
     }

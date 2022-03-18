@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Nationality extends Model
 {
     use HasFactory;
+
+    public function individuals()
+    {
+        return $this->belongsToMany(Indiviidual::class);
+    }
 }

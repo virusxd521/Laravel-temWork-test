@@ -13,6 +13,17 @@ class Rank extends Model
     {
         return $this->belongsTo(Game::class);
     }
+    
+    public function game_individual()
+    {
+        return $this->hasMany(GameIndividual::class);
+    }
+    
+    public function advertisements()
+    {
+        return $this->hasMany(Advertisement::class);
+    }
+
 }
 
 

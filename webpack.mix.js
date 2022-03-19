@@ -15,3 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+
+// React -- Preparation
+mix.js('resources/js/app.jsx', 'public/js')
+   .react();

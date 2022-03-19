@@ -23,4 +23,9 @@ class Individual extends Model
     {
         return $this->belongsToMany(Position::class);
     }
+
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class);
+    }
 }

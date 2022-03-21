@@ -1,68 +1,26 @@
 // import "./card.css";
 import { useState } from "react";
 
-function Card(props) {
-  const [isFlipped, setIsFlipped] = useState(false);
+function Card({title, number, img}) {
+  // const [isFlipped, setIsFlipped] = useState(false);
 
-  const flip = () => {
-    setIsFlipped(!isFlipped);
-  };
-  console.log(isFlipped);
+  // const flip = () => {
+  //   setIsFlipped(!isFlipped);
+  // };
+  // console.log(isFlipped);
+  
   return (
     <>
       <div className="card">
-        <div className={`card__inner ${isFlipped ? "is-flipped" : ""}`}>
-          <div className="card__face card__face--front">
-            <div className="kokot">
-              <ul>
-                <li>Age: 17</li>
-                <li>Rank: Master</li>
-                <li>Nationality: CZ</li>
-                <li>Language: Cz,Eng</li>
-                <li>Server: EUNE</li>
-              </ul>
-
-              <br />
-
-              <a className="neon-button" onClick={flip}>
-                More
-              </a>
-            </div>
-          </div>
-          <div className="card__face card__face--back">
-            <div className="card__content">
-              <div className="card__body">
-                <ul>
-                  <li>
-                    <strong>ABOUT:</strong>{" "}
-                    <span className="textik">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Illum, obcaecati. Odit, ratione deleniti. Mollitia, minus.
-                      Tempore natus tenetur eum error.{" "}
-                    </span>
-                  </li>
-                  <li>
-                    <strong>GOALS:</strong>{" "}
-                    <span className="textik">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Sed earum saepe voluptatum odit reprehenderit maxime!
-                    </span>
-                  </li>
-                  <li>
-                    <strong>DISCORD:</strong> Haha4444{" "}
-                  </li>
-                  <li>
-                    <strong>EMAIL:</strong> blal@seznam,cz
-                  </li>
-                </ul>
-
-                <br />
-                <a className="neon-button" onClick={flip}>
-                  More
-                </a>
-              </div>
-            </div>
-          </div>
+        <div className="card">
+          <div className="card__body">
+          <img className={img} />
+          <h1 className="card__title">{title}</h1>
+          <div className="card__circle">
+          <h1 className="card__number">{number}</h1>
+        </div>
+        </div>
+          <button className="card__btn">Go To List</button>
         </div>
       </div>
     </>

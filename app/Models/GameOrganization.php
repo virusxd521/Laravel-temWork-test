@@ -10,14 +10,14 @@ class GameOrganization extends Model
     use HasFactory;
 
 
-    // The pivot tbale has a id which belongs to organizations and games
-    public function organizations()
-    {
-        return $this->belongsTo(Organization::class);
-    }
+    // // The pivot tbale has a id which belongs to organizations and games
+    // public function organizations()
+    // {
+    //     return $this->belongsTo(Organization::class);
+    // }
 
-    public function games()
-    {
-        return $this->belongsTo(Game::class);
-    }
+    // public function games()
+    // {
+    //     return $this->belongsTo(Game::class);
+    // }
 }

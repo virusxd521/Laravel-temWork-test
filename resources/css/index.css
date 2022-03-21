@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    /* padding: 1rem 5rem; */
+    background: white;
+    justify-content: flex-end;
+}
+
+.logo {
+    position: fixed;
+    max-width: 90vw;
+    height: 85%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.home {
+    height: 100vh;
+}
+
+.nav_bg {
+    height: 7vh;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: white;
+    z-index: 2;
+}
+
+.first-page {
+    height: 100vh;
+    background-color: rgb(22, 22, 22);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+}
+
+.first-page h1 {
+    font-size: 3em;
+    text-align: center;
+    padding: 2em;
+}
+
+.connections {
+    height: 70%;
+}
+
+.second-page {
+    min-height: 100vh;
+    background-color: rgb(22, 22, 22);
+}
+
+.second-page h2 {
+    color: white;
+    font-size: 3em;
+    padding: 2em;
+    text-align: center;
+}
+
+.card_cnt {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+}
+.card_cnt > div {
+    width: 100%;
+}
+
+.second-page_card {
+    color: white;
+    width: 25%;
+    height: 25em;
+    border: 2px solid white;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    position: fixed;
+    padding: 1rem 5rem;
+    z-index: 3;
+}
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black;
+    margin-left: 5rem;
+    z-index: 2;
+}
+@import "./card.css";

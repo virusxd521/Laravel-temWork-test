@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     use HasFactory;
-
+    
     // Organization has many games that he participate in 
     public function organizations()
     {

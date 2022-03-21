@@ -18,4 +18,9 @@ class Server extends Model
     {
         return $this->belongsToMany(Individual::class, 'game_individual', 'server_id', 'individual_id');
     }
+
+    public function gameindividuals()
+    {
+        return $this->hasMany(GameIndividual::class);
+    }
 }

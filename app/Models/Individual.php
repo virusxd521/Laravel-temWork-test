@@ -43,4 +43,19 @@ class Individual extends Model
     {
         return $this->hasMany(Advertisement::class);
     }
+
+    public function ranks()
+    {
+        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
+    }
+
+    public function gameroles() 
+    {
+        return $this->belongsToMany(GameRole::class, 'game_individual', 'individual_id', 'game_role_id');
+    }
+
+    public function gameindividuals()
+    {
+        return $this->hasMany(GameIndividual::class);
+    }
 }

@@ -9,6 +9,11 @@ class Organization extends Model
 {
     use HasFactory;
 
+    // returns the number of organizations in the DB
+    public function number_organization(){
+        return $this->count();
+    }
+
 
     // Organization has many games via a Pivot table
     public function games()
@@ -18,7 +23,7 @@ class Organization extends Model
     
     public function languages()
     {
-        return $this->belongsToMany('language_organization', 'organization_id', 'language_id');
+        return $this->belongsToMany(Language::class,'language_organization', 'organization_id', 'language_id');
     }
 
     // One to One relationship

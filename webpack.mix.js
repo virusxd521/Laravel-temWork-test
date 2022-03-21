@@ -21,3 +21,6 @@ const mix = require('laravel-mix');
 // React -- Preparation
 mix.js('resources/js/main.js', 'public/js')
    .react();
+   
+// Todo - Add Sass to the project
+mix.css('resources/css/index.css', 'public/css');

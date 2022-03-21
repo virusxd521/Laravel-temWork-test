@@ -24,6 +24,9 @@ return new class extends Migration
             $table->foreignId('statuses_id');
             $table->foreignId('rank_id');
             $table->foreignId('game_role_id');
+            $table->string('offer', 255);
+            $table->string('expectation', 255);
+            $table->string('availability', 255);
         });
     }
 
@@ -37,3 +40,10 @@ return new class extends Migration
         Schema::dropIfExists('advertisements');
     }
 };
+
+
+// Dani, would you include in your migration of Advertisement table three additional columns:
+// what do we/I look for
+// what do we/I offer
+
+// All would be just textarea (larger text)

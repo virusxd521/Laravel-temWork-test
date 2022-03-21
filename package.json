@@ -14,9 +14,11 @@
         "axios": "^0.25",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "react-reveal": "^1.2.2"
     },
     "dependencies": {
+        "gsap": "^3.9.1",
         "react-router-dom": "^6.2.2"
     }
 }

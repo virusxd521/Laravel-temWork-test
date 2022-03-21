@@ -24,3 +24,7 @@ mix.js('resources/js/main.js', 'public/js')
    
 // Todo - Add Sass to the project
 mix.css('resources/css/index.css', 'public/css');
+
+
+// Will keep refreshing the browser without manuall refresh
+mix.browserSync(process.env.APP_URL);

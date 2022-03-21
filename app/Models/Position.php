@@ -12,4 +12,8 @@ class Position extends Model
     public function individuals() {
         return $this->belongsToMany(Individual::class); 
     }
+
+    public function advertisements() {
+        return $this->hasMany(Advertisement::class);
+    }
 }

@@ -18,4 +18,9 @@ class Language extends Model
     {
         return $this->belongsToMany(Organization::class);
     }
+
+    public function advertisements()
+    {
+        return $this->belongsToMany(Advertisement::class);
+    }
 }

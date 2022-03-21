@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignId('organization_id');
             $table->foreignId('individual_id');
             $table->foreignId('statuses_id');
-            $table->foreignId('ranks_id');
+            $table->foreignId('rank_id');
             $table->foreignId('game_role_id');
         });
     }

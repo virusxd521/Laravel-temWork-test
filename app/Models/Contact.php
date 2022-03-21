@@ -13,4 +13,9 @@ class Contact extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+
+    public function individual()
+    {
+        return $this->belongsTo(Individual::class);
+    }
 }

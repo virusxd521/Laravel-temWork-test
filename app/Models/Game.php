@@ -10,9 +10,21 @@ class Game extends Model
     use HasFactory;
 
     // Organization has many games that he participate in 
-    public function games_organizations()
+    public function organizations()
     {
-        return $this->hasMany(GameOrganization::class);
+        // Linking organizations with game via the game organization table
+        return $this->belongsToMany(Organization::class, 'game_organization', 'game_id', 'organization_id');
+    }
+
+
+    // Creating Relationship with the individual via the game_individual pivot table
+    public function individual(){
+        return $this->belongsToMany(Individual::class, 'game_individual', 'individual_id', 'game_id');
+    }
+
+    public function servers()
+    {
+        return $this->belongsToMany(Server::class, 'game_server', 'game_id', 'server_id');
     }
 
     // Game has many roles
@@ -24,5 +36,9 @@ class Game extends Model
     public function ranks()
     {
         return $this->hasMany(Rank::class);
+    }
+
+    public function advertisements(){
+        return $this->hasMany(Advertisement::class);
     }
 }

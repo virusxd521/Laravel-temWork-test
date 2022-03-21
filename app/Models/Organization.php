@@ -11,14 +11,20 @@ class Organization extends Model
 
 
     // Organization has many games via a Pivot table
-    public function game_organizations()
+    public function games()
     {
-        return $this->hasMany(GameOrganization::class);
+        return $this->belongsToMany(Game::class, 'game_organization', 'game_id', 'organization_id' );    
+    }
+    
+    public function languages()
+    {
+        return $this->belongsToMany('language_organization', 'organization_id', 'language_id');
     }
 
-    public function advertisement_organization()
+    // One to One relationship
+    public function users()
     {
-        return $this->hasMany(AdvertisementOrganization::class);
+        return $this->belongsTo(User::class);
     }
 
 
@@ -27,4 +33,10 @@ class Organization extends Model
         return $this->hasMany(Contact::class);
     }
 
+    public function advertisements()
+    {
+        return $this->hasMany(Advertisement::class);
+    }
+
 }
+

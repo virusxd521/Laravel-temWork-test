@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class GameServer extends Model
 {
     use HasFactory;
+
+
+    public function games()
+    {
+        return $this->belongsTo(Game::class);
+    }
+
+    public function servers()
+    {
+        return $this->belongsTo(Server::class);
+    }
 }

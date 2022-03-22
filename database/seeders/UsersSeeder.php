@@ -24,9 +24,6 @@ class UsersSeeder extends Seeder
                 'email' => $faker->email,
                 'password' => $faker->password,
         ]);
-         }
-
-
-         
+         }    
     }
 }

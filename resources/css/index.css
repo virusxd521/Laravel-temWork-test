@@ -38,10 +38,11 @@ nav {
 
 .home {
     height: 100vh;
+    background-color: black;
 }
 
 .nav_bg {
-    height: 7vh;
+    height: 10gvh;
     width: 100%;
     top: 0;
     position: fixed;
@@ -51,16 +52,19 @@ nav {
 
 .first-page {
     height: 100vh;
-    background-color: rgb(22, 22, 22);
+    /* background-image: url('/public/images/back3.png'); */
+    background-size: contain;
     color: white;
     display: flex;
     justify-content: space-around;
+    background-color: black;
 }
 
 .first-page h1 {
     font-size: 3em;
     text-align: center;
     padding: 2em;
+    color: white;
 }
 
 .connections {
@@ -107,9 +111,16 @@ nav ul {
 a {
     text-decoration: none;
     font-size: 1.2rem;
-    color: black;
+    color: white;
     margin-left: 5rem;
     z-index: 2;
+    
 }
 
 @import "./card.css";
+@import "./login.css";
+@import './formInput.css';
+@import './homepage.css';
+@import './register.css';
+@import './UI_card.css';
+@import './userInterface.css';

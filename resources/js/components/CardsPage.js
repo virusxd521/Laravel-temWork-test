@@ -12,28 +12,37 @@ function CardsPage() {
     
     const urls = ['/api/players', '/api/staff', '/api/organization'];
 
+    const filteringApi = (url, data) => {
+    
+        const regexpLastWord = /(api\/)(=?)(\w+)/;
+        switch(url.match(regexpLastWord)[3]){
+            case 'players':
+            
+            setPlayersNumber(data.data) 
+                break;
+            case 'staff':
+                setStaffsNumber(data.data)
+                break;
+            case 'organization':
+            
+                setOrganizationsNumber(data.data.number)
+                break;
+            }
+    }
     useEffect(() => {
         urls.map(url => {
             axios.get(url)
             .then(data => {
-                // console.log(data.data);
-                switch(url){
-                    case url.includes('players'):
-                        setPlayersNumber(data.data) 
-                    case url.includes('staff'):
-                        setStaffsNumber(data.data)
-                    case url.includes('organization'):
-                        setOrganizationsNumber(data.data)
-                }
+                filteringApi(url, data);
             })          
         })
     }, []);
- 
+
     return (
-        <section>
+        <section className="second-page">
                 <Fade top><h2>Are you looking for... </h2></Fade>
                 <div className="wrapper">
-                    <Fade bottom delay={300}><Card title="Player" number={playersNumber} img="card__image"  /></Fade>
+                    <Fade bottom delay={300}><Card title="Players" number={playersNumber} img="card__image"  /></Fade>
                     <Fade bottom delay={400}><Card title="Team" number={staffsNumber} img="card__image" /></Fade>
                     <Fade bottom delay={500}><Card title="Staff" number={organizationsNumber} img="card__image" /></Fade>
                 </div>

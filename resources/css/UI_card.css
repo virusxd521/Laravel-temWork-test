@@ -1,0 +1,32 @@
+.UI_card__title {
+    font-size: 3em;
+}
+
+.UI_card {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 2em;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    height: 50vh;
+}
+
+.UI_card button {
+    width: 50%;
+}
+
+.UI_toggle_cnt {
+    display: flex;
+    margin: 2em auto;
+    justify-content: center;
+    width: 5em;
+}
+
+.UI_toggle_button {
+    display: flex;
+    justify-self: center;
+    margin: 0 auto;
+    justify-content: center;
+}

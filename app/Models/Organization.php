@@ -10,9 +10,14 @@ class Organization extends Model
     use HasFactory;
 
     // returns the number of organizations in the DB
+<<<<<<< HEAD
     public function number_organization()
     {
         return $this->count();
+=======
+    public function number_organization(){
+        return $this->all()->count();
+>>>>>>> master
     }
 
 

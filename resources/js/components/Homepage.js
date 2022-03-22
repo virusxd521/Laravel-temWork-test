@@ -1,13 +1,14 @@
-import Fade from 'react-reveal/Fade';
+import CardsPage from "./CardsPage";
+import FirstPage from "./FirstPage";
+import Header from "./Header";
 
 function Homepage() {
     return(
-        <section className="first-page">
-            <div className="intro">
-                <Fade top><h1 className="connections_header">We are connecting people</h1></Fade>
-                <Fade bottom><img className="connections" src="/images/bg.jpg" alt="connections" /></Fade>
-            </div>
-        </section>
+        <>
+            <Header />
+            <FirstPage />
+            <CardsPage />
+        </>
     )
 }
 

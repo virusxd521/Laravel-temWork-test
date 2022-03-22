@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('game_id');
             $table->foreignId('organization_id');
             $table->foreignId('individual_id');
-            $table->foreignId('statuses_id');
+            $table->foreignId('status_id');
             $table->foreignId('rank_id');
             $table->foreignId('game_role_id');
             $table->string('offer', 255);

@@ -51,7 +51,7 @@ function Header() {
     return (
         <section className="home" ref={ref}>
             <nav>
-                <img className="logo" src="/images/logo.jpg" alt="logo" />
+                <img className="logo" src="/images/logo.png" alt="logo" />
                 <ul>
                     <li><a>Login</a></li>
                     <li><a>Register</a></li>

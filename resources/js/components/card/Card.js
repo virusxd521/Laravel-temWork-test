@@ -1,4 +1,3 @@
-// import "./card.css";
 import { useState } from "react";
 
 function Card({title, number, img}) {
@@ -8,7 +7,7 @@ function Card({title, number, img}) {
   //   setIsFlipped(!isFlipped);
   // };
   // console.log(isFlipped);
-  
+  console.log(number);
   return (
     <>
       <div className="card">
@@ -20,7 +19,7 @@ function Card({title, number, img}) {
           <h1 className="card__number">{number}</h1>
         </div>
         </div>
-          <button className="card__btn">Go To List</button>
+          <button className="card__btn">Show list</button>
         </div>
       </div>
     </>

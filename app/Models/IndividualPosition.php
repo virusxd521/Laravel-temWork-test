@@ -20,8 +20,4 @@ class IndividualPosition extends Model
     public function staff_number_a(){
         return $this::where('position_id', '!=' ,'1')->count();
     }
-
-
-    
-
 }

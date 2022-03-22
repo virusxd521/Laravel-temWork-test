@@ -14,7 +14,6 @@ function CardsPage() {
 
     useEffect(() => {
         urls.map(url => {
-            
             axios.get(url)
             .then(data => {
                 // console.log(data.data);

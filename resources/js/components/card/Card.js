@@ -8,7 +8,7 @@ function Card({title, number, img}) {
   //   setIsFlipped(!isFlipped);
   // };
   // console.log(isFlipped);
-  
+  console.log(number);
   return (
     <>
       <div className="card">

@@ -11,7 +11,7 @@ class Organization extends Model
 
     // returns the number of organizations in the DB
     public function number_organization(){
-        return $this->count();
+        return $this->all()->count();
     }
 
 

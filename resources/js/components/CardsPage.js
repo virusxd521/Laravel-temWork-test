@@ -30,10 +30,10 @@ function CardsPage() {
     }, []);
  
     return (
-        <section>
+        <section className="second-page">
                 <Fade top><h2>Are you looking for... </h2></Fade>
                 <div className="wrapper">
-                    <Fade bottom delay={300}><Card title="Player" number={playersNumber} img="card__image"  /></Fade>
+                    <Fade bottom delay={300}><Card title="Players" number={playersNumber} img="card__image"  /></Fade>
                     <Fade bottom delay={400}><Card title="Team" number={staffsNumber} img="card__image" /></Fade>
                     <Fade bottom delay={500}><Card title="Staff" number={organizationsNumber} img="card__image" /></Fade>
                 </div>

@@ -7,15 +7,16 @@ body {
 
 .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 16rem));
+    gap: 5rem;
     justify-content: center;
 }
 
 .card {
     height: 500px;
-    width: 270px;
+    width: 20em;
     overflow: hidden;
+    background-color: white;
     box-shadow: 0 2px 20px grey;
     border-radius: 5%;
     display: flex;
@@ -23,6 +24,7 @@ body {
     justify-content: space-between;
     cursor: pointer;
     transition: transform 200ms ease-in;
+    align-items: center;
 }
 .card__image {
     height: 12rem;
@@ -64,7 +66,8 @@ body {
 }
 
 .card__btn {
-    padding: 1rem;
+    padding: 1em;
+    width: 80%;
     font-family: inherit;
     font-weight: bold;
     font-size: 1rem;
@@ -98,6 +101,170 @@ body {
     margin: auto;
 }
 
+.Login {
+    display: flex;
+    flex-direction: column;
+    margin: 20em auto;
+    width: 280px;
+    align-items: center;
+}
+  
+h1 {
+    color: black;
+    text-align: center;
+    padding: 0.5em 0;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    }
+
+
+
+    input{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+
+label{
+    font-size: 12px;
+    color: gray;
+}
+
+span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused="true"]{
+    border: 1px solid red;  
+}
+
+input:invalid[focused="true"] ~ span{
+    display: block;
+}
+
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+  }
+  
+  input{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  
+  
+  label{
+    font-size: 12px;
+    color: gray;
+  }
+  
+  span{
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+  }
+  
+  input:invalid[focused="true"]{
+    border: 1px solid red;
+  }
+  
+  input:invalid[focused="true"] ~ span{
+    display: block;
+  }
+
+.Register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  form {
+    background-color: white;
+    padding: 0px 60px;
+    border-radius: 10px;
+    border: 5px solid black;
+  }
+  
+  h1 {
+    color: black;
+    text-align: center;
+  }
+  
+  button {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  
+.UI_card__title {
+    font-size: 3em;
+}
+
+.UI_card {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin: 0 2em;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    height: 50vh;
+}
+
+.UI_card button {
+    width: 50%;
+}
+
+.UI_toggle_cnt {
+    display: flex;
+    margin: 2em auto;
+    justify-content: center;
+    width: 5em;
+}
+
+.UI_toggle_button {
+    display: flex;
+    justify-self: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+.UI_card__cnt {
+    display: flex;
+    justify-content: center;
+    margin-top: 5em;
+}
 * {
     padding: 0;
     margin: 0;
@@ -138,10 +305,11 @@ nav {
 
 .home {
     height: 100vh;
+    background-color: black;
 }
 
 .nav_bg {
-    height: 7vh;
+    height: 10gvh;
     width: 100%;
     top: 0;
     position: fixed;
@@ -151,16 +319,19 @@ nav {
 
 .first-page {
     height: 100vh;
-    background-color: rgb(22, 22, 22);
+    /* background-image: url('/public/images/back3.png'); */
+    background-size: contain;
     color: white;
     display: flex;
     justify-content: space-around;
+    background-color: black;
 }
 
 .first-page h1 {
     font-size: 3em;
     text-align: center;
     padding: 2em;
+    color: white;
 }
 
 .connections {
@@ -207,8 +378,8 @@ nav ul {
 a {
     text-decoration: none;
     font-size: 1.2rem;
-    color: black;
+    color: white;
     margin-left: 5rem;
     z-index: 2;
+    
 }
-

@@ -22,8 +22,4 @@ class IndividualPosition extends Model
     {
         return $this::where('position_id', '!=' ,'1')->count();
     }
-
-
-    
-
 }

@@ -11,7 +11,11 @@ class OrganizationController extends Controller
     //
     public function getting_number(){
         $organization = new Organization;
-        return $organization->number_organization();
+        
+        $data = [
+            'number' => $organization->number_organization()
+        ];
+        return json_encode($data);
     }
 
 }

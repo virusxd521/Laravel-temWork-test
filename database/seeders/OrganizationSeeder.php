@@ -7,7 +7,8 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use DB;
 
-class UsersSeeder extends Seeder
+
+class OrganizationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,12 +19,12 @@ class UsersSeeder extends Seeder
     {
         //
         $faker = Faker::create();
-         for($i = 1 ; $i <= 100 ; $i++){
-             DB::table('users')->insert([
-                'user_name' => $faker->firstname,
-                'email' => $faker->email,
-                'password' => $faker->password,
-        ]);
-         }    
+        for($i = 1 ; $i <= 100 ; $i++){
+            DB::table('organizations')->insert([
+                'user_id' => $i,
+                'name' => $faker->firstname	
+            ]);
+        }
+
     }
 }

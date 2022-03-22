@@ -11,7 +11,12 @@ class Individual extends Model
 
     public function servers()
     {
-        return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id');
+        return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id')
+            ->withPivot([
+                'game_id',
+                'game_role_id',
+                'rank_id'
+            ]);
     }
 
     public function nationality()
@@ -49,12 +54,22 @@ class Individual extends Model
         return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
     }
 
-    public function gameroles() 
+    public function game_roles() 
     {
         return $this->belongsToMany(GameRole::class, 'game_individual', 'individual_id', 'game_role_id');
     }
 
-    public function gameindividuals()
+    public function games()
+    {
+        return $this->belongsToMany(Game::class, 'game_individual', 'individual_id', 'game_id')
+            ->withPivot([
+                'server_id',
+                'game_role_id',
+                'rank_id'
+            ]);
+    }
+
+    public function game_individuals()
     {
         return $this->hasMany(GameIndividual::class);
     }

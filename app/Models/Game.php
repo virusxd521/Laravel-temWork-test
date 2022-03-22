@@ -18,8 +18,31 @@ class Game extends Model
 
 
     // Creating Relationship with the individual via the game_individual pivot table
-    public function individual(){
-        return $this->belongsToMany(Individual::class, 'game_individual', 'individual_id', 'game_id');
+    public function individuals()
+    {
+        return $this->belongsToMany(Individual::class, 'game_individual', 'game_id', 'individual_id')
+            ->withPivot([
+                'server_id',
+                'game_role_id',
+                'rank_id'
+            ]);
+    }
+
+
+    //relationship between game and position tables via advertisement
+    public function positions()
+    {
+        return $this->belongsToMany(Position::class, 'advertisement', 'game_id', 'position_id')
+            ->withPivot([
+                'organization_id',
+                'individual_id',
+                'status_id',
+                'rank_id',
+                'game_role_id',
+                'expect',
+                'offer',
+                'availability'
+            ]);
     }
 
     public function servers()
@@ -38,7 +61,8 @@ class Game extends Model
         return $this->hasMany(Rank::class);
     }
 
-    public function advertisements(){
+    public function advertisements()
+    {
         return $this->hasMany(Advertisement::class);
     }
 }

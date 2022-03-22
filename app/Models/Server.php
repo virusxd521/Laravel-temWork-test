@@ -16,7 +16,12 @@ class Server extends Model
 
     public function individuals()
     {
-        return $this->belongsToMany(Individual::class, 'game_individual', 'server_id', 'individual_id');
+        return $this->belongsToMany(Individual::class, 'game_individual', 'server_id', 'individual_id')
+            ->withPivot([
+                'game_id',
+                'game_role_id',
+                'rank_id'
+            ]);
     }
 
     public function gameindividuals()

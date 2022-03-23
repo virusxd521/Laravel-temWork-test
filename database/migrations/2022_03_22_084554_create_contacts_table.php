@@ -19,9 +19,7 @@ return new class extends Migration
             $table->string('code', 10);
             $table->string('url', 50);
             $table->timestamps();
-            $table->timestamps();
-            $table->timestamps();
-            $table->timestamps();
+          
         });
     }
 

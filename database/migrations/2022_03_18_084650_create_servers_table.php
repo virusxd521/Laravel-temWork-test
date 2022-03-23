@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('servers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 35);
-            $table->string('code', 3);
+            //$table->string('code', 3);
             $table->timestamps();
         });
     }

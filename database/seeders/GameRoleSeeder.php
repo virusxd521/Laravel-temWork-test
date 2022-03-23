@@ -49,7 +49,7 @@ class GameRoleSeeder extends Seeder
             ]
         ];
 
-        foreach($game_role as $game) {
+        foreach($game_role as $game) {            
             foreach($game['roles'] as $role) {                
                 $new_role = new GameRole;
                 $new_role->game_id = $game['game_id'];
@@ -57,5 +57,6 @@ class GameRoleSeeder extends Seeder
                 $new_role->save();                
             }
         }
+    
     }
 }

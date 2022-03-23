@@ -69,7 +69,7 @@ class RankSeeder extends Seeder
         ];
 
         foreach($ranks as $game) {            
-            foreach($game->ranks as $rank){                
+            foreach($game['ranks'] as $rank){                
                 $new_rank = new Rank;
                 $new_rank->name = $rank;
                 $new_rank->game_id = $game['game_id'];

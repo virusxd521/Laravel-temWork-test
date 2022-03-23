@@ -9,8 +9,8 @@ class Nationality extends Model
 {
     use HasFactory;
 
-    public function individuals()
+    public function individual()
     {
-        return $this->belongsToMany(Individual::class);
+        return $this->hasMany(Individual::class);
     }
 }

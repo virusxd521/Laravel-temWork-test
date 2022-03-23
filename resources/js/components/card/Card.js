@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
-function Card({title, number, img}) {
+function Card({title, number, img, delay}) {
   // const [isFlipped, setIsFlipped] = useState(false);
 
   // const flip = () => {
   //   setIsFlipped(!isFlipped);
   // };
   // console.log(isFlipped);
-  console.log(number);
+  
+  useEffect(() => {
+    Aos.init({ duration: 500 })
+  }, [])
+
+
   return (
     <>
-      <div className="card">
+      <div data-aos="fade-up" data-aos-delay={delay} className="card">
         <div className="card">
           <div className="card__body">
           <img className={img} />

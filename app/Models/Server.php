@@ -9,12 +9,12 @@ class Server extends Model
 {
     use HasFactory;
 
-    public function games()
+    public function game()
     {
         return $this->hasMany(Game::class);
     }
 
-    public function individuals()
+    public function individual()
     {
         return $this->belongsToMany(Individual::class, 'game_individual', 'server_id', 'individual_id')
             ->withPivot([
@@ -24,7 +24,7 @@ class Server extends Model
             ]);
     }
 
-    public function gameindividuals()
+    public function gameindividual()
     {
         return $this->hasMany(GameIndividual::class);
     }

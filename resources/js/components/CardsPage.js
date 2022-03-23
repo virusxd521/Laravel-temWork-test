@@ -1,8 +1,9 @@
-import Fade from "react-reveal/Fade";
 import Card from './card/Card';
 import {useState, useEffect} from 'react';
 import axios from "axios";
 
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 function CardsPage() {
 
@@ -24,7 +25,6 @@ function CardsPage() {
                 setStaffsNumber(data.data)
                 break;
             case 'organization':
-            
                 setOrganizationsNumber(data.data.number)
                 break;
             }
@@ -36,15 +36,16 @@ function CardsPage() {
                 filteringApi(url, data);
             })          
         })
+        Aos.init({ duration: 1000 })
     }, []);
 
     return (
         <section className="second-page">
-                <Fade top><h2>Are you looking for... </h2></Fade>
+                <h2 data-aos="fade-up" >Are you looking for... </h2>
                 <div className="wrapper">
-                    <Fade bottom delay={300}><Card title="Players" number={playersNumber} img="card__image"  /></Fade>
-                    <Fade bottom delay={400}><Card title="Team" number={staffsNumber} img="card__image" /></Fade>
-                    <Fade bottom delay={500}><Card title="Staff" number={organizationsNumber} img="card__image" /></Fade>
+                    <Card title="Players" number={playersNumber} img="card__image" delay="0" />
+                    <Card title="Team" number={staffsNumber} img="card__image" delay="200" />
+                    <Card title="Staff" number={organizationsNumber} img="card__image" delay="400" />
                 </div>
             
         </section>

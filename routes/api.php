@@ -29,3 +29,7 @@ Route::get('/staff', [StaffController::class, 'number_of_staff']);
 
 // returns the number of staff in the DB
 Route::get('/organization', [OrganizationController::class, 'getting_number']);
+
+
+// returns the number of staff in the DB
+Route::get('/test', [PlayerController::class, 'data_for_advertisement_user']);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
 
-const App = () => {
+const Register = () => {
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -91,4 +91,4 @@ const App = () => {
         );
 };
 
-export default App;
+export default Register;

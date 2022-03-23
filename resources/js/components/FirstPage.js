@@ -1,10 +1,17 @@
-import Fade from 'react-reveal/Fade';
+import Aos from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
 
 function FirstPage() {
+
+    useEffect(() => {
+        Aos.init({ duration: 1000 })
+    }, []);
+
     return(
         <section className="first-page">
             <div className="intro">
-                <Fade top><h1 className="connections_header">We are connecting people from gaming world</h1></Fade>
+                <h1 data-aos="fade-up" className="connections_header">We are connecting people from gaming world</h1>
             </div>
         </section>
     )

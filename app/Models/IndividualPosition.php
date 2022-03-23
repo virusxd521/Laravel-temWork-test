@@ -11,6 +11,18 @@ class IndividualPosition extends Model
 
     protected $table = 'individual_position';
 
+
+    public function individual()
+    {
+        return $this->belongsTo(Individual::class);
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class
+    );    
+    }
+
     // fetching player number 
     public function player_number()
     {
@@ -24,6 +36,7 @@ class IndividualPosition extends Model
     }
 
 
-    
+
+
 
 }

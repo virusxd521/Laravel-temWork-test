@@ -9,13 +9,13 @@ class GameRole extends Model
 {
     use HasFactory;
 
-    public function games()
+    public function game()
     {
         return $this->belongsTo(Game::class);
     }
 
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }

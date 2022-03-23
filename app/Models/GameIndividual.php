@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GameIndividual extends Model
 {
     use HasFactory;
+    
 
     public function individual()
     {

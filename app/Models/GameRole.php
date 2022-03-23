@@ -9,7 +9,7 @@ class GameRole extends Model
 {
     use HasFactory;
 
-    public function games()
+    public function game()
     {
         return $this->belongsTo(Game::class);
     }

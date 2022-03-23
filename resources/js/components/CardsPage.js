@@ -24,7 +24,6 @@ function CardsPage() {
                 setStaffsNumber(data.data)
                 break;
             case 'organization':
-            
                 setOrganizationsNumber(data.data.number)
                 break;
             }

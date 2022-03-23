@@ -9,6 +9,7 @@ class Individual extends Model
 {
     use HasFactory;
 
+    
     public function servers()
     {
         return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id')
@@ -21,12 +22,19 @@ class Individual extends Model
 
     public function nationality()
     {
-        return $this->hasOne(Nationality::class);
+        return $this->belongsTo(Nationality::class);
     }
 
-    public function positions()
+
+    public function individual_position()
     {
-        return $this->belongsToMany(Position::class);
+        return $this->hasMany(IndividualPosition::class);
+    }
+
+    // I've changed this position since it's not a direct relationship to position
+    public function position()
+    {
+         return $this->hasManyThrough(Position::class, IndividualPosition::class);
     }
 
     public function languages()
@@ -73,4 +81,5 @@ class Individual extends Model
     {
         return $this->hasMany(GameIndividual::class);
     }
+
 }

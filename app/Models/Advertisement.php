@@ -50,5 +50,7 @@ class Advertisement extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+
+
 }
 

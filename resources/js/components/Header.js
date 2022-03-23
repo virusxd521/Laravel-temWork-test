@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {Link} from 'react-router-dom';
 
 
 function Header() {
@@ -34,27 +35,15 @@ function Header() {
         )
     }, []);
 
-    // const [scrollState, setScrollState] = useState(window.pageYOffset)
-  
-    // useEffect(() => {
-    //     window.addEventListener('scroll', () => {
-    //         setScrollState(window.pageYOffset)
-    //     })
-    // })
-
-    // const divStyle = {
-    //     height: 500-scrollState+"px"
-    // }
-
-    // console.log(scrollState)
 
     return (
         <section className="home" ref={ref}>
             <nav>
                 <img className="logo" src="/images/logo.png" alt="logo" />
                 <ul>
-                    <li><a>Login</a></li>
-                    <li><a>Register</a></li>
+
+                    <Link to={`/login`} >Login</Link>
+                    <Link to={`/register`} >Register</Link>
                 </ul>
             </nav>
             

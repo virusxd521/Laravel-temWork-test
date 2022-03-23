@@ -9,8 +9,8 @@ class Position extends Model
 {
     use HasFactory;
 
-    public function individuals() {
-        return $this->belongsToMany(Individual::class); 
+    public function individual_position() {
+        return $this->hasMany(IndividualPosition::class); 
     }
 
     public function advertisements() {

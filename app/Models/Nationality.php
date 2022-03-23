@@ -11,6 +11,6 @@ class Nationality extends Model
 
     public function individuals()
     {
-        return $this->belongsToMany(Individual::class);
+        return $this->hasMany(Individual::class);
     }
 }

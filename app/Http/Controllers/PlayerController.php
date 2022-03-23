@@ -9,6 +9,7 @@ use App\Models\IndividualPosition;
 use App\Models\Individual;
 use App\Models\GameIndividual;
 use App\Models\Nationality;
+use App\Models\Language;
 
 use Illuminate\Support\Facades\DB;
 
@@ -23,11 +24,23 @@ class PlayerController extends Controller
 
     public function data_for_advertisement_user()
     {
-        $indiv = new Individual;
-        $individual_position = Individual::with([ 'individual_positions' ,'game_individuals', 'nationality', 'individual_languages'])->get();
+        // $indiv = new Language;
+        // dd($indiv->all());
+        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality', 'language', 'contact', 'rank','server', 'role'])->get();
         // Todo:: if the position is with a position ID of 8 bring back all the data relation to the users with a loop.
         // The same should be done to organization and staff
-        dd($individual_position[2]);
+        
+
+        $data = [
+            'nationality' =>  $individuals[0]->nationality->name,
+            'role' => $individuals[0]->game_role->name,
+            'rank' => $individuals[0]->rank->name,
+            'contact' => $individuals[0]->contact->name,
+            'contact_url' => $individuals[0]->contact->url,
+            'language' => $individuals[0]->language->url,
+        ];
+
+        return json_encode($data);
 
 
         // dd($individual_position[1]->position->name);
@@ -39,9 +52,12 @@ class PlayerController extends Controller
         //                     case :
         //         break;
         // }
-        
-        
-        // dd($individual_position[1]->position->name);
-        return $advertisement->position();
     }
+    
+
+    public function data_for_advertisement_organization()
+    {
+
+    }
+
 }

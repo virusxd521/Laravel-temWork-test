@@ -24,10 +24,10 @@ class PlayerController extends Controller
     public function data_for_advertisement_user()
     {
         $indiv = new Individual;
-        $individual_position = Individual::with([ 'individual_position' ,'game_individuals', 'nationality'])->get();
+        $individual_position = Individual::with([ 'individual_positions' ,'game_individuals', 'nationality', 'individual_languages'])->get();
         // Todo:: if the position is with a position ID of 8 bring back all the data relation to the users with a loop.
         // The same should be done to organization and staff
-        // dd($indiv->nationality());
+        dd($individual_position[2]);
 
 
         // dd($individual_position[1]->position->name);

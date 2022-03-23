@@ -16,34 +16,34 @@ class Organization extends Model
 
 
     // Organization has many games via a Pivot table
-    public function games()
+    public function game()
     {
         return $this->belongsToMany(Game::class, 'game_organization', 'organization_id', 'game_id');    
     }
     
-    public function languages()
+    public function language()
     {
         return $this->belongsToMany(Language::class,'language_organization', 'organization_id', 'language_id');
     }
 
     // One to One relationship
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
 
-    public function contacts()
+    public function contact()
     {
         return $this->hasMany(Contact::class);
     }
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }
 
-    public function positions()
+    public function position()
     {
         return $this->belongsToMany(Position::class, 'advertisement', 'organization_id', 'position_id')
             ->withPivot([

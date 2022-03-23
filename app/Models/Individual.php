@@ -10,7 +10,7 @@ class Individual extends Model
     use HasFactory;
 
     
-    public function servers()
+    public function server()
     {
         return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id')
             ->withPivot([
@@ -37,7 +37,7 @@ class Individual extends Model
          return $this->hasManyThrough(Position::class, IndividualPosition::class);
     }
 
-    public function languages()
+    public function language()
     {
         return $this->belongsToMany(Language::class);
     }
@@ -47,22 +47,22 @@ class Individual extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function contacts()
+    public function contact()
     {
         return $this->hasMany(Contact::class);
     }
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }
 
-    public function ranks()
+    public function rank()
     {
         return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
     }
 
-    public function game_roles() 
+    public function game_role() 
     {
         return $this->belongsToMany(GameRole::class, 'game_individual', 'individual_id', 'game_role_id');
     }
@@ -77,7 +77,7 @@ class Individual extends Model
             ]);
     }
 
-    public function game_individuals()
+    public function game_individual()
     {
         return $this->hasMany(GameIndividual::class);
     }

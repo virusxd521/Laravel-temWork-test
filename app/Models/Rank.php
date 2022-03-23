@@ -9,7 +9,7 @@ class Rank extends Model
 {
     use HasFactory;
 
-    public function games()
+    public function game()
     {
         return $this->belongsTo(Game::class);
     }
@@ -19,7 +19,7 @@ class Rank extends Model
         return $this->hasMany(GameIndividual::class);
     }
     
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }

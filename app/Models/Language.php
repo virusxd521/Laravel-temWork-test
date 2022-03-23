@@ -9,17 +9,17 @@ class Language extends Model
 {
     use HasFactory;
 
-    public function individuals()
+    public function individual()
     {
         return $this->belongsToMany(Individual::class);
     }
 
-    public function organizations()
+    public function organization()
     {
         return $this->belongsToMany(Organization::class);
     }
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->belongsToMany(Advertisement::class);
     }

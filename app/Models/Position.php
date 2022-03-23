@@ -13,11 +13,11 @@ class Position extends Model
         return $this->hasMany(IndividualPosition::class); 
     }
 
-    public function advertisements() {
+    public function advertisement() {
         return $this->hasMany(Advertisement::class);
     }
 
-    public function games()
+    public function game()
     {
         return $this->belongsToMany(Game::class, 'advertisement', 'position_id', 'game_id')
             ->withPivot([
@@ -32,7 +32,7 @@ class Position extends Model
             ]);
     }
 
-    public function organizations()
+    public function organization()
     {
         return $this->belongsToMany(Organization::class, 'advertisement', 'position_id', 'organization_id')
             ->withPivot([

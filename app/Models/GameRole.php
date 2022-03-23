@@ -15,7 +15,7 @@ class GameRole extends Model
     }
 
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }

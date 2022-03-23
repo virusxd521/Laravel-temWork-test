@@ -11,7 +11,7 @@ class Status extends Model
 
     // Status has many advertisements
     // Many advertisemment can be with the same status
-    public function advertisements()
+    public function advertisement()
     {
         return $this->hasMany(Advertisement::class);
     }

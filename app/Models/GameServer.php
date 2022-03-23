@@ -10,12 +10,12 @@ class GameServer extends Model
     use HasFactory;
 
 
-    public function games()
+    public function game()
     {
         return $this->belongsTo(Game::class);
     }
 
-    public function servers()
+    public function server()
     {
         return $this->belongsTo(Server::class);
     }

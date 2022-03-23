@@ -9,12 +9,12 @@ class AdvertisementLanguage extends Model
 {
     use HasFactory;
 
-    public function advertisements()
+    public function advertisement()
     {
         return $this->belongsTo(Advertisement::class);
     }
 
-    public function languages()
+    public function language()
     {
         return $this->belongsTo(Language::class);
     }

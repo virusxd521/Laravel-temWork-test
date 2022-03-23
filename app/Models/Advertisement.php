@@ -10,23 +10,23 @@ class Advertisement extends Model
     use HasFactory;
 
     // Relation to language via the advertisement language table
-    public function languages()
+    public function language()
     {
         return $this->belongsToMany(Language::class, 'advertisement_language', 'advertisement_id', 'language_id');
     }
 
     // Many advertisements belongs to one Status
-    public function statuses()
+    public function statuse()
     {
         return $this->belongsTo(Status::class);
     }
 
-    public function game_roles()
+    public function game_role()
     {
         return $this->belongsTo(GameRole::class);
     }
 
-    public function positions()
+    public function position()
     {
         return $this->belongsTo(Position::class);
     }
@@ -36,17 +36,17 @@ class Advertisement extends Model
         return $this->belongsTo(Individual::class);
     }
 
-    public function ranks()
+    public function rank()
     {
         return $this->belongsTo(Rank::class);
     }
 
-    public function games()
+    public function game()
     {
         return $this->belongTo(Game::class);
     }
 
-    public function organizations()
+    public function organization()
     {
         return $this->belongsTo(Organization::class);
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 30);
-            $table->string('code', 8);
+            //$table->string('code', 8);
             $table->foreignId('game_id');
         });
     }

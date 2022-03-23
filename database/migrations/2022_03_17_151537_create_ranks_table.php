@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('ranks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name', 25);
-            $table->string('code', 4);
+            $table->string('name', 40);
+            //$table->string('code', 4);
             $table->foreignId('game_id'); 
         });
     }

@@ -28,6 +28,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisement_language');
+        Schema::dropIfExists('advertisement_languages');
     }
 };
+

@@ -17,7 +17,6 @@ class IndividualSeeder extends Seeder
     public function run()
     {
         //
-
         $faker = Faker::create();
         for($i = 1; $i < 100; $i++){
             DB::table('individuals')->insert([

@@ -17,12 +17,20 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             UsersSeeder::class,
+            GameIndividualsSeeder::class,
             OrganizationSeeder::class,
             GameRoleSeeder::class,
             GameSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
+<<<<<<< HEAD
             LanguageSeeder::class
+=======
+            IndividualSeeder::class,
+            NationalitySeeder::class,
+            PositionSeeder::class,
+            IndividualPositionSeeder::class
+>>>>>>> master
         ]);
     }
 }

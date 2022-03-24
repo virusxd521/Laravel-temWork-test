@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             GameRoleSeeder::class,
             GameSeeder::class,
             RankSeeder::class,
-            ServerSeeder::class
+            ServerSeeder::class,
+            LanguageSeeder::class
         ]);
     }
 }

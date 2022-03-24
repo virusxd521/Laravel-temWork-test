@@ -16,10 +16,10 @@ export default function Login() {
   return (
      <>
         <Header />
-        <div className="Login">
-          <form onSubmit={handleSubmit}>
-              <h1>Login</h1>
-             <div className="Login-container">
+        
+          <form className="login" onSubmit={handleSubmit}>
+              <h1 className="login__title">Login</h1>
+             <div className="login__container">
                   <label>Username</label>
                   <input 
                     autoFocus
@@ -31,7 +31,7 @@ export default function Login() {
              </div>
         
             
-              <div className="Login-container">
+              <div className="login__container">
                   <label>Password</label>
                   <input 
                     type="password"
@@ -41,11 +41,11 @@ export default function Login() {
                   />
               </div>
             
-            <button className="login__button" type="submit" disabled={!validateForm()}>
+            <button className="login__button button" type="submit" disabled={!validateForm()}>
               Login
             </button>
           </form>
-        </div>
+       
      </>
   );
 }

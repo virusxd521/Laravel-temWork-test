@@ -10,8 +10,8 @@ use Illuminate\Http\Request;
 
 class CustomAuthController extends Controller
 {
-    public function filip_test()
+    public function filip_test(Request $request)
     {
-        dd('ssss');
+        return json_encode($request->all()); 
     }
 }

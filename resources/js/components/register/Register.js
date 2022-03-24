@@ -1,6 +1,8 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
+import axios from "axios";
+
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -21,7 +23,7 @@ const Register = () => {
         "Username should be 3-16 characters and shouldn't include any special character!",
       label: "Username",
       pattern: "^[A-Za-z0-9]{3,30}$",
-      required: true,
+      // required: true,
     },
     {
       id: 2,
@@ -30,7 +32,7 @@ const Register = () => {
       placeholder: "Email",
       errorMessage: "It should be a valid email address!",
       label: "Email",
-      required: true,
+      // required: true,
     },
     {
       id: 3,
@@ -48,7 +50,7 @@ const Register = () => {
         "Password should be 6-8 characters and include at least 1 letter, 1 number and 1 special character!",
       label: "Password",
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$`,
-      required: true,
+      // required: true,
     },
     {
       id: 5,
@@ -58,7 +60,7 @@ const Register = () => {
       errorMessage: "Passwords don't match!",
       label: "Confirm Password",
       pattern: values.password,
-      required: true,
+      // required: true,
     },
   ];
 
@@ -71,11 +73,42 @@ const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+
+    const getValue = (e) => {
+    e.preventDefault();
+
+    
+    const data = {
+      username: '',
+      email: '',
+      birthday: '',
+      password: '',
+      confirmPassword: ''
+      }
+    
+    const parentArr = Array.from(e.target);
+    for(let key in data){
+      parentArr.map((item, index) => {
+          return key === item.name ? data[key] = item.value : null;
+      });
+    }
+    console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    axios.post('/test_form', {
+    data,
+    'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }
+    ).then(response => {
+      console.log(response);
+    })
+  }
+
+
+
   return (
     <>
         <Header />
         <div className="Register">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={getValue}>
             <h1>Register</h1>
             {inputs.map((input) => (
               <FormInput

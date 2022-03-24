@@ -64,6 +64,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target);
   };
 
   const onChange = (e) => {

@@ -24,13 +24,13 @@ class IndividualPosition extends Model
     // fetching player number 
     public function player_number()
     {
-        return $this::where('position_id', '1')->count();
+        return $this::where('position_id', '8')->count();
     }
 
     // fetching staffs  
-    public function staff_number_a()
+    public function staff_number_count()
     {
-        return $this::where('position_id', '!=' ,'1')->count();
+        return $this::where('position_id', '!=' ,'8')->count();
     }
 
 

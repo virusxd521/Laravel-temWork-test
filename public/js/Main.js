@@ -2770,6 +2770,7 @@ var Register = function Register() {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(e.target);
   };
 
   var onChange = function onChange(e) {

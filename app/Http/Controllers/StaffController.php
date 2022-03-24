@@ -12,6 +12,6 @@ class StaffController extends Controller
     //
     public function number_of_staff(){
         $staff_individual = new IndividualPosition;
-        return $staff_individual->staff_number_a();
+        return $staff_individual->staff_number_count();
     }
 }

@@ -18,8 +18,10 @@ class OrganizationController extends Controller
         ];
         return json_encode($data);
     }
+
+    
     public function showing_advertisment()
     {
         $organization_advertisement = Organizaion::with(["advertisement"]);
-        }
+    }
 }

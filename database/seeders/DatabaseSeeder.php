@@ -23,10 +23,7 @@ class DatabaseSeeder extends Seeder
             GameSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
-            IndividualSeeder::class,
-            NationalitySeeder::class,
-            PositionSeeder::class,
-            IndividualPositionSeeder::class
+            LanguageSeeder::class
         ]);
     }
 }

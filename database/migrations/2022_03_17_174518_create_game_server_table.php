@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('game_servers', function (Blueprint $table) {
+        Schema::create('game_server', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('game_id');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_servers');
+        Schema::dropIfExists('game_server');
     }
 };

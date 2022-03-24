@@ -5,7 +5,6 @@ import UI_card from "./ui_cards/UI_card";
 
 function UserInterface() {
 
-    const [button, setButton] = useState('false');
     return (
         <>
             <Header />

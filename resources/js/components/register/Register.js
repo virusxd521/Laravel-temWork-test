@@ -1,8 +1,8 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
-
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -84,6 +84,7 @@ const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const navigate = useNavigate();
 
   const getValue = (e) => {
     e.preventDefault();
@@ -131,9 +132,9 @@ const Register = () => {
   return (
     <>
         <Header />
-        <div className="Register">
-          <form onSubmit={getValue}>
-            <h1>Register</h1>
+
+          <form className="register" onSubmit={getValue}>
+            <h1 className="register__title">Register</h1>
             {inputs.map((input) => (
               <FormInput
                 key={input.id}
@@ -142,11 +143,12 @@ const Register = () => {
                 onChange={onChange}
               />
             ))}
-            <button>Submit</button>
+            <label className="register__label--login">Already registered? {<a onClick={() => navigate('/login')} className="login__redirect">Log in</a>}</label>
+            
+            <button className="register__button button" type="submit">Register</button>
           </form>
-        </div>
     </>
-        );
+  );
 };
 
 export default Register;

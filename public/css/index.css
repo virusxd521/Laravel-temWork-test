@@ -1,7 +1,6 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"); */
 
 body {
-    font-family: Oxygen, sans-serif;
     margin: 2rem;
 }
 
@@ -25,34 +24,40 @@ body {
     cursor: pointer;
     transition: transform 200ms ease-in;
     align-items: center;
+
 }
-.card__image {
+
+.card__player {
     height: 12rem;
-    width: 100%;
-    /* background: url("../player.png"); */
+    width: 20rem;   
+    background: url("/images/icon 4.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .card__team {
-    height: 14rem;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    /* background: url("../Team.png"); */
+    height: 12rem;
+    width: 20rem;
+    /* background-image: url("/images/backk.png"); */
+    background: url("/images/icon1.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .card__staff {
-    height: 14rem;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    /* background: url("../staff.png"); */
+    height: 12rem;
+    width: 20rem;
+    background: url("/images/icon 2.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.card__body__bg {
+    /* position: absolute;   */
+    height: 12rem;
+    width: 20rem;
+    background: url("/images/backk.png");
 }
 
 .card__title {
@@ -68,25 +73,38 @@ body {
 .card__btn {
     padding: 1em;
     width: 80%;
-    font-family: inherit;
     font-weight: bold;
     font-size: 1rem;
-    margin: 1rem;
-    border: 2px solid green;
+    margin: 2rem;
+    border: 2px solid black;
     background: transparent;
-    color: green;
+    color: black;
     border-radius: 5%;
     /* transition: background 200ms ease-in, color 200ms ease-in; */
     cursor: pointer;
+    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    transition: ease-out 0.4s;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
-.card:hover .card__btn,
 .card:hover .card__circle {
-    background: green;
+    background: rgb(106,212,219);
+    box-shadow: inset 2em 0 0 0 rgb(106,212,219);
+}
+.card:hover .card__btn,
+.card:hover .card__circle,
+.card:focus .card__btn {
+    
+    color: white;
+    border: 2px solid black;
+    box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+}
+
+
+.card:hover .card__number {
     color: white;
 }
 
@@ -99,53 +117,68 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
+    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    transition: ease-out 0.4s;
 }
 
-.Login {
+.login {
+    height: 25em;
     display: flex;
     flex-direction: column;
     margin: 20em auto;
-    width: 280px;
+    width: 20em;
     align-items: center;
+    border: 5px solid black;
+    padding: 1em 2em;
+}
+
+.login__container {
+    display: flex;
+    flex-direction: column;
 }
   
-h1 {
+.login__title    {
     color: black;
     text-align: center;
     padding: 0.5em 0;
 }
 
-button {
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border: none;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
+.login__button {
+    height: 3.5em;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1rem;
+    margin: 2rem;
+    border: 2px solid black;
+    background: transparent;
+    color: black;
+    border-radius: 5%;
+    /* transition: background 200ms ease-in, color 200ms ease-in; */
     cursor: pointer;
-    margin-top: 15px;
-    margin-bottom: 30px;
-    }
+    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    transition: ease-out 0.4s;
+    font-family: "Cornerstone", sans-serif;
+}
 
+.login__button:hover {
+    color: white;
+    border: 2px solid black;
+    box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+}
 
-
-    input{
-    padding: 15px;
-    margin: 10px 0px;
-    border-radius: 5px;
-    border: 1px solid gray;
+.login input {
+    width: 15em;
 }
 
 
-label{
-    font-size: 12px;
+.login label {
+    font-size: 0.9em;
     color: gray;
+    margin-right: 2em;
 }
 
-span{
+span {
     font-size: 12px;
     padding: 3px;
     color: red;
@@ -194,40 +227,61 @@ input:invalid[focused="true"] ~ span{
     display: block;
   }
 
-.Register {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+.register {
+  height: 45em;
+  display: flex;
+  flex-direction: column;
+  margin: 20em auto;
+  width: 25em;
+  align-content: center;
+  align-items: center;
+  border: 5px solid black;
+  padding: 1em 3em;
+  justify-content: center;
+  justify-items: center;
+}
   
-  form {
-    background-color: white;
-    padding: 0px 60px;
-    border-radius: 10px;
-    border: 5px solid black;
-  }
+h1 {
+  color: black;
+  text-align: center;
+}
+
   
-  h1 {
-    color: black;
-    text-align: center;
-  }
-  
-  button {
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border: none;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 15px;
-    margin-bottom: 30px;
-  }
-  
+.register__button {
+  height: 3.5em;
+  width: 80%;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 2rem;
+  border: 2px solid black;
+  background: transparent;
+  color: black;
+  border-radius: 5%;
+  /* transition: background 200ms ease-in, color 200ms ease-in; */
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 rgb(106,212,219);
+  transition: ease-out 0.4s;
+  font-family: "Cornerstone", sans-serif;
+} 
+
+.register__button:hover {
+  color: white;
+  border: 2px solid black;
+  box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+}
+
+.register input {
+  width: auto;
+}
+
+.login__redirect {
+  color: grey;
+  font-size: 1.5em;
+}
+
+.login__redirect:hover {
+  color: rgb(106,212,219);
+}
 .UI_card__title {
     font-size: 3em;
 }
@@ -271,24 +325,26 @@ input:invalid[focused="true"] ~ span{
     box-sizing: border-box;
 }
 
+@font-face {
+    src: url('/fonts/Cornerstone.ttf');
+    font-family: "Cornerstone";
+}
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
+    font-family: 'Cornerstone', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
-}
+} */
 
 nav {
     display: flex;
     justify-content: space-between;
-    /* padding: 1rem 5rem; */
     background: white;
     justify-content: flex-end;
 }
@@ -300,6 +356,17 @@ nav {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    z-index: 5;
+    
+}
+
+.logo-fixed {
+    position: fixed;
+    width: 15%;
+    height: 15%;
+    top: 1.5rem;
+    left: 0;
+    transform: translate(-0%, -45%);
     z-index: 3;
 }
 
@@ -318,9 +385,11 @@ nav {
 }
 
 .first-page {
-    height: 100vh;
-    /* background-image: url('/public/images/back3.png'); */
-    background-size: contain;
+    height: 120vh;
+    background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
+    background-size: 100vh;
+    background-repeat: no-repeat;
+    background-position: bottom;
     color: white;
     display: flex;
     justify-content: space-around;
@@ -340,7 +409,7 @@ nav {
 
 .second-page {
     min-height: 100vh;
-    background-color: rgb(22, 22, 22);
+    background-color: black;
 }
 
 .second-page h2 {
@@ -348,6 +417,7 @@ nav {
     font-size: 3em;
     padding: 2em;
     text-align: center;
+    
 }
 
 .card_cnt {
@@ -372,14 +442,59 @@ nav ul {
     list-style: none;
     align-items: center;
     position: fixed;
-    padding: 1rem 5rem;
+    padding: 1.5em 5rem;
     z-index: 3;
 }
-a {
+nav ul a {
     text-decoration: none;
     font-size: 1.2rem;
     color: white;
     margin-left: 5rem;
     z-index: 2;
-    
+    transition: transform 100ms ease-in;
 }
+
+nav ul a:hover {
+    color: rgb(106,212,219);
+    transform: scale(1.2);
+    transition: all .3s ease-in-out;
+}
+
+  
+nav ul a:after {
+    content: '';
+    display: block;
+    width: 0;
+    position: absolute;
+    height: 0.2em;
+    background: rgb(106,212,219);
+    transition: cubic-bezier(.77,0,.18,1) 0.3s;
+}
+
+nav ul a:hover::after {
+    width: 100%;
+}
+
+
+form {
+    border: none;
+    width: 90%;
+}
+
+button {
+    width: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 2rem;
+    border: 2px solid black;
+    background: transparent;
+    color: black;
+    border-radius: 5%;
+    /* transition: background 200ms ease-in, color 200ms ease-in; */
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    transition: ease-out 0.4s;
+    font-family: "Cornerstone", sans-serif;
+}
+
+

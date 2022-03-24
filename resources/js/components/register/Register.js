@@ -13,6 +13,17 @@ const Register = () => {
     confirmPassword: "",
   });
 
+
+  // Data for submiting the form with JSON
+  const [dataForJson, setDataForJson] = useState({
+    username: "",
+    email: "",
+    birthday: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+
   const inputs = [
     {
       id: 1,
@@ -74,10 +85,11 @@ const Register = () => {
   };
 
 
-    const getValue = (e) => {
+  const getValue = (e) => {
     e.preventDefault();
 
     
+
     const data = {
       username: '',
       email: '',
@@ -85,22 +97,34 @@ const Register = () => {
       password: '',
       confirmPassword: ''
       }
-    
+
+
     const parentArr = Array.from(e.target);
     for(let key in data){
       parentArr.map((item, index) => {
           return key === item.name ? data[key] = item.value : null;
       });
     }
-    console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-    axios.post('/test_form', {
-    data,
+    
+    configuring_registration(data);
+  
+  }
+
+
+  const configuring_registration = async data => {
+    document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    await axios.post('/test_form', {
+      ...data,
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
     ).then(response => {
       console.log(response);
     })
   }
+
+
+
+
 
 
 

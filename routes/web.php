@@ -14,7 +14,7 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
+Route::post('/test_form', [CustomAuthController::class, 'registration']);
 
 Route::view('/', 'app');
 Route::view('/{any}', 'app');

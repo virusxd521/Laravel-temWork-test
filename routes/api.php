@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\CustomAuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,3 +38,8 @@ Route::get('/test', [PlayerController::class, 'data_for_advertisement_user']);
 
 // Prepering the registration
 Route::get('/filip', [PlayerController::class, 'data_for_advertisement_organization']);
+
+
+// Prepering the registration
+Route::post('/login', [CustomAuthController::class, 'authenticate']);
+

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 30);
-            $table->string('code', 8);
+            //$table->string('code', 8);
             $table->foreignId('game_id');
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('game_role');
+        Schema::dropIfExists('game_roles');
     }
 };

@@ -31,5 +31,9 @@ Route::get('/staff', [StaffController::class, 'number_of_staff']);
 Route::get('/organization', [OrganizationController::class, 'getting_number']);
 
 
-// returns the number of staff in the DB
+// Returns the advertisements for staff and player
 Route::get('/test', [PlayerController::class, 'data_for_advertisement_user']);
+
+
+// Prepering the registration
+Route::get('/filip', [PlayerController::class, 'data_for_advertisement_organization']);

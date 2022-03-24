@@ -2261,17 +2261,29 @@ function CardsPage() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_card_Card__WEBPACK_IMPORTED_MODULE_0__["default"], {
         title: "Players",
         number: playersNumber,
+<<<<<<< HEAD
         img: "card__player",
+=======
+        img: "card__image",
+>>>>>>> master
         delay: "0"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_card_Card__WEBPACK_IMPORTED_MODULE_0__["default"], {
         title: "Team",
         number: staffsNumber,
+<<<<<<< HEAD
         img: "card__team",
+=======
+        img: "card__image",
+>>>>>>> master
         delay: "200"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_card_Card__WEBPACK_IMPORTED_MODULE_0__["default"], {
         title: "Staff",
         number: organizationsNumber,
+<<<<<<< HEAD
         img: "card__staff",
+=======
+        img: "card__image",
+>>>>>>> master
         delay: "400"
       })]
     })]
@@ -2315,9 +2327,14 @@ function FirstPage() {
       className: "intro",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
         "data-aos": "fade-up",
+<<<<<<< HEAD
         "data-aos-anchor-placement": "top-center",
         className: "connections_header",
         children: "We are proudly connecting all professionals with organizations in the gaming industry"
+=======
+        className: "connections_header",
+        children: "We are connecting people from gaming world"
+>>>>>>> master
       })
     })
   });
@@ -2499,11 +2516,16 @@ function Card(_ref) {
         className: "card",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "card__body",
+<<<<<<< HEAD
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "card__body__bg",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
               className: img
             })
+=======
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+            className: img
+>>>>>>> master
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
             className: "card__title",
             children: title
@@ -2515,7 +2537,11 @@ function Card(_ref) {
             })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+<<<<<<< HEAD
           className: "card__btn button",
+=======
+          className: "card__btn",
+>>>>>>> master
           children: "Show list"
         })]
       })
@@ -2713,8 +2739,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormInput */ "./resources/js/components/register/FormInput.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.js");
+<<<<<<< HEAD
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+=======
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+>>>>>>> master
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -2760,16 +2792,16 @@ var Register = function Register() {
     placeholder: "Username",
     errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
     label: "Username",
-    pattern: "^[A-Za-z0-9]{3,30}$",
-    required: true
+    pattern: "^[A-Za-z0-9]{3,30}$" // required: true,
+
   }, {
     id: 2,
     name: "email",
     type: "email",
     placeholder: "Email",
     errorMessage: "It should be a valid email address!",
-    label: "Email",
-    required: true
+    label: "Email" // required: true,
+
   }, {
     id: 3,
     name: "birthday",
@@ -2783,8 +2815,8 @@ var Register = function Register() {
     placeholder: "Password",
     errorMessage: "Password should be 6-8 characters and include at least 1 letter, 1 number and 1 special character!",
     label: "Password",
-    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$",
-    required: true
+    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$" // required: true,
+
   }, {
     id: 5,
     name: "confirmPassword",
@@ -2792,18 +2824,20 @@ var Register = function Register() {
     placeholder: "Confirm Password",
     errorMessage: "Passwords don't match!",
     label: "Confirm Password",
-    pattern: values.password,
-    required: true
+    pattern: values.password // required: true,
+
   }];
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    console.log(e.target);
   };
 
   var onChange = function onChange(e) {
     setValues(_objectSpread(_objectSpread({}, values), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
 
+<<<<<<< HEAD
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
@@ -2825,6 +2859,52 @@ var Register = function Register() {
           },
           className: "login__redirect",
           children: "Log in"
+=======
+  var getValue = function getValue(e) {
+    e.preventDefault();
+    var data = {
+      username: '',
+      email: '',
+      birthday: '',
+      password: '',
+      confirmPassword: ''
+    };
+    var parentArr = Array.from(e.target);
+
+    var _loop = function _loop(key) {
+      parentArr.map(function (item, index) {
+        return key === item.name ? data[key] = item.value : null;
+      });
+    };
+
+    for (var key in data) {
+      _loop(key);
+    }
+
+    console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    axios__WEBPACK_IMPORTED_MODULE_3___default().post('/test_form', {
+      data: data,
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }).then(function (response) {
+      console.log(response);
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "Register",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+        onSubmit: getValue,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+          children: "Register"
+        }), inputs.map(function (input) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_FormInput__WEBPACK_IMPORTED_MODULE_1__["default"], _objectSpread(_objectSpread({}, input), {}, {
+            value: values[input.name],
+            onChange: onChange
+          }), input.id);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+          children: "Submit"
+>>>>>>> master
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "register__button button",

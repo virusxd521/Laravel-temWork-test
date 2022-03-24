@@ -9,15 +9,13 @@ class Individual extends Model
 {
     use HasFactory;
 
-    
+
     public function server()
     {
-        return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id')
-            ->withPivot([
-                'game_id',
-                'game_role_id',
-                'rank_id'
-            ]);
+        return $this->hasManyThrough(Server::class, GameIndividual::class,
+        'server_id',
+        'id',
+    );
     }
 
     public function nationality()
@@ -25,21 +23,21 @@ class Individual extends Model
         return $this->belongsTo(Nationality::class);
     }
 
-
-    public function individual_position()
-    {
-        return $this->hasMany(IndividualPosition::class);
-    }
-
-    // I've changed this position since it's not a direct relationship to position
     public function position()
     {
-         return $this->hasManyThrough(Position::class, IndividualPosition::class);
+        return $this->hasManyThrough(Position::class, IndividualPosition::class, 
+        'position_id',
+        'id'
+        );
     }
+
 
     public function language()
     {
-        return $this->belongsToMany(Language::class);
+        return $this->hasManyThrough(Language::class, IndividualLanguage::class,
+        'language_id',
+        'id',
+        );
     }
 
     public function user()
@@ -59,12 +57,21 @@ class Individual extends Model
 
     public function rank()
     {
-        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
+        return $this->hasManyThrough(Rank::class, GameIndividual::class,
+        'rank_id',
+        'game_id',
+    );
     }
 
-    public function game_role() 
+    // Role is not position!!
+    // Role is the role of a player in a game
+    public function role() 
     {
-        return $this->belongsToMany(GameRole::class, 'game_individual', 'individual_id', 'game_role_id');
+        return $this->hasManyThrough(GameRole::class,
+        GameIndividual::class,
+        'game_role_id',
+        'id',
+    );
     }
 
     public function games()

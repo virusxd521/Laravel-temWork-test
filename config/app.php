@@ -177,6 +177,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Daniel --- Added Fortify 
+         */
+        App\Providers\FortifyServiceProvider::class,
+
     ],
 
     /*

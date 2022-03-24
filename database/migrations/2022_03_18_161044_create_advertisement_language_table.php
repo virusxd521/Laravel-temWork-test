@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('advertisement_languages', function (Blueprint $table) {
+        Schema::create('advertisement_language', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('advertisement_id');

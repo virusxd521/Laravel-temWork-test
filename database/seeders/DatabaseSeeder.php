@@ -23,10 +23,14 @@ class DatabaseSeeder extends Seeder
             GameSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
+<<<<<<< HEAD
+            LanguageSeeder::class
+=======
             IndividualSeeder::class,
             NationalitySeeder::class,
             PositionSeeder::class,
             IndividualPositionSeeder::class
+>>>>>>> master
         ]);
     }
 }

@@ -60,11 +60,7 @@ class PlayerController extends Controller
         //         break;
         // }
     }
-    
 
-    public function data_for_advertisement_organization()
-    {
 
-    }
 
 }

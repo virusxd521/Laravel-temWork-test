@@ -24,4 +24,10 @@ class OrganizationController extends Controller
     {
         $organization_advertisement = Organizaion::with(["advertisement"]);
     }
+
+
+    public function data_for_advertisement_organization()
+    {
+      
+    }
 }

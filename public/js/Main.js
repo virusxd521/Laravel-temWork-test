@@ -2735,16 +2735,16 @@ var Register = function Register() {
     placeholder: "Username",
     errorMessage: "Username should be 3-16 characters and shouldn't include any special character!",
     label: "Username",
-    pattern: "^[A-Za-z0-9]{3,30}$",
-    required: true
+    pattern: "^[A-Za-z0-9]{3,30}$" // required: true,
+
   }, {
     id: 2,
     name: "email",
     type: "email",
     placeholder: "Email",
     errorMessage: "It should be a valid email address!",
-    label: "Email",
-    required: true
+    label: "Email" // required: true,
+
   }, {
     id: 3,
     name: "birthday",
@@ -2758,8 +2758,8 @@ var Register = function Register() {
     placeholder: "Password",
     errorMessage: "Password should be 6-8 characters and include at least 1 letter, 1 number and 1 special character!",
     label: "Password",
-    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$",
-    required: true
+    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$" // required: true,
+
   }, {
     id: 5,
     name: "confirmPassword",
@@ -2767,8 +2767,8 @@ var Register = function Register() {
     placeholder: "Confirm Password",
     errorMessage: "Passwords don't match!",
     label: "Confirm Password",
-    pattern: values.password,
-    required: true
+    pattern: values.password // required: true,
+
   }];
 
   var handleSubmit = function handleSubmit(e) {
@@ -2780,11 +2780,41 @@ var Register = function Register() {
     setValues(_objectSpread(_objectSpread({}, values), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
 
+  var getValue = function getValue(e) {
+    e.preventDefault();
+    var data = {
+      username: '',
+      email: '',
+      birthday: '',
+      password: '',
+      confirmPassword: ''
+    };
+    var parentArr = Array.from(e.target);
+
+    var _loop = function _loop(key) {
+      parentArr.map(function (item, index) {
+        return key === item.name ? data[key] = item.value : null;
+      });
+    };
+
+    for (var key in data) {
+      _loop(key);
+    }
+
+    console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    axios__WEBPACK_IMPORTED_MODULE_3___default().post('/test_form', {
+      data: data,
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    }).then(function (response) {
+      console.log(response);
+    });
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "Register",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-        onSubmit: onChange,
+        onSubmit: getValue,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
           children: "Register"
         }), inputs.map(function (input) {

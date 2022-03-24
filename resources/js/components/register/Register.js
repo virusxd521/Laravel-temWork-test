@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
+import axios from "axios";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -75,7 +76,7 @@ const Register = () => {
     <>
         <Header />
         <div className="Register">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={onChange}>
             <h1>Register</h1>
             {inputs.map((input) => (
               <FormInput

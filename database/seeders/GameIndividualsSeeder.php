@@ -30,7 +30,7 @@ class GameIndividualsSeeder extends Seeder
                 'server_id' => rand(1, 30),
                 'game_role_id' => rand(1, 30),
                 'rank_id' => rand(1, 30),
-            ], true);
+            ]);
 
         }
 

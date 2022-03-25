@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('individual_id');
             $table->foreignId('position_id');
-            $table->timestamps();
+            // $table->timestamps();
+            $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

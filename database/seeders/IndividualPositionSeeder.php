@@ -26,7 +26,7 @@ class IndividualPositionSeeder extends Seeder
             DB::table('individual_position')->insert([
             'individual_id' => rand(1, 100),
             'position_id' => rand(1, 8)
-        ], true);
+        ]);
         }
 
     }

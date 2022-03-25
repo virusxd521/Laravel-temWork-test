@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('advertisement_id');
             $table->foreignId('language_id');
+            $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

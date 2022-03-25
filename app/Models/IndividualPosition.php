@@ -9,7 +9,7 @@ class IndividualPosition extends Model
 {
     use HasFactory;
 
-    
+    protected $table = 'individual_position';
     public function individual()
     {
         return $this->belongsTo(Individual::class);

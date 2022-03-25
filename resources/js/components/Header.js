@@ -24,7 +24,7 @@ function Header() {
                 width: '15%',
                 height: '15%',
                 top: '1.5rem',
-                left: '0rem',
+                left: '-1rem',
                 x: '50%',
                 y: '5%',
                 scrollTrigger: {

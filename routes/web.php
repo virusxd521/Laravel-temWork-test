@@ -14,16 +14,7 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::view('/', 'app');
-Route::view('/{any}', 'app');
-=======
 Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
 
 Route::view('/', 'app');
 Route::view('/{any}', 'app');
->>>>>>> master

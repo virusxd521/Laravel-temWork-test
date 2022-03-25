@@ -2317,7 +2317,7 @@ function FirstPage() {
         "data-aos": "fade-up",
         "data-aos-anchor-placement": "top-center",
         className: "connections_header",
-        children: "We are proudly connecting all professionals with organizations in the gaming industry"
+        children: "We are proudly connecting all professionals and organizations in the gaming industry"
       })
     })
   });
@@ -2362,7 +2362,7 @@ function Header() {
       width: '15%',
       height: '15%',
       top: '1.5rem',
-      left: '0rem',
+      left: '-1rem',
       x: '50%',
       y: '5%',
       scrollTrigger: {
@@ -2895,18 +2895,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 function UserInterface() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "UI_cnt",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
       "class": "UI_title",
-      children: "Do you want to register as ?"
+      children: "Do you want to register as "
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "UI_card__cnt",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ui_cards_UI_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: "Player"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ui_cards_UI_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        title: "Team"
+        title: "Organization"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ui_cards_UI_card__WEBPACK_IMPORTED_MODULE_2__["default"], {
         title: "Staff"
       })]
@@ -2937,15 +2937,14 @@ __webpack_require__.r(__webpack_exports__);
 
 function UI_card(_ref) {
   var title = _ref.title;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    "class": "UI_card",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "UI_card__title",
-      children: title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      "class": "UI_card__button",
-      children: "Register"
-    })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      "class": "UI_card",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+        className: "UI_card__title",
+        children: title
+      })
+    })
   });
 }
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use DB;
+use App\Models\User;
 
 class UsersSeeder extends Seeder
 {
@@ -19,11 +20,11 @@ class UsersSeeder extends Seeder
         //
         $faker = Faker::create();
          for($i = 1 ; $i <= 100 ; $i++){
-             DB::table('users')->insert([
-                'user_name' => $faker->firstname,
-                'email' => $faker->email,
-                'password' => $faker->password,
-        ]);
+             $user = new User;
+             $user->user_name = $faker->firstname ;
+             $user->email = $faker->email;
+             $user->password = $faker->password;
+             $user->save();
          }    
     }
 }

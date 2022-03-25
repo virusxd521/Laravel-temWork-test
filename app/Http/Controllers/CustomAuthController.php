@@ -21,13 +21,14 @@ class CustomAuthController extends Controller
     // Registrating the user using the create function
     // Validating the user as well 
     public function registration(Request $request)
-    {           
+   {           
+       
         $request->validate([
             'username' => 'required',
             'password' => 'required|min:6',
             'email' => 'required|email|unique:users',
         ]);
-
+        
         $data = $request->all();
         $check = $this->create($data);
         return $data['username'];
@@ -46,17 +47,20 @@ class CustomAuthController extends Controller
 
     public function authenticate(Request $request)
     {
-        // return $request;
+        // return $request['user_name'];
         $credentials = $request->validate([
             'user_name' => ['required'],
             'password' => ['required'],
         ]);
-
-
-        
-        if (Auth::attempt($credentials)) {
+        $test = [
+            'data' => Auth::attempt(['user_name' => $request['user_name'], 'password' => $request['password']])
+        ];
+        return $test;
+        if (Auth::attempt()) {
             $request->session()->regenerate();
-            return $request;
+            
+            return redirect('/daniel');
+
         }
     }
 

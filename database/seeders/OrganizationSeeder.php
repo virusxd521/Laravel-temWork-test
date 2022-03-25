@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use DB;
+use App\Models\Organization;
 
 
 class OrganizationSeeder extends Seeder
@@ -20,10 +21,10 @@ class OrganizationSeeder extends Seeder
         //
         $faker = Faker::create();
         for($i = 1 ; $i <= 100 ; $i++){
-            DB::table('organizations')->insert([
-                'user_id' => $i,
-                'name' => $faker->firstname	
-            ]);
+            $organization = new Organization;
+            $organization->user_id = $i;
+            $organization->name = $faker->firstname;
+            $organization->save();
         }
 
     }

@@ -17,8 +17,7 @@ function CardsPage() {
     
         const regexpLastWord = /(api\/)(=?)(\w+)/;
         switch(url.match(regexpLastWord)[3]){
-            case 'players':
-            
+            case 'players':            
             setPlayersNumber(data.data) 
                 break;
             case 'staff':

@@ -14,6 +14,10 @@ class GameRole extends Model
         return $this->belongsTo(Game::class);
     }
 
+    public function game_individual()
+    {
+        return $this->hasMany(Game::class);
+    }
 
     public function advertisement()
     {

@@ -8,14 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Individual extends Model
 {
     use HasFactory;
-
-
+    
     public function server()
     {
-        return $this->hasManyThrough(Server::class, GameIndividual::class,
-        'server_id',
-        'id',
-    );
+        return $this->belongsToMany(Server::class, 'game_individual', 'individual_id', 'server_id');
     }
 
     public function nationality()
@@ -25,19 +21,12 @@ class Individual extends Model
 
     public function position()
     {
-        return $this->hasManyThrough(Position::class, IndividualPosition::class, 
-        'position_id',
-        'id'
-        );
+        return $this->belongsToMany(Position::class, 'individual_position', 'individual_id', 'position_id');
     }
-
 
     public function language()
     {
-        return $this->hasManyThrough(Language::class, IndividualLanguage::class,
-        'language_id',
-        'id',
-        );
+        return $this->belongsToMany(Language::class, 'individual_language', 'individual_id', 'language_id');
     }
 
     public function user()
@@ -57,21 +46,14 @@ class Individual extends Model
 
     public function rank()
     {
-        return $this->hasManyThrough(Rank::class, GameIndividual::class,
-        'rank_id',
-        'game_id',
-    );
+        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'server_id');
     }
 
     // Role is not position!!
     // Role is the role of a player in a game
     public function role() 
     {
-        return $this->hasManyThrough(GameRole::class,
-        GameIndividual::class,
-        'game_role_id',
-        'id',
-    );
+        return $this->belongsToMany(GameRole::class, 'game_individual', 'individual_id', 'game_role_id');
     }
 
     public function games()

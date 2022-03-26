@@ -28,7 +28,7 @@ class CustomAuthController extends Controller
             'password' => 'required|min:6',
             'email' => 'required|email|unique:users',
         ]);
-        
+
         $data = $request->all();
         $check = $this->create($data);
         return $data['username'];
@@ -52,15 +52,22 @@ class CustomAuthController extends Controller
             'user_name' => ['required'],
             'password' => ['required'],
         ]);
-        $test = [
-            'data' => Auth::attempt(['user_name' => $request['user_name'], 'password' => $request['password']])
-        ];
-        return $test;
-        if (Auth::attempt()) {
-            $request->session()->regenerate();
-            
-            return redirect('/daniel');
 
+        $user = User::where('user_name', '=', $credentials['user_name'])->first();
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return $user;
+            // return $user;
+            // $request->session()->regenerate();
+            // return Hash::check($request->all()['password']);
+            // // $user['password']
+            // // Hash::make($request->all()->only('password'));
+            // // 123456a
+            // return $request;
+            // // return User::where();
+            // return $request;
+            // return redirect('/profile');
         }
     }
 

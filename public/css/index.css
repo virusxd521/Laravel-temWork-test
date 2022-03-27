@@ -382,13 +382,13 @@ h1 {
 }
 
 @font-face {
-    src: url('/fonts/Cornerstone.ttf');
+    src: url("/fonts/Cornerstone.ttf");
     font-family: "Cornerstone";
 }
 
 body {
     margin: 0;
-    font-family: 'Cornerstone', sans-serif;
+    font-family: "Cornerstone", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -413,7 +413,6 @@ nav {
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
-    
 }
 
 .logo-fixed {
@@ -464,7 +463,7 @@ nav {
 }
 
 .connections_header_text {
-   color: rgb(106,212,219);
+    color: rgb(106, 212, 219);
 }
 
 .second-page {
@@ -477,7 +476,6 @@ nav {
     font-size: 3em;
     padding: 2em;
     text-align: center;
-    
 }
 
 .card_cnt {
@@ -515,26 +513,24 @@ nav ul a {
 }
 
 nav ul a:hover {
-    color: rgb(106,212,219);
+    color: rgb(106, 212, 219);
     transform: scale(1.2);
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-  
 nav ul a:after {
-    content: '';
+    content: "";
     display: block;
     width: 0;
     position: absolute;
     height: 0.2em;
-    background: rgb(106,212,219);
-    transition: cubic-bezier(.77,0,.18,1) 0.3s;
+    background: rgb(106, 212, 219);
+    transition: cubic-bezier(0.77, 0, 0.18, 1) 0.3s;
 }
 
 nav ul a:hover::after {
     width: 100%;
 }
-
 
 form {
     border: none;
@@ -552,9 +548,9 @@ button {
     border-radius: 5%;
     /* transition: background 200ms ease-in, color 200ms ease-in; */
     cursor: pointer;
-    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    box-shadow: inset 0 0 0 0 rgb(106, 212, 219);
     transition: ease-out 0.4s;
     font-family: "Cornerstone", sans-serif;
 }
-
+/* @import "./ListCard.css"; */
 

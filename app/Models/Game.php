@@ -17,6 +17,12 @@ class Game extends Model
     }
 
 
+    // Daniel: Added as a measure of safety.
+    public function game_individual()
+    {
+        return $this->hasMany(Game::class);
+    }
+
     // Creating Relationship with the individual via the game_individual pivot table
     public function individual()
     {
@@ -66,3 +72,4 @@ class Game extends Model
         return $this->hasMany(Advertisement::class);
     }
 }
+

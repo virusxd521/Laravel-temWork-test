@@ -34,7 +34,7 @@ const Register = () => {
         "Username should be 3-16 characters and shouldn't include any special character!",
       label: "Username",
       pattern: "^[A-Za-z0-9]{3,30}$",
-      // required: true,
+      required: true,
     },
     {
       id: 2,
@@ -43,7 +43,7 @@ const Register = () => {
       placeholder: "Email",
       errorMessage: "It should be a valid email address!",
       label: "Email",
-      // required: true,
+      required: true,
     },
     {
       id: 3,
@@ -106,15 +106,12 @@ const Register = () => {
           return key === item.name ? data[key] = item.value : null;
       });
     }
-    
-    configuring_registration(data);
-  
+    configuring_registration(data);  
   }
-
 
   const configuring_registration = async data => {
     document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    await axios.post('/test_form', {
+    await axios.post('/api/resgitration', {
       ...data,
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }

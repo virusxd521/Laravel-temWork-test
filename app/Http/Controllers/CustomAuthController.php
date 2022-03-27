@@ -7,8 +7,8 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Support\Facades\Gate;
+use App\Models\Individual;
 
 
 class CustomAuthController extends Controller
@@ -28,7 +28,7 @@ class CustomAuthController extends Controller
             'password' => 'required|min:6',
             'email' => 'required|email|unique:users',
         ]);
-        
+
         $data = $request->all();
         $check = $this->create($data);
         return $data['username'];
@@ -42,25 +42,24 @@ class CustomAuthController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
+    
     }   
 
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request, Individual $individual)
     {
         // return $request['user_name'];
         $credentials = $request->validate([
             'user_name' => ['required'],
             'password' => ['required'],
         ]);
-        $test = [
-            'data' => Auth::attempt(['user_name' => $request['user_name'], 'password' => $request['password']])
-        ];
-        return $test;
-        if (Auth::attempt()) {
-            $request->session()->regenerate();
-            
-            return redirect('/daniel');
 
+        $user = User::where('user_name', '=', $credentials['user_name'])->first();
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return $user;
+            // $request->session()->regenerate();
         }
     }
 
@@ -68,8 +67,9 @@ class CustomAuthController extends Controller
     public function signOut() 
     {
         Session::flush();
-        Auth::logout();
-        return Redirect('login');
+        $logged = Auth::logout();
+        return json_encode(['data' => Auth::logout()]);
+        
     }
 }
 

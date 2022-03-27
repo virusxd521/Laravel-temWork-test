@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Header from '../Header';
 
-export default function Login() {
+export default function Login({responsePassingUp}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [values, setValues] = useState({
@@ -10,6 +10,7 @@ export default function Login() {
     password: "",
   });
   
+
 
   // Getting a session-id-cookie from sancctum
   axios.get('/sanctum/csrf-cookie').then(response => {
@@ -54,7 +55,9 @@ export default function Login() {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }).then(response => {
-      console.log(response)
+      // console.log(response);
+      responsePassingUp(response.data);
+      // console.log(response)
     })
   }
 

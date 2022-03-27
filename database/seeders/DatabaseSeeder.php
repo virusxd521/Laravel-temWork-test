@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
             GameIndividualsSeeder::class,
             GameRoleSeeder::class,
@@ -27,7 +26,8 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
-            UsersSeeder::class,            
+            UsersSeeder::class, 
+            IndividualLanguageSeeder::class           
         ]);
     }
 }

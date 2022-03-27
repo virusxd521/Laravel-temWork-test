@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('advertisement_language', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            // $table->timestamps();
             $table->foreignId('advertisement_id');
             $table->foreignId('language_id');
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

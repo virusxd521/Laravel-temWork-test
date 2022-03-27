@@ -106,15 +106,12 @@ const Register = () => {
           return key === item.name ? data[key] = item.value : null;
       });
     }
-    
-    configuring_registration(data);
-  
+    configuring_registration(data);  
   }
-
 
   const configuring_registration = async data => {
     document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    await axios.post('/test_form', {
+    await axios.post('/api/resgitration', {
       ...data,
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }

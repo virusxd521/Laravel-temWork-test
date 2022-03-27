@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\StaffController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +17,23 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-<<<<<<< HEAD
-Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
-=======
-
-Route::post('/test_form', [CustomAuthController::class, 'registration']);
 
 // Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
 
->>>>>>> edca49d8304b5b26a9f282190dc054ed9af77e7b
+Route::get('/filip_1', [CustomAuthController::class, 'signOut']);
 
-Route::view('/', 'app');
-Route::view('/{any}', 'app')->where('any', '.*');
+// protecting the profile route so tat only authenticated user will have access to it
+
+// Like twitter every authenticated user can acccess the profile pannel and 
+Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
+    return json_encode(['user' => Auth::user()]);
+});
+
+
+
+
+// Route::view('/', 'app');
+Route::view('/{any?}', 'app')->where('any', '.*');
 // Route::view('/{any}/{any}', 'app');
+
+

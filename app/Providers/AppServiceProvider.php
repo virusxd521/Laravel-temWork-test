@@ -4,6 +4,7 @@ namespace App\Providers;
 use Laravel\Fortify\Fortify;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 
 class AppServiceProvider extends ServiceProvider

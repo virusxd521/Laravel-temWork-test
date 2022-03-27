@@ -7,8 +7,8 @@ use Hash;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Support\Facades\Gate;
+use App\Models\Individual;
 
 
 class CustomAuthController extends Controller
@@ -42,10 +42,11 @@ class CustomAuthController extends Controller
         'email' => $data['email'],
         'password' => Hash::make($data['password'])
       ]);
+    
     }   
 
 
-    public function authenticate(Request $request)
+    public function authenticate(Request $request, Individual $individual)
     {
         // return $request['user_name'];
         $credentials = $request->validate([
@@ -58,16 +59,7 @@ class CustomAuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             return $user;
-            // return $user;
             // $request->session()->regenerate();
-            // return Hash::check($request->all()['password']);
-            // // $user['password']
-            // // Hash::make($request->all()->only('password'));
-            // // 123456a
-            // return $request;
-            // // return User::where();
-            // return $request;
-            // return redirect('/profile');
         }
     }
 
@@ -75,8 +67,9 @@ class CustomAuthController extends Controller
     public function signOut() 
     {
         Session::flush();
-        Auth::logout();
-        return Redirect('login');
+        $logged = Auth::logout();
+        return json_encode(['data' => Auth::logout()]);
+        
     }
 }
 

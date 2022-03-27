@@ -24,23 +24,19 @@ class PlayerController extends Controller
 
     public function data_for_advertisement_user()
     {
-        // $indiv = new Language;
-        // dd($indiv->all());
-        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role'])->get();
-
-        
-        // dd($individuals[0]);
+        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])->get();
 
         $data = [];
-        // dd($individuals[10]->nationality);
+        
         foreach($individuals as $key => $individual){
             // dd($individual->nationality);
+            // dd($individual->role[$key]);
             $user_data = [
                 'UserName' => $individual->first_name,
                 'NickName' => $individual->nickname,
                 'DateOfBirth' => $individual->date_of_birth,
                 'nationality' =>  $individual->nationality,
-                'role' => $individual->role->all(),
+                'role' => $individual->role,
                 'rank' => $individual->rank->all(),
                 'contact' => $individual->contact->all() ,
                 'contact_url' => $individual->contact->all(),
@@ -51,17 +47,6 @@ class PlayerController extends Controller
         };
 
         return json_encode($data);
-
-
-        // dd($individual_position[1]->position->name);
-        // switch($individual_position[1]->position->name){
-        //     case "Player":
-        //         break;
-        //     case :
-        //         break;
-        //                     case :
-        //         break;
-        // }
     }
 
 

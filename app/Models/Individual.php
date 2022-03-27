@@ -46,7 +46,7 @@ class Individual extends Model
 
     public function rank()
     {
-        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'server_id');
+        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
     }
 
     // Role is not position!!
@@ -58,12 +58,7 @@ class Individual extends Model
 
     public function games()
     {
-        return $this->belongsToMany(Game::class, 'game_individual', 'individual_id', 'game_id')
-            ->withPivot([
-                'server_id',
-                'game_role_id',
-                'rank_id'
-            ]);
+        return $this->belongsToMany(Game::class, 'game_individual', 'individual_id', 'game_id');
     }
 
     public function game_individual()

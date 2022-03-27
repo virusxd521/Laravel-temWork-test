@@ -18,8 +18,8 @@ class IndividualLanguageSeeder extends Seeder
         //
 
         // Truncating the table so it won't add more Data to the table rather that what we specify
-        // $individual_language = DB::table('individual_language');
-        // $individual_language->truncate();
+        $individual_language = DB::table('individual_language');
+        $individual_language->truncate();
 
         for($i = 1; $i < 100; $i++ ){
             DB::table('individual_language')->insert([

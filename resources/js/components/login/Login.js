@@ -61,41 +61,41 @@ export default function Login() {
 
 
   return (
-     <>
-        <Header />
+     <section className="login__section">
+        <Header height="0"/>
         
-          <form className="login" onSubmit={handleSubmit}>
-              <h1 className="login__title">Login</h1>
-             <div className="login__container">
-                  <label>Username</label>
-                  <input 
-                    autoFocus
-                    type="text"
-                    placeholder='Username'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    name="user_name"
-                  />
-             </div>
-        
-            
-              <div className="login__container">
-                  <label>Password</label>
-                  <input 
-                    type="password"
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    name="password"
-                  />
-              </div>
-            
-            <button className="login__button button" type="submit" disabled={!validateForm()}>
-              Login
-            </button>
-          </form>
+        <form className="login" onSubmit={handleSubmit}>
+            <h1 className="login__title">Login</h1>
+            <div className="login__container">
+                <label>Username</label>
+                <input 
+                  autoFocus
+                  type="text"
+                  placeholder='Username'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  name="user_name"
+                />
+            </div>
+      
+          
+            <div className="login__container">
+                <label>Password</label>
+                <input 
+                  type="password"
+                  placeholder='Password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                />
+            </div>
+          
+          <button className="login__button button" type="submit" disabled={!validateForm()}>
+            Login
+          </button>
+        </form>
        
-     </>
+     </section>
   );
 }
 

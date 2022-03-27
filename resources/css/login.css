@@ -1,3 +1,9 @@
+.login__section {
+    height: 100vh;
+    background-image: url(/images/backk.png);
+    background-position: center;
+}
+
 .login {
     height: 25em;
     display: flex;
@@ -7,6 +13,7 @@
     align-items: center;
     border: 5px solid black;
     padding: 1em 2em;
+    background-color: white;
 }
 
 .login__container {

@@ -14,15 +14,11 @@ use App\Http\Controllers\CustomAuthController;
 |
 */
 
-<<<<<<< HEAD
-Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
-=======
 
 Route::post('/test_form', [CustomAuthController::class, 'registration']);
 
 // Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
 
->>>>>>> edca49d8304b5b26a9f282190dc054ed9af77e7b
 
 Route::view('/', 'app');
 Route::view('/{any}', 'app');

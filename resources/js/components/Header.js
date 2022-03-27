@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-function Header() {
+function Header({height}) {
 
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
@@ -46,7 +46,7 @@ function Header() {
 
 
     return (
-        <section className="home" ref={ref}>
+        <section className="home" ref={ref} style={{height: height + 'em'}}>
             <nav>
                 {(path.pathname === '/') && (<img onClick={() => navigate('/')} className="logo" src="/images/logo.svg" alt="logo" />)}
                 {(path.pathname === '/login') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}

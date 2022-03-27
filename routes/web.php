@@ -22,4 +22,5 @@ Route::post('/test_form', [CustomAuthController::class, 'registration']);
 
 
 Route::view('/', 'app');
-Route::view('/{any}', 'app');
+Route::view('/{any}', 'app')->where('any', '.*');
+// Route::view('/{any}/{any}', 'app');

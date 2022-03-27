@@ -34,7 +34,7 @@ const Register = () => {
         "Username should be 3-16 characters and shouldn't include any special character!",
       label: "Username",
       pattern: "^[A-Za-z0-9]{3,30}$",
-      // required: true,
+      required: true,
     },
     {
       id: 2,
@@ -43,7 +43,7 @@ const Register = () => {
       placeholder: "Email",
       errorMessage: "It should be a valid email address!",
       label: "Email",
-      // required: true,
+      required: true,
     },
     {
       id: 3,

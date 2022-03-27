@@ -27,7 +27,8 @@ class DatabaseSeeder extends Seeder
             PositionSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
-            UsersSeeder::class,            
+            UsersSeeder::class, 
+            IndividualLanguageSeeder::class           
         ]);
     }
 }

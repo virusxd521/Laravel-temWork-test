@@ -1,25 +1,34 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCard(props) {
+function ListCard({item}) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
   console.log(isFlipped);
+  console.log(item);
+
   return (
     <>
-      <div className="card">
-        <div className={`card__inner ${isFlipped ? "is-flipped" : ""}`}>
-          <div className="card__face card__face--front">
-            <div className="kokot">
+      <div className="list-card">
+        <div className={`list-card__inner ${isFlipped ? "is-flipped" : ""}`}>
+          <div className="list-card__face list-card__face--front">
+            <div className="list-card__cnt">
               <ul>
-                <li>Age: 17</li>
-                <li>Rank: Master</li>
-                <li>Nationality: CZ</li>
-                <li>Language: Cz,Eng</li>
-                <li>Server: EUNE</li>
+                <li>Age: {item.DateOfBirth}</li>
+                <li>Rank: {item.rank.map((item, i) => (
+                  item.name
+                ))}</li>
+                <li>Nationality: {item.nationality.name}</li>
+                <li>Role: {item.role.map((item, i) => (
+                  item.name
+                ))}</li>
+                {/* <li>Language: {item.language}</li> */}
+                {/* <li>Server: {item.server}</li> */}
+                <li>Username: {item.UserName}</li>
+                <li>Nickname: {item.NickName}</li>
               </ul>
 
               <br />
@@ -29,30 +38,27 @@ function ListCard(props) {
               </a>
             </div>
           </div>
-          <div className="card__face card__face--back">
-            <div className="card__content">
-              <div className="card__body">
+          <div className="list-card__face list-card__face--back">
+            <div className="list-card__content">
+              <div className="list-card__body">
                 <ul>
                   <li>
                     <strong>ABOUT:</strong>{" "}
                     <span className="textik">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Illum, obcaecati. Odit, ratione deleniti. Mollitia, minus.
-                      Tempore natus tenetur eum error.{" "}
+                      {" "}
                     </span>
                   </li>
                   <li>
                     <strong>GOALS:</strong>{" "}
                     <span className="textik">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Sed earum saepe voluptatum odit reprehenderit maxime!
+                      
                     </span>
                   </li>
                   <li>
-                    <strong>DISCORD:</strong> Haha4444{" "}
+                    {/* <strong>DISCORD:</strong> {item.discord}{" "} */}
                   </li>
                   <li>
-                    <strong>EMAIL:</strong> blal@seznam,cz
+                    {/* <strong>EMAIL:</strong> {item.email} */}
                   </li>
                 </ul>
 

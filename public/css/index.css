@@ -121,6 +121,12 @@ body {
     transition: ease-out 0.4s;
 }
 
+.login__section {
+    height: 100vh;
+    background-image: url(/images/backk.png);
+    background-position: center;
+}
+
 .login {
     height: 25em;
     display: flex;
@@ -130,6 +136,7 @@ body {
     align-items: center;
     border: 5px solid black;
     padding: 1em 2em;
+    background-color: white;
 }
 
 .login__container {
@@ -227,11 +234,18 @@ input:invalid[focused="true"] ~ span{
     display: block;
   }
 
+.register__section {
+  height: 100vh;
+  background-image: url(/images/backk.png);
+  background-position: center;
+  /* background-color: black; */
+}
+
 .register {
   height: 45em;
   display: flex;
   flex-direction: column;
-  margin: 20em auto;
+  margin: 5em auto;
   width: 25em;
   align-content: center;
   align-items: center;
@@ -239,6 +253,7 @@ input:invalid[focused="true"] ~ span{
   padding: 1em 3em;
   justify-content: center;
   justify-items: center;
+  background-color: white;
 }
   
 h1 {
@@ -277,6 +292,7 @@ h1 {
 .login__redirect {
   color: grey;
   font-size: 1.5em;
+  cursor: pointer;
 }
 
 .login__redirect:hover {

@@ -17,7 +17,10 @@ use App\Models\User;
 |
 */
 
+<<<<<<< HEAD
+=======
 // Route::post('/test_form', [CustomAuthController::class, 'filip_test']);
+>>>>>>> master
 
 Route::get('/filip_1', [CustomAuthController::class, 'signOut']);
 

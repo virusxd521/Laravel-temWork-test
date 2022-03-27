@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 
 const Register = () => {
@@ -124,11 +124,11 @@ const Register = () => {
 
 
 
-
+  const path = useLocation();
 
   return (
-    <>
-        <Header />
+    <section className="register__section">
+        <Header height="0" />
 
           <form className="register" onSubmit={getValue}>
             <h1 className="register__title">Register</h1>
@@ -144,7 +144,7 @@ const Register = () => {
             
             <button className="register__button button" type="submit">Register</button>
           </form>
-    </>
+    </section>
   );
 };
 

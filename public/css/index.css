@@ -92,14 +92,14 @@ body {
 
 .card:hover .card__circle {
     background: rgb(106,212,219);
-    box-shadow: inset 2em 0 0 0 rgb(106,212,219);
-}
-.card:hover .card__btn,
-.card:hover .card__circle,
-.card:focus .card__btn {
-    
+    box-shadow: inset 8em 0 0 0 rgb(106,212,219);
     color: white;
     border: 2px solid black;
+}
+.card:hover .card__btn,
+.card:focus .card__btn {
+    
+ 
     box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
 }
 
@@ -131,7 +131,7 @@ body {
     height: 28em;
     display: flex;
     flex-direction: column;
-    margin: 20em auto;
+    margin: 15em auto;
     width: 20em;
     align-items: center;
     border: 5px solid black;
@@ -372,11 +372,33 @@ h1 {
 .UI_title__text {
     color: rgb(106, 212, 219) !important;
   }
+.UI__cnt {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(/images/backk.png?3312ff5c1ce3b46b2a36b7dda7cc9e89);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 5em;
+}
+
 .UI_card__cnt {
     display: flex;
     justify-content: center;
     margin-top: 5em;
+    /* padding-top: 10em; */
 }
+
+.UI__title {
+    color: white;
+    padding-top: 2em;
+    font-size: 2.5em;
+}
+.UI__title__text {
+      color: rgb(106, 212, 219) !important;
+}
+
+
 :root {
   --primary: white;
   --secondary: black;
@@ -384,6 +406,17 @@ h1 {
   --light: #f3f3f3;
   --clr-neon: #31c9b2;
   --clr-bg: #17574e;
+}
+
+.players__list {
+  background-image: url('/images/backk.png');
+}
+
+.card-wrapper {
+  padding-top: 2em;
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
 }
 
 /* *,
@@ -408,19 +441,21 @@ h1 {
 } */
 
 .list-card {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  /* margin-top: 30px; */
+  /* margin-bottom: 30px; */
   display: flex;
-  width: calc(100% - 30px);
-  height: 400px;
-  position: relative;
+  width: 30%;
+  min-height: 30em;
+  /* position: relative; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 2em auto;
 }
 
 .list-card__inner {
-  width: 33%;
+  width: 100%;
+  margin: 0 auto;
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
@@ -435,6 +470,7 @@ h1 {
 .list-card__face {
   position: absolute;
   width: 100%;
+  padding: 1em 1em;
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -456,9 +492,11 @@ h1 {
   font-size: 20px;
 }
 
+
 .list-card__cnt ul {
   list-style: none;
   text-decoration: none;
+  max-width: 90%;
 }
 
 .list-card__cnt ul li {
@@ -564,6 +602,7 @@ h1 {
   box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
 
   position: relative;
+  bottom: 0.3em;
 }
 
 .neon-button::before {
@@ -749,7 +788,12 @@ nav ul a {
 nav ul a:hover {
     color: rgb(106, 212, 219);
     transform: scale(1.2);
+    /* -moz-transition: all 0.3s ease-in-out; */
+    /* -webkit-transition: all 0.3s ease-in-out; */
+    /* -ms-transition: all 0.3s ease-in-out; */
+    /* -o-transition: all 0.3s ease-in-out; */
     transition: all 0.3s ease-in-out;
+    transition: cubic-bezier(.17,.67,.83,.67) 0.1s
 }
 
 nav ul a:after {
@@ -759,7 +803,7 @@ nav ul a:after {
     position: absolute;
     height: 0.2em;
     background: rgb(106, 212, 219);
-    transition: cubic-bezier(0.77, 0, 0.18, 1) 0.3s;
+    transition: cubic-bezier(.17,.67,.83,.67) 0.1s
 }
 
 nav ul a:hover::after {

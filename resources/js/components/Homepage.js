@@ -1,7 +1,6 @@
 import CardsPage from "./CardsPage";
 import FirstPage from "./FirstPage";
 import Header from "./Header";
-import CardWrapper from "./listCard/CardWrapper";
 
 function Homepage() {
     return(
@@ -9,7 +8,6 @@ function Homepage() {
             <Header />
             <FirstPage />
             <CardsPage />
-            <CardWrapper />
         </>
     )
 }

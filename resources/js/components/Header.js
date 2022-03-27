@@ -49,8 +49,7 @@ function Header({height}) {
         <section className="home" ref={ref} style={{height: height + 'em'}}>
             <nav>
                 {(path.pathname === '/') && (<img onClick={() => navigate('/')} className="logo" src="/images/logo.svg" alt="logo" />)}
-                {(path.pathname === '/login') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}
-                {(path.pathname === '/register') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}
+                {(path.pathname !== '/') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}
 
                 <ul>
 

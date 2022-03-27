@@ -42,7 +42,7 @@ function CardsPage() {
         <section className="second-page">
                 <h2 data-aos="fade-up" >Are you looking for... </h2>
                 <div className="wrapper">
-                    <Card title="Players" number={playersNumber} img="card__player" delay="0" />
+                    <Card title="Players" number={playersNumber} img="card__player" delay="0" location="/list/players"/>
                     <Card title="Team" number={staffsNumber} img="card__team" delay="200" />
                     <Card title="Staff" number={organizationsNumber} img="card__staff" delay="400" />
                 </div>

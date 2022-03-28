@@ -2231,7 +2231,13 @@ var AppMain = function AppMain() {
       responseData = _useState2[0],
       setResponseData = _useState2[1];
 
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)(); // function for setting the state with the response from the server 
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)(); // Checking if the user is authenticated
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      authenticatedUser = _useState4[0],
+      SetAuthenticatedUser = _useState4[1]; // function for setting the state with the response from the server 
+
 
   var functSettingData = function functSettingData(data) {
     setResponseData(data);
@@ -2241,12 +2247,18 @@ var AppMain = function AppMain() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     Object.keys(responseData).length !== 0 ? settingRouteId(responseData) : null;
-  }, [responseData]); // function which will set the query parameter 
+  }, [responseData]);
+  console.log(authenticatedUser); // function which will set the query parameter 
   // so that it will show the id or name of the right user 
 
   var settingRouteId = function settingRouteId(data) {
-    console.log(responseData);
+    SetAuthenticatedUser(data);
+    console.log(data);
     navigate("/profile/".concat(data.id));
+  };
+
+  var signingOut = function signingOut(data) {
+    SetAuthenticatedUser(data);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, {
@@ -2256,7 +2268,8 @@ var AppMain = function AppMain() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
       path: "/login",
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        responsePassingUp: functSettingData
+        responsePassingUp: functSettingData,
+        authenticatedUser: authenticatedUser
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
       path: "/register",
@@ -2270,13 +2283,20 @@ var AppMain = function AppMain() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
       path: "/profile",
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        responseData: responseData
+        responseData: responseData,
+        authenticatedUser: authenticatedUser
       }),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
         path: ":user_id",
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_5__["default"], {
           responseData: responseData
         })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+      path: "/logout",
+      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_page404_Page404__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        authenticatedUser: authenticatedUser,
+        signingOut: signingOut
       })
     })]
   });
@@ -2475,7 +2495,8 @@ __webpack_require__.r(__webpack_exports__);
 function Header(_ref) {
   var height = _ref.height,
       classa = _ref.classa,
-      signingOut = _ref.signingOut;
+      signingOut = _ref.signingOut,
+      authenticatedUser = _ref.authenticatedUser;
   gsap__WEBPACK_IMPORTED_MODULE_2__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__.ScrollTrigger);
   var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -2508,6 +2529,7 @@ function Header(_ref) {
 
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var path = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useLocation)();
+  console.log('ssssdasdsad', authenticatedUser);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
     className: classa,
     ref: ref,
@@ -2542,12 +2564,12 @@ function Header(_ref) {
           to: "/profile",
           className: "nav-ltr",
           children: "Profile"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        }), authenticatedUser !== null && authenticatedUser !== undefined ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/logout",
           className: "nav-ltr",
           onClick: signingOut,
           children: "Logout"
-        })]
+        }) : null]
       })]
     })
   });
@@ -3079,7 +3101,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function Login(_ref) {
-  var responsePassingUp = _ref.responsePassingUp;
+  var responsePassingUp = _ref.responsePassingUp,
+      authenticatedUser = _ref.authenticatedUser;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3097,16 +3120,13 @@ function Login(_ref) {
   }),
       _useState6 = _slicedToArray(_useState5, 2),
       values = _useState6[0],
-      setValues = _useState6[1];
+      setValues = _useState6[1]; // const [signedOut, setSignedOut] = useState('Signed');
+  // const navigate = useNavigate();
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
-      _useState8 = _slicedToArray(_useState7, 2),
-      signedOut = _useState8[0],
-      setSignedOut = _useState8[1];
 
   var signingOut = function signingOut() {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/logout').then(function (response) {
-      return console.log(response);
+      console.log(response);
     });
   }; // Getting a session-id-cookie from sancctum
 
@@ -3157,8 +3177,8 @@ function Login(_ref) {
               return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/login', _objectSpread(_objectSpread({}, data), {}, {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
               })).then(function (response) {
-                // console.log(response);
-                responsePassingUp(response.data); // console.log(response)
+                console.log(response.data);
+                responsePassingUp(response.data);
               });
 
             case 3:
@@ -3179,7 +3199,7 @@ function Login(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
       height: "0",
       classa: "header-short",
-      signingOut: signingOut
+      authenticatedUser: authenticatedUser
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
       className: "login",
       onSubmit: handleSubmit,
@@ -3236,21 +3256,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
-function Page404() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("section", {
+
+
+function Page404(_ref) {
+  var authenticatedUser = _ref.authenticatedUser,
+      signingOut = _ref.signingOut;
+  console.log('xxxx', authenticatedUser); // Signing out the user when we move to this route
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/logout').then(function (response) {
+      signingOut(response.signed_out); // console.log('sss',response);
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
       className: "section404",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
         className: "section404__title",
         children: "404"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
         className: "section404__subtitle",
         children: "Page not found"
       })]
@@ -3584,7 +3618,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function UserInterface(_ref) {
-  var responseData = _ref.responseData;
+  var responseData = _ref.responseData,
+      authenticatedUser = _ref.authenticatedUser;
 
   // Getting the parameters data and passing it to the the decendent components with props
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)(),
@@ -3593,6 +3628,7 @@ function UserInterface(_ref) {
   console.log(user_id);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      authenticatedUser: authenticatedUser,
       classa: "header-short"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "UI__cnt",

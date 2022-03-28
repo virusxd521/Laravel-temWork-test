@@ -17,6 +17,10 @@ const AppMain = () => {
     const [responseData, setResponseData] = useState({});
     let navigate = useNavigate();
     
+    // Checking if the user is authenticated
+    const [authenticatedUser, SetAuthenticatedUser] = useState(null);
+
+
     // function for setting the state with the response from the server 
     const functSettingData = data => {
         setResponseData(data);
@@ -29,25 +33,37 @@ const AppMain = () => {
     }, [responseData]);
 
 
+     console.log(authenticatedUser);
+
     // function which will set the query parameter 
     // so that it will show the id or name of the right user 
     const settingRouteId = data => { 
-        console.log(responseData);
+        SetAuthenticatedUser(data);
+        console.log(data);
         navigate(`/profile/${data.id}`);
     }
+    
+    const signingOut = data =>{
+        SetAuthenticatedUser(data);
+    }
+
+    
+
 
     return (
         <Routes>
             <Route path="/" element={ <Homepage />} />
-            <Route path="/login" element={<Login responsePassingUp={functSettingData} /> }   /> 
+            <Route path="/login" element={<Login responsePassingUp={functSettingData}
+            authenticatedUser={authenticatedUser}
+                
+            /> }   /> 
             <Route path="/register" element={<Register />} /> 
             <Route path="/register/player" element={<PlayerForm />} />
             <Route path="/list/players" element={<CardWrapper />} />
-            <Route path="/profile" element={<UserInterface responseData={responseData} />} >
+            <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
             </Route>
-
-            {/* <Route path="*" element={<Page404 />} /> */}
+            <Route path="/logout" element={<Page404 authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />
         </Routes>
     )
 }

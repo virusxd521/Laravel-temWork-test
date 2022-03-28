@@ -28,6 +28,12 @@ use App\Models\User;
 // });
 
 
+// returning the authenticated user
+
+
+Route::get('/danielTesting', [CustomAuthController::class, 'returning_test']);
+
+
 // returns the number of Players in the DB
 Route::get('/players', [PlayerController::class, 'number_of_players']);
 

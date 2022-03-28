@@ -728,6 +728,13 @@ input:invalid[focused="true"] ~ span{
   display: block;
 }
 
+.form__select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 47px;
+  border-radius: 5px;
+}
 .section404 {
     min-height: 100vh;
     background-image: url(/images/backk.png);
@@ -742,14 +749,6 @@ input:invalid[focused="true"] ~ span{
     font-size: 30em;
     color: white;
     margin: 0 auto;
-}
-
-.form__select {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-  height: 47px;
-  border-radius: 5px;
 }
 * {
     padding: 0;
@@ -805,7 +804,7 @@ nav {
 
 .first-page {
     height: 120vh;
-    background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
+    background-image: url(/images/backround.svg?1b0925b30232e0adf15d10d190083f2a);
     background-size: 100vh;
     background-repeat: no-repeat;
     background-position: bottom;

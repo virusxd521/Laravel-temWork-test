@@ -2,7 +2,10 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Header from '../Header';
 
-export default function Login({responsePassingUp}) {
+
+
+
+export default function Login({responsePassingUp, authenticatedUser}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [values, setValues] = useState({
@@ -10,9 +13,17 @@ export default function Login({responsePassingUp}) {
     password: "",
   });
 
-  const [signedOut, setSignedOut] = useState(null);
+ 
 
-  const signingOut = () => {axios.get('/api/logout').then((response) => console.log(response))}
+
+  // const [signedOut, setSignedOut] = useState('Signed');
+
+  // const navigate = useNavigate();
+
+  const signingOut = () => {
+    axios.get('/api/logout').then( response => {
+    console.log(response);
+  })}
 
   
   // Getting a session-id-cookie from sancctum
@@ -23,7 +34,6 @@ export default function Login({responsePassingUp}) {
   function validateForm() {
     return username.length > 0 && password.length > 0;
   }
-
 
   // handling the submition and registration of data
   const handleSubmit = e => {
@@ -58,18 +68,15 @@ export default function Login({responsePassingUp}) {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }).then(response => {
-      // console.log(response);
+      console.log(response.data);
       responsePassingUp(response.data);
-      // console.log(response)
+ 
     })
   }
 
-
-
-
   return (
      <section className="login__section">
-        <Header height="0" classa="header-short" signingOut={signingOut} />
+        <Header height="0" classa="header-short" authenticatedUser={authenticatedUser}  />
         
         <form className="login" onSubmit={handleSubmit}>
             <h1 className="login__title">Login</h1>

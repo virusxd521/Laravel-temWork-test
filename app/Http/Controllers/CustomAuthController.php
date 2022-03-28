@@ -61,15 +61,23 @@ class CustomAuthController extends Controller
             return $user;
             // $request->session()->regenerate();
         }
+        return json_encode(['data' => 'ssssss']);
     }
 
     // Sign out of the app as a user
     public function signOut() 
     {
+
         Session::flush();
-        $logged = Auth::logout();
-        return json_encode(['data' => Auth::logout()]);
-        
+        Auth::logout();
+        // $user = Auth::user();
+        return json_encode(['signed_out' => Auth::user()]);
+        // return $logged;
+    }
+
+    public function returning_test()
+    {
+        return json_encode(['data' => Auth::user()]);
     }
 }
 

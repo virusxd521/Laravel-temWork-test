@@ -4,12 +4,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-function Header({height, classa, signingOut}) {
+function Header({height, classa, signingOut, authenticatedUser}) {
 
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
-
-   
 
     useEffect(() => {
         const element = ref.current;
@@ -53,7 +51,8 @@ function Header({height, classa, signingOut}) {
     const navigate = useNavigate(); 
 
     const path = useLocation();
-
+    console.log('ssssdasdsad', authenticatedUser);
+    
     return (
         <section className={classa} ref={ref} style={{height: height + 'em'}}>
             <nav>
@@ -64,11 +63,13 @@ function Header({height, classa, signingOut}) {
 
                     <Link to={`/login`} className="nav-ltr" >Login</Link>
                     <Link to={`/register`} className="nav-ltr" >Register</Link>
-
                     <Link to={`/profile`} className="nav-ltr" >Profile</Link>
-                    <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link>
-            
+                    {
+                        authenticatedUser !== null && authenticatedUser !== undefined ? <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> : null
+                    }
                     
+                    
+
                 </ul>
             </nav>
             

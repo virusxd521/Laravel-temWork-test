@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use DB;
+use App\Models\Nationality;
 
 class NationalitySeeder extends Seeder
 {
@@ -184,9 +185,9 @@ class NationalitySeeder extends Seeder
 
 
         for($i = 0; $i < count($nationalities); $i++){
-            DB::table('nationalities')->insert([
-                'name' => $nationalities[$i],
-            ]);
+            $nationality = new Nationality;
+            $nationality->name = $nationalities[$i];
+            $nationality->save();
         };
         	
     }

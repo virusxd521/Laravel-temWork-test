@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Providers;
-
+use App\Models\Individual;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+
+        Profile::class => ProfilePolicy::class,
+        
     ];
 
     /**
@@ -25,6 +30,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // Gates for individuals
+        Gate::define('editOwn', function(User $user, Individual $individual) {
+           return Auth::id() === $individual->user_id;
+        });
     }
 }

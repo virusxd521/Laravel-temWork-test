@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use DB;
+use App\Models\Individual;
 
 class IndividualSeeder extends Seeder
 {
@@ -19,14 +20,14 @@ class IndividualSeeder extends Seeder
         //
         $faker = Faker::create();
         for($i = 1; $i < 100; $i++){
-            DB::table('individuals')->insert([
-                'user_id' => $i, 
-                'nickname' => $faker->firstName . $faker->lastName,
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName, 
-                'date_of_birth' => $faker->dateTimeBetween('1990-01-01', '2012-12-31'),
-                'nationality_id' => rand(1, 163),
-        ]);
+            $individual = new Individual;
+            $individual->user_id = $i;
+            $individual->nickname = $faker->firstName . $faker->lastName ;
+            $individual->first_name = $faker->firstName;
+            $individual->last_name = $faker->lastName;
+            $individual->date_of_birth = $faker->dateTimeBetween('1990-01-01', '2012-12-31');
+            $individual->nationality_id = rand(1, 163);
+            $individual->save();
         }
     }
 }

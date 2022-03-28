@@ -11,7 +11,7 @@ function FirstPage() {
     return(
         <section className="first-page">
             <div className="intro">
-                <h1 data-aos="fade-up" className="connections_header">We are connecting people from gaming world</h1>
+                <h1 data-aos="fade-up" data-aos-anchor-placement="top-center" className="connections_header">We are proudly connecting all professionals and organizations in the gaming industry</h1>
             </div>
         </section>
     )

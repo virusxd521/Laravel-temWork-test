@@ -9,9 +9,15 @@ class Language extends Model
 {
     use HasFactory;
 
-    public function individual()
+    // public function individual()
+    // {
+    //     return $this->belongsToMany(Individual::class);
+    // }
+
+    protected $table = 'languages';
+    public function individual_language()
     {
-        return $this->belongsToMany(Individual::class);
+        return $this->hasMany(IndividualLanguage::class);
     }
 
     public function organization()

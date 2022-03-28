@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
 
 const Register = () => {
@@ -12,6 +13,17 @@ const Register = () => {
     confirmPassword: "",
   });
 
+
+  // Data for submiting the form with JSON
+  const [dataForJson, setDataForJson] = useState({
+    username: "",
+    email: "",
+    birthday: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+
   const inputs = [
     {
       id: 1,
@@ -22,7 +34,7 @@ const Register = () => {
         "Username should be 3-16 characters and shouldn't include any special character!",
       label: "Username",
       pattern: "^[A-Za-z0-9]{3,30}$",
-      // required: true,
+      required: true,
     },
     {
       id: 2,
@@ -31,7 +43,7 @@ const Register = () => {
       placeholder: "Email",
       errorMessage: "It should be a valid email address!",
       label: "Email",
-      // required: true,
+      required: true,
     },
     {
       id: 3,
@@ -72,11 +84,13 @@ const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const navigate = useNavigate();
 
-    const getValue = (e) => {
+  const getValue = (e) => {
     e.preventDefault();
 
     
+
     const data = {
       username: '',
       email: '',
@@ -84,16 +98,21 @@ const Register = () => {
       password: '',
       confirmPassword: ''
       }
-    
+
+
     const parentArr = Array.from(e.target);
     for(let key in data){
       parentArr.map((item, index) => {
           return key === item.name ? data[key] = item.value : null;
       });
     }
-    console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-    axios.post('/test_form', {
-    data,
+    configuring_registration(data);  
+  }
+
+  const configuring_registration = async data => {
+    document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    await axios.post('/api/resgitration', {
+      ...data,
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
     ).then(response => {
@@ -103,12 +122,16 @@ const Register = () => {
 
 
 
+
+
+  const path = useLocation();
+
   return (
-    <>
-        <Header />
-        <div className="Register">
-          <form onSubmit={getValue}>
-            <h1>Register</h1>
+    <section className="register__section">
+        <Header classa="header-short" />
+
+          <form className="register" onSubmit={getValue}>
+            <h1 className="register__title">Register</h1>
             {inputs.map((input) => (
               <FormInput
                 key={input.id}
@@ -117,11 +140,12 @@ const Register = () => {
                 onChange={onChange}
               />
             ))}
-            <button>Submit</button>
+            <label className="register__label--login">Already registered? {<a onClick={() => navigate('/login')} className="login__redirect">Log in</a>}</label>
+            
+            <button className="register__button button" type="submit">Register</button>
           </form>
-        </div>
-    </>
-        );
+    </section>
+  );
 };
 
 export default Register;

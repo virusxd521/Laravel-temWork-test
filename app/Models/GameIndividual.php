@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class GameIndividual extends Model
 {
     use HasFactory;
-    
+    protected $table = 'game_individual';
 
     public function individual()
     {

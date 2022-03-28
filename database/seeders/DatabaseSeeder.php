@@ -14,17 +14,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
-            UsersSeeder::class,
             GameIndividualsSeeder::class,
-            OrganizationSeeder::class,
             GameRoleSeeder::class,
             GameSeeder::class,
+            IndividualPositionSeeder::class,
+            IndividualSeeder::class,
+            LanguageSeeder::class,
+            NationalitySeeder::class,
+            OrganizationSeeder::class,
+            PositionSeeder::class,
             RankSeeder::class,
             ServerSeeder::class,
-            LanguageSeeder::class
-            
+            UsersSeeder::class, 
+            IndividualLanguageSeeder::class           
         ]);
     }
 }

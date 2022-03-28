@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Providers;
-
+use Laravel\Fortify\Fortify;
+use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        Sanctum::ignoreMigrations();
     }
 
     /**
@@ -22,7 +26,8 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        //
+    {   
+       
+
     }
 }

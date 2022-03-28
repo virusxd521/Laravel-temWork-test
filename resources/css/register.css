@@ -1,34 +1,67 @@
-.Register {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+.register__section {
+  height: 100vh;
+  background-image: url(/images/backk.png);
+  background-position: center;
+  /* background-color: black; */
+}
+
+.register {
+  height: 45em;
+  display: flex;
+  flex-direction: column;
+  margin: 5em auto;
+  width: 25em;
+  align-content: center;
+  align-items: center;
+  border: 5px solid black;
+  padding: 1em 3em;
+  justify-content: center;
+  justify-items: center;
+  background-color: white;
+  box-shadow: inset 0px 0px 5px 5px black;
+}
   
-  form {
-    background-color: white;
-    padding: 0px 60px;
-    border-radius: 10px;
-    border: 5px solid black;
-  }
+h1 {
+  color: black;
+  text-align: center;
+}
+
   
-  h1 {
-    color: black;
-    text-align: center;
-  }
-  
-  button {
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    border: none;
-    background-color: black;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 15px;
-    margin-bottom: 30px;
-  }
-  
+.register__button {
+  height: 3.5em;
+  width: 80%;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 2rem;
+  border: 2px solid black;
+  background: transparent;
+  color: black;
+  border-radius: 5%;
+  /* transition: background 200ms ease-in, color 200ms ease-in; */
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 rgb(106,212,219);
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  font-family: "Cornerstone", sans-serif;
+} 
+
+.register__button:hover {
+  color: white;
+  border: 2px solid black;
+  box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+}
+
+.register input {
+  width: auto;
+}
+
+.login__redirect {
+  color: grey;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.login__redirect:hover {
+  color: rgb(106,212,219);
+}

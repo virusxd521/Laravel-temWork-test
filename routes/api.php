@@ -72,6 +72,9 @@ Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
     return $request;
 });
 
+//testing route for martin backend preparation of output for organization DO NOT DELETE YET!!!
+Route::get('/martin', [OrganizationController::class, 'data_for_advertisement_organization']);
+
 
 
 

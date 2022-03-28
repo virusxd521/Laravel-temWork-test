@@ -23,8 +23,8 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                 height: '15%',
                 top: '1.5rem',
                 left: '-1rem',
-                x: '50%',
-                y: '5%',
+                x: '56%',
+                y: '-45%',
                 position: 'fixed',
                 scrollTrigger: {
                     trigger: element.querySelector(".home"),

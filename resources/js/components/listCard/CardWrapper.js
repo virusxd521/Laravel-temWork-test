@@ -23,7 +23,7 @@ function CardWrapper() {
 
   return (
     <section className="players__list" >
-    <Header height="4.5" />
+    <Header classa="header-short" />
     {
       Object.keys(info).length !== 0 ?
       <div className="card-wrapper">

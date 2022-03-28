@@ -5,7 +5,7 @@ import Header from "./Header";
 function Homepage() {
     return(
         <>
-            <Header />
+            <Header classa="header" />
             <FirstPage />
             <CardsPage />
         </>

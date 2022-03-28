@@ -2,13 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Header from "../Header";
 
-function PlayerForm() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [values, setValues] = useState({
-    user_name: "",
-    password: "",
-  });
+function PlayerForm() {  
 
   return (
     <section className="form__section">
@@ -22,8 +16,6 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="Nickname"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
             name="nick_name"
           />
         </div>
@@ -32,8 +24,6 @@ function PlayerForm() {
           <label>Date of birth</label>
           <input
             type="date"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             name="date_of_birth"
           />
         </div>

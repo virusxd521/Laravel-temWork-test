@@ -65,7 +65,7 @@ export default function Login({responsePassingUp}) {
 
   return (
      <section className="login__section">
-        <Header height="0"/>
+        <Header height="0" classa="header-short" />
         
         <form className="login" onSubmit={handleSubmit}>
             <h1 className="login__title">Login</h1>

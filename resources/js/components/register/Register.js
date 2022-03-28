@@ -128,7 +128,7 @@ const Register = () => {
 
   return (
     <section className="register__section">
-        <Header height="0" />
+        <Header classa="header-short" />
 
           <form className="register" onSubmit={getValue}>
             <h1 className="register__title">Register</h1>

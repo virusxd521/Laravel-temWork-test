@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-function Header({height}) {
+function Header({height, classa}) {
 
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
@@ -38,15 +38,24 @@ function Header({height}) {
         )
     }, []);
 
+    // useEffect(() => {
+    //     window.addEventListener('scroll', () => {
+    //       setScrollState(window.pageYOffset)
+    //     })
+    // })
+
+    // const divStyle = {
+    //     height: 500-scrollState+"px"
+    // }
+
+     // console.log(window.pageYOffset)
+    
     const navigate = useNavigate(); 
 
     const path = useLocation();
 
-    console.log(path);
-
-
     return (
-        <section className="home" ref={ref} style={{height: height + 'em'}}>
+        <section className={classa} ref={ref} style={{height: height + 'em'}}>
             <nav>
                 {(path.pathname === '/') && (<img onClick={() => navigate('/')} className="logo" src="/images/logo.svg" alt="logo" />)}
                 {(path.pathname !== '/') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}

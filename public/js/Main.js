@@ -2489,6 +2489,7 @@ function Header(_ref) {
       left: '-1rem',
       x: '50%',
       y: '5%',
+      position: 'fixed',
       scrollTrigger: {
         trigger: element.querySelector(".home"),
         start: '0%',
@@ -2538,15 +2539,6 @@ function Header(_ref) {
           to: "/register",
           className: "nav-ltr",
           children: "Register"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-          to: "/profile",
-          className: "nav-ltr",
-          children: "Profile"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
-          to: "/logout",
-          className: "nav-ltr",
-          onClick: signingOut,
-          children: "Logout"
         })]
       })]
     })
@@ -2971,24 +2963,24 @@ function ListCard(_ref) {
             className: "list-card__cnt",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Age: ", item.DateOfBirth]
+                children: ["AGE: ", item.DateOfBirth]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Rank: ", item.rank.map(function (item, i) {
+                children: ["RANK: ", item.rank.map(function (item, i) {
                   return item.name;
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Nationality: ", item.nationality.name]
+                children: ["NATIONALITY: ", item.nationality.name]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Role: ", item.role.map(function (item, i) {
+                children: ["ROLE: ", item.role.map(function (item, i) {
                   return item.name;
                 })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Username: ", item.UserName]
+                children: ["USERNAME: ", item.UserName]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: ["Nickname: ", item.NickName]
+                children: ["NICKNAME: ", item.NickName]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              className: "neon-button",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "list-card__button button",
               onClick: flip,
               children: "More"
             })]
@@ -3014,10 +3006,10 @@ function ListCard(_ref) {
                     className: "textik"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {})]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                className: "neon-button",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "list-card__button button",
                 onClick: flip,
-                children: "More"
+                children: "Back"
               })]
             })
           })

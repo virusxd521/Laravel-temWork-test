@@ -511,6 +511,7 @@ h1 {
 .list-card__face--back {
   background-color: var(--light);
   transform: rotateY(180deg);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .list-card__content {
@@ -574,11 +575,30 @@ h1 {
   line-height: 1.4;
 }
 
+.list-card__button {
+    height: 3.5em;
+    width: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 2rem;
+    border: 2px solid black;
+    background: transparent;
+    color: black;
+    border-radius: 5%;
+    /* transition: background 200ms ease-in, color 200ms ease-in; */
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 rgb(106,212,219);
+    transition: ease-out 0.4s;
+    font-family: "Cornerstone", sans-serif;
+}
+
 .list-card__cnt {
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
   
 }
 
@@ -728,6 +748,13 @@ input:invalid[focused="true"] ~ span{
   display: block;
 }
 
+.form__select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 47px;
+  border-radius: 5px;
+}
 .section404 {
     min-height: 100vh;
     background-image: url(/images/backk.png);
@@ -742,14 +769,6 @@ input:invalid[focused="true"] ~ span{
     font-size: 30em;
     color: white;
     margin: 0 auto;
-}
-
-.form__select {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-  height: 47px;
-  border-radius: 5px;
 }
 * {
     padding: 0;
@@ -787,8 +806,9 @@ nav {
     height: 85%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   
     z-index: 5;
+    cursor: pointer;
 }
 
 .logo-fixed {
@@ -799,9 +819,8 @@ nav {
     left: 0;
     transform: translate(-0%, -45%);
     z-index: 4;
+    cursor: pointer;
 }
-
-
 
 .first-page {
     height: 120vh;
@@ -933,4 +952,10 @@ button {
     box-shadow: inset 0 0 0 0 rgb(106, 212, 219);
     transition: ease-out 0.4s;
     font-family: "Cornerstone", sans-serif;
+}
+
+button:hover {
+    color: white;
+    border: 2px solid black;
+    box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
 }

@@ -17,25 +17,25 @@ function ListCard({item}) {
           <div className="list-card__face list-card__face--front">
             <div className="list-card__cnt">
               <ul>
-                <li>Age: {item.DateOfBirth}</li>
-                <li>Rank: {item.rank.map((item, i) => (
+                <li>AGE: {item.DateOfBirth}</li>
+                <li>RANK: {item.rank.map((item, i) => (
                   item.name
                 ))}</li>
-                <li>Nationality: {item.nationality.name}</li>
-                <li>Role: {item.role.map((item, i) => (
+                <li>NATIONALITY: {item.nationality.name}</li>
+                <li>ROLE: {item.role.map((item, i) => (
                   item.name
                 ))}</li>
                 {/* <li>Language: {item.language}</li> */}
                 {/* <li>Server: {item.server}</li> */}
-                <li>Username: {item.UserName}</li>
-                <li>Nickname: {item.NickName}</li>
+                <li>USERNAME: {item.UserName}</li>
+                <li>NICKNAME: {item.NickName}</li>
               </ul>
 
               <br />
 
-              <a className="neon-button" onClick={flip}>
+              <button className="list-card__button button" onClick={flip}>
                 More
-              </a>
+              </button>
             </div>
           </div>
           <div className="list-card__face list-card__face--back">
@@ -63,9 +63,9 @@ function ListCard({item}) {
                 </ul>
 
                 <br />
-                <a className="neon-button" onClick={flip}>
-                  More
-                </a>
+                <button  className="list-card__button button" onClick={flip}>
+                  Back
+                </button>
               </div>
             </div>
           </div>

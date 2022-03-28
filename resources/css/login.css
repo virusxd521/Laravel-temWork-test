@@ -14,7 +14,7 @@
     border: 5px solid black;
     padding: 3em 2em;
     background-color: white;
-    box-shadow: inset 0px 0px 10px 10px black;
+    box-shadow: inset 0px 0px 5px 5px black;
 }
 
 .login__container {

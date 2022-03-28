@@ -1,7 +1,7 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCard({item}) {
+function ListCard({ item }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
@@ -16,26 +16,25 @@ function ListCard({item}) {
         <div className={`list-card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list-card__face list-card__face--front">
             <div className="list-card__cnt">
-              <ul>
-                <li>Age: {item.DateOfBirth}</li>
-                <li>Rank: {item.rank.map((item, i) => (
-                  item.name
-                ))}</li>
-                <li>Nationality: {item.nationality.name}</li>
-                <li>Role: {item.role.map((item, i) => (
-                  item.name
-                ))}</li>
+              <ul className="list-card__cnt__ul">
+                <li>
+                  <h1>PLAYER</h1>
+                </li>
+                <li>AGE: {item.DateOfBirth}</li>
+                <li>RANK: {item.rank.map((item, i) => item.name)}</li>
+                <li>NATIONALITY: {item.nationality.name}</li>
+                <li>ROLE: {item.role.map((item, i) => item.name)}</li>
                 {/* <li>Language: {item.language}</li> */}
                 {/* <li>Server: {item.server}</li> */}
-                <li>Username: {item.UserName}</li>
-                <li>Nickname: {item.NickName}</li>
+                <li>USERNAME: {item.UserName}</li>
+                <li>NICKNAME: {item.NickName}</li>
               </ul>
 
               <br />
 
-              <a className="neon-button" onClick={flip}>
+              <button className="list-card__button button" onClick={flip}>
                 More
-              </a>
+              </button>
             </div>
           </div>
           <div className="list-card__face list-card__face--back">
@@ -43,29 +42,19 @@ function ListCard({item}) {
               <div className="list-card__body">
                 <ul>
                   <li>
-                    <strong>ABOUT:</strong>{" "}
-                    <span className="textik">
-                      {" "}
-                    </span>
+                    <strong>ABOUT:</strong> <span className="textik"> </span>
                   </li>
                   <li>
-                    <strong>GOALS:</strong>{" "}
-                    <span className="textik">
-                      
-                    </span>
+                    <strong>GOALS:</strong> <span className="textik"></span>
                   </li>
-                  <li>
-                    {/* <strong>DISCORD:</strong> {item.discord}{" "} */}
-                  </li>
-                  <li>
-                    {/* <strong>EMAIL:</strong> {item.email} */}
-                  </li>
+                  <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
+                  <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
                 </ul>
 
                 <br />
-                <a className="neon-button" onClick={flip}>
-                  More
-                </a>
+                <button className="list-card__button button" onClick={flip}>
+                  Back
+                </button>
               </div>
             </div>
           </div>

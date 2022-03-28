@@ -34,8 +34,9 @@ nav {
     height: 85%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   
     z-index: 5;
+    cursor: pointer;
 }
 
 .logo-fixed {
@@ -46,9 +47,8 @@ nav {
     left: 0;
     transform: translate(-0%, -45%);
     z-index: 4;
+    cursor: pointer;
 }
-
-
 
 .first-page {
     height: 120vh;
@@ -183,6 +183,13 @@ button {
     transition: ease-out 0.4s;
     font-family: "Cornerstone", sans-serif;
 }
+
+button:hover {
+    color: white;
+    border: 2px solid black;
+    box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+}
+
 
 @import "./card.css";
 @import "./login.css";

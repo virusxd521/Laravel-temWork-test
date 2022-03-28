@@ -728,6 +728,13 @@ input:invalid[focused="true"] ~ span{
   display: block;
 }
 
+.form__select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 47px;
+  border-radius: 5px;
+}
 .section404 {
     min-height: 100vh;
     background-image: url(/images/backk.png);
@@ -742,14 +749,6 @@ input:invalid[focused="true"] ~ span{
     font-size: 30em;
     color: white;
     margin: 0 auto;
-}
-
-.form__select {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-  height: 47px;
-  border-radius: 5px;
 }
 * {
     padding: 0;

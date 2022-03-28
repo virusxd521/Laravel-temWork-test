@@ -45,22 +45,10 @@ nav {
     top: 1.5rem;
     left: 0;
     transform: translate(-0%, -45%);
-    z-index: 3;
+    z-index: 4;
 }
 
-.home {
-    height: 100vh;
-    background-color: black;
-}
 
-.nav_bg {
-    height: 10gvh;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    background-color: white;
-    z-index: 2;
-}
 
 .first-page {
     height: 120vh;
@@ -118,13 +106,26 @@ nav {
     border: 2px solid white;
 }
 
+.header {
+    height: 100vh;
+    background-color: black;
+}
+
+.header-short {
+    height: 4.5vh;
+    background-color: black;
+}
+
 nav ul {
     display: flex;
+    width: 100vw;
+    justify-content: flex-end;
     list-style: none;
     align-items: center;
     position: fixed;
     padding: 1.5em 5rem;
     z-index: 3;
+    background-color: black;
 }
 nav ul a {
     text-decoration: none;

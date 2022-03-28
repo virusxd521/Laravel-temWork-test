@@ -12,12 +12,12 @@ function UserInterface({responseData}) {
     console.log(user_id);
     return (
         <>
-            <Header height="4.5"/>
+            <Header classa="header-short" />
             <div className="UI__cnt">
                 
                 <h1 className="UI__title">Do you want to register as </h1>
                 <div className="UI_card__cnt">
-                    <UI_card title="Player" />
+                    <UI_card title="Player" destination="/register/player" />
                     <UI_card title="Organization" />
                     <UI_card title="Staff" />
                     

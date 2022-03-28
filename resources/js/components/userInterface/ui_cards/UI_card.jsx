@@ -1,13 +1,17 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 
 
 
-function UI_card({title}) {
-    return (<>
-        <div className="UI_card">
-            <h2 className="UI_card__title">{title}</h2>
-            {/* <button class="UI_card__button">Register</button> */}
-        </div>
+function UI_card({ title,destination }) {
+
+    const navigate = useNavigate();
+
+    return (
+        <>
+            <div className="UI_card" onClick={() => navigate(destination)}>
+                <h2 className="UI_card__title">{title}</h2>
+            </div>
         </>
     )
 }

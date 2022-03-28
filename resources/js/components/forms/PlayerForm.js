@@ -2,13 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import Header from "../Header";
 
-function PlayerForm() {  
+function PlayerForm() {
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [values, setValues] = useState({
+  //   user_name: "",
+  //   password: "",
+  // });
 
   return (
     <section className="form__section">
       <Header height="0" />
 
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" >
         <h1 className="form__title">Player register</h1>
         <div className="form__container">
           <label>Nickname</label>
@@ -16,6 +22,8 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="Nickname"
+            // value={username}
+            // onChange={(e) => setUsername(e.target.value)}
             name="nick_name"
           />
         </div>
@@ -24,6 +32,8 @@ function PlayerForm() {
           <label>Date of birth</label>
           <input
             type="date"
+            // value={password}
+            // onChange={(e) => setPassword(e.target.value)}
             name="date_of_birth"
           />
         </div>
@@ -87,7 +97,7 @@ function PlayerForm() {
         <button
           className="form__button button"
           type="submit"
-          disabled={!validateForm()}
+          // disabled={!validateForm()}
         >
           Submit
         </button>
@@ -95,3 +105,5 @@ function PlayerForm() {
     </section>
   );
 }
+
+export default PlayerForm;

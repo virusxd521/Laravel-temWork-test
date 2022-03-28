@@ -27,6 +27,7 @@ function Header({height, classa, signingOut}) {
                 left: '-1rem',
                 x: '50%',
                 y: '5%',
+                position: 'fixed',
                 scrollTrigger: {
                     trigger: element.querySelector(".home"),
                     start: '0%',
@@ -65,9 +66,8 @@ function Header({height, classa, signingOut}) {
                     <Link to={`/login`} className="nav-ltr" >Login</Link>
                     <Link to={`/register`} className="nav-ltr" >Register</Link>
 
-                    <Link to={`/profile`} className="nav-ltr" >Profile</Link>
-                    <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link>
-            
+                    {/* <Link to={`/profile`} className="nav-ltr" >Profile</Link>
+                    <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> */}
                     
                 </ul>
             </nav>

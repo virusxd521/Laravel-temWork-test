@@ -19,14 +19,14 @@ class Position extends Model
 
     public function game()
     {
-        return $this->belongsToMany(Game::class, 'advertisement', 'position_id', 'game_id')
+        return $this->belongsToMany(Game::class, 'advertisements', 'position_id', 'game_id')
             ->withPivot([
                 'organization_id',
                 'individual_id',
                 'status_id',
                 'rank_id',
                 'game_role_id',
-                'expect',
+                'expectation',
                 'offer',
                 'availability'
             ]);
@@ -34,14 +34,14 @@ class Position extends Model
 
     public function organization()
     {
-        return $this->belongsToMany(Organization::class, 'advertisement', 'position_id', 'organization_id')
+        return $this->belongsToMany(Organization::class, 'advertisements', 'position_id', 'organization_id')
             ->withPivot([
                 'game_id',
                 'individual_id',
                 'status_id',
                 'rank_id',
                 'game_role_id',
-                'expect',
+                'expectation',
                 'offer',
                 'availability'
             ]);

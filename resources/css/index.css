@@ -37,6 +37,7 @@ nav {
     transform: translate(-50%, -50%);   
     z-index: 5;
     cursor: pointer;
+    padding-left: 1em;
 }
 
 .logo-fixed {
@@ -47,6 +48,7 @@ nav {
     left: 0;
     transform: translate(-0%, -45%);
     z-index: 4;
+    padding-left: 1em;
     cursor: pointer;
 }
 

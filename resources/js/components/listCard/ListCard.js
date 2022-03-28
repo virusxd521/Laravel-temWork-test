@@ -1,7 +1,7 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCard({item}) {
+function ListCard({ item }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
@@ -16,15 +16,14 @@ function ListCard({item}) {
         <div className={`list-card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list-card__face list-card__face--front">
             <div className="list-card__cnt">
-              <ul>
+              <ul className="list-card__cnt__ul">
+                <li>
+                  <h1>PLAYER</h1>
+                </li>
                 <li>AGE: {item.DateOfBirth}</li>
-                <li>RANK: {item.rank.map((item, i) => (
-                  item.name
-                ))}</li>
+                <li>RANK: {item.rank.map((item, i) => item.name)}</li>
                 <li>NATIONALITY: {item.nationality.name}</li>
-                <li>ROLE: {item.role.map((item, i) => (
-                  item.name
-                ))}</li>
+                <li>ROLE: {item.role.map((item, i) => item.name)}</li>
                 {/* <li>Language: {item.language}</li> */}
                 {/* <li>Server: {item.server}</li> */}
                 <li>USERNAME: {item.UserName}</li>
@@ -43,27 +42,17 @@ function ListCard({item}) {
               <div className="list-card__body">
                 <ul>
                   <li>
-                    <strong>ABOUT:</strong>{" "}
-                    <span className="textik">
-                      {" "}
-                    </span>
+                    <strong>ABOUT:</strong> <span className="textik"> </span>
                   </li>
                   <li>
-                    <strong>GOALS:</strong>{" "}
-                    <span className="textik">
-                      
-                    </span>
+                    <strong>GOALS:</strong> <span className="textik"></span>
                   </li>
-                  <li>
-                    {/* <strong>DISCORD:</strong> {item.discord}{" "} */}
-                  </li>
-                  <li>
-                    {/* <strong>EMAIL:</strong> {item.email} */}
-                  </li>
+                  <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
+                  <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
                 </ul>
 
                 <br />
-                <button  className="list-card__button button" onClick={flip}>
+                <button className="list-card__button button" onClick={flip}>
                   Back
                 </button>
               </div>

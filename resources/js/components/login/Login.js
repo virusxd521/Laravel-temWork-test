@@ -9,9 +9,12 @@ export default function Login({responsePassingUp}) {
     user_name: "",
     password: "",
   });
+
+  const [signedOut, setSignedOut] = useState(null);
+
+  const signingOut = () => {axios.get('/api/logout').then((response) => console.log(response))}
+
   
-
-
   // Getting a session-id-cookie from sancctum
   axios.get('/sanctum/csrf-cookie').then(response => {
     console.log(response);
@@ -63,9 +66,10 @@ export default function Login({responsePassingUp}) {
 
 
 
+
   return (
      <section className="login__section">
-        <Header height="0" classa="header-short" />
+        <Header height="0" classa="header-short" signingOut={signingOut} />
         
         <form className="login" onSubmit={handleSubmit}>
             <h1 className="login__title">Login</h1>

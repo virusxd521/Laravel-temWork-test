@@ -7,6 +7,7 @@ import Register from './components/register/Register'
 import UserInterface from './components/userInterface/UserInterface'
 import CardWrapper from './components/listCard/CardWrapper';
 import PlayerForm from './components/forms/PlayerForm';
+import Page404 from './components/page404/Page404';
 
 
 
@@ -45,6 +46,8 @@ const AppMain = () => {
             <Route path="/profile" element={<UserInterface responseData={responseData} />} >
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
             </Route>
+
+            {/* <Route path="*" element={<Page404 />} /> */}
         </Routes>
     )
 }

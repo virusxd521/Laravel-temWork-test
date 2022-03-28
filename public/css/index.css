@@ -728,6 +728,22 @@ input:invalid[focused="true"] ~ span{
   display: block;
 }
 
+.section404 {
+    min-height: 100vh;
+    background-image: url(/images/backk.png);
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section404__title {
+    font-size: 30em;
+    color: white;
+    margin: 0 auto;
+}
+
 .form__select {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -918,4 +934,3 @@ button {
     transition: ease-out 0.4s;
     font-family: "Cornerstone", sans-serif;
 }
-

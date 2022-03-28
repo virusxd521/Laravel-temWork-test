@@ -42,6 +42,8 @@ Route::get('/organization', [OrganizationController::class, 'getting_number']);
 // Returns the advertisements for staff and player
 Route::get('/individual_advertisement', [PlayerController::class, 'data_for_advertisement_user']);
 
+// Signing out
+Route::get('/logout', [CustomAuthController::class, 'signOut']);
 
 // Prepering the registration
 Route::get('/filip', [PlayerController::class, 'data_for_advertisement_organization']);
@@ -63,6 +65,7 @@ Route::get('/profile/{id?}', [StaffController::class, 'test_middleware']);
 Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
     return $request;
 });
+
 
 
 

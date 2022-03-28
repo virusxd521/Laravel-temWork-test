@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-function Header({height, classa}) {
+function Header({height, classa, signingOut}) {
 
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
@@ -64,6 +64,11 @@ function Header({height, classa}) {
 
                     <Link to={`/login`} className="nav-ltr" >Login</Link>
                     <Link to={`/register`} className="nav-ltr" >Register</Link>
+
+                    <Link to={`/profile`} className="nav-ltr" >Profile</Link>
+                    <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link>
+            
+                    
                 </ul>
             </nav>
             

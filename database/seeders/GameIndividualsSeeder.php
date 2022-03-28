@@ -17,7 +17,7 @@ class GameIndividualsSeeder extends Seeder
     {
         //
         for($i = 1; $i < 100; $i++ ){
-            DB::table('game_individuals')->insert([
+            DB::table('game_individual')->insert([
                 'individual_id' => rand(1, 30),
                 'game_id' => rand(1, 30),
                 'server_id' => rand(1, 30),

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             RankSeeder::class,
             ServerSeeder::class,
             LanguageSeeder::class
+            
         ]);
     }
 }

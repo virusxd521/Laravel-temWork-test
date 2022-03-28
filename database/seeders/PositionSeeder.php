@@ -15,8 +15,11 @@ class PositionSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('positions')->truncate();
         //
         $data = array('Head Coach', 'Assistant Coach', 'Analyst', 'Manager', 'Mental Coach', 'Caster', 'Streamer', 'Player');
+
+        // dd($data);
         for($i = 0; $i < count($data); $i++){
             DB::table('positions')->insert([
                'name' => $data[$i] 

@@ -24,7 +24,16 @@ class PlayerController extends Controller
     {
         // $indiv = new Language;
         // dd($indiv->all());
-        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality', 'language', 'contact', 'rank','server', 'role'])->get();
+        $individuals = Individual::with([ 
+            'position',
+            'game_individual', 
+            'nationality', 
+            'language', 
+            'contact', 
+            'rank',
+            'server', 
+            'role'
+        ])->get();
 
         
         // dd($individuals[0]);

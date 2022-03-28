@@ -36,4 +36,4 @@ Route::get('/test', [PlayerController::class, 'data_for_advertisement_user']);
 
 
 // Prepering the registration
-Route::get('/filip', [PlayerController::class, 'data_for_advertisement_organization']);
+Route::get('/martin', [OrganizationController::class, 'data_for_advertisement_organization']);

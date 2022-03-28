@@ -43,7 +43,7 @@ class Advertisement extends Model
 
     public function game()
     {
-        return $this->belongTo(Game::class);
+        return $this->belongsTo(Game::class);
     }
 
     public function organization()

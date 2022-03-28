@@ -60,7 +60,7 @@ class Individual extends Model
         return $this->hasManyThrough(Rank::class, GameIndividual::class,
         'rank_id',
         'game_id',
-    );
+        );
     }
 
     // Role is not position!!

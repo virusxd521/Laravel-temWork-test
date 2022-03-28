@@ -18,8 +18,8 @@ function UserInterface({responseData}) {
                 <h1 className="UI__title">Do you want to register as </h1>
                 <div className="UI_card__cnt">
                     <UI_card title="Player" destination="/register/player" />
-                    <UI_card title="Organization" />
-                    <UI_card title="Staff" />
+                    <UI_card title="Organization" destination="/register/team" />
+                    <UI_card title="Staff" destination="/register/staff" />
                     
                 </div>
             </div>

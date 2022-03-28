@@ -8,6 +8,8 @@ import UserInterface from './components/userInterface/UserInterface'
 import CardWrapper from './components/listCard/CardWrapper';
 import PlayerForm from './components/forms/PlayerForm';
 import Page404 from './components/page404/Page404';
+import Organization from './components/forms/Organization';
+import StaffForm from './components/forms/StaffForm';
 
 
 
@@ -42,6 +44,8 @@ const AppMain = () => {
             <Route path="/login" element={<Login responsePassingUp={functSettingData} /> }   /> 
             <Route path="/register" element={<Register />} /> 
             <Route path="/register/player" element={<PlayerForm />} />
+            <Route path="/register/team" element={<Organization />} />
+            <Route path="/register/staff" element={<StaffForm />} />
             <Route path="/list/players" element={<CardWrapper />} />
             <Route path="/profile" element={<UserInterface responseData={responseData} />} >
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />

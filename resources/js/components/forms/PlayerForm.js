@@ -39,7 +39,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Nationality</label>
-          <select>
+          <select className="form__select">
             <option>Czech</option>
             <option>Slovak</option>
             <option>Uk</option>
@@ -48,7 +48,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Languages</label>
-          <select>
+          <select className="form__select">
             <option>Czech</option>
             <option>Slovak</option>
             <option>English</option>
@@ -56,7 +56,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Game</label>
-          <select>
+          <select className="form__select">
             <option>League of legends</option>
             <option>PUBG</option>
             <option>CS:GO</option>
@@ -64,7 +64,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Game role</label>
-          <select>
+          <select className="form__select">
             <option>Top</option>
             <option>Jungle</option>
             <option>Mid</option>
@@ -74,7 +74,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Rank</label>
-          <select>
+          <select className="form__select">
             <option>Bronze</option>
             <option>Silver</option>
             <option>Gold</option>
@@ -87,7 +87,7 @@ function PlayerForm() {
         </div>
         <div className="form__container">
           <label>Server</label>
-          <select>
+          <select className="form__select">
             <option>EUNE</option>
             <option>EUW</option>
             <option>NA</option>

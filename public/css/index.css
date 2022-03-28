@@ -649,13 +649,13 @@ z-index: 5;
   opacity: 1;
 }
 .form__section {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(/images/backk.png);
   background-position: center;
 }
 
 .form {
-  height: 28em;
+  height: 56em;
   display: flex;
   flex-direction: column;
   margin: 15em auto;
@@ -742,6 +742,14 @@ input:invalid[focused="true"] ~ span{
     font-size: 30em;
     color: white;
     margin: 0 auto;
+}
+
+.form__select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 47px;
+  border-radius: 5px;
 }
 * {
     padding: 0;

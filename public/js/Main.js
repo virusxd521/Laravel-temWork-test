@@ -2867,14 +2867,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-<<<<<<< HEAD
-function Login() {
-=======
-
 function Login(_ref) {
   var responsePassingUp = _ref.responsePassingUp;
 
->>>>>>> master
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],

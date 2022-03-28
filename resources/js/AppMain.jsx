@@ -6,6 +6,7 @@ import Login from './components/login/Login'
 import Register from './components/register/Register'
 import UserInterface from './components/userInterface/UserInterface'
 import CardWrapper from './components/listCard/CardWrapper';
+import PlayerForm from './components/forms/PlayerForm';
 
 
 
@@ -39,6 +40,7 @@ const AppMain = () => {
             <Route path="/" element={ <Homepage />} />
             <Route path="/login" element={<Login responsePassingUp={functSettingData} /> }   /> 
             <Route path="/register" element={<Register />} /> 
+            <Route path="/register/player" element={<PlayerForm />} />
             <Route path="/list/players" element={<CardWrapper />} />
             <Route path="/profile" element={<UserInterface responseData={responseData} />} >
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />

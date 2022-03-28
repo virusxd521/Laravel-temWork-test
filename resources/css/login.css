@@ -5,15 +5,16 @@
 }
 
 .login {
-    height: 25em;
+    height: 28em;
     display: flex;
     flex-direction: column;
-    margin: 20em auto;
+    margin: 15em auto;
     width: 20em;
     align-items: center;
     border: 5px solid black;
-    padding: 1em 2em;
+    padding: 3em 2em;
     background-color: white;
+    box-shadow: inset 0px 0px 10px 10px black;
 }
 
 .login__container {

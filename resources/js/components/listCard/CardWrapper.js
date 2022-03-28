@@ -1,10 +1,13 @@
 import axios from "axios";
 import ListCard from "./ListCard";
 import { useState,useEffect } from "react";
+import Header from "../Header";
+
 
 function CardWrapper() {
   const [info, setInfo] = useState({});
   const url = "/api/individual_advertisement";
+  
 
   useEffect(() => {
     
@@ -19,7 +22,8 @@ function CardWrapper() {
   console.log(info[0]);
 
   return (
-    <>
+    <section className="players__list" >
+    <Header height="4.5" />
     {
       Object.keys(info).length !== 0 ?
       <div className="card-wrapper">
@@ -29,7 +33,7 @@ function CardWrapper() {
     </div>
     : null
     }
-    </>
+    </section>
     
     
   );

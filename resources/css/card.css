@@ -94,14 +94,14 @@ body {
 
 .card:hover .card__circle {
     background: rgb(106,212,219);
-    box-shadow: inset 2em 0 0 0 rgb(106,212,219);
-}
-.card:hover .card__btn,
-.card:hover .card__circle,
-.card:focus .card__btn {
-    
+    box-shadow: inset 8em 0 0 0 rgb(106,212,219);
     color: white;
     border: 2px solid black;
+}
+.card:hover .card__btn,
+.card:focus .card__btn {
+    
+ 
     box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
 }
 

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
+import { Navigate, useNavigate } from 'react-router-dom'
 
-function Card({title, number, img, delay}) {
+function Card({title, number, img, delay, location}) {
   // const [isFlipped, setIsFlipped] = useState(false);
 
   // const flip = () => {
@@ -13,6 +14,8 @@ function Card({title, number, img, delay}) {
   useEffect(() => {
     Aos.init({ duration: 500 })
   }, [])
+
+  const navigate = useNavigate();
 
 
   return (
@@ -29,7 +32,7 @@ function Card({title, number, img, delay}) {
           <h1 className="card__number">{number}</h1>
         </div>
         </div>
-          <button className="card__btn button">Show list</button>
+          <button onClick={() => navigate(location)}className="card__btn button">Show list</button>
         </div>
       </div>
     </>

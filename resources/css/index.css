@@ -138,11 +138,12 @@ nav ul a {
 nav ul a:hover {
     color: rgb(106, 212, 219);
     transform: scale(1.2);
-    -moz-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
+    /* -moz-transition: all 0.3s ease-in-out; */
+    /* -webkit-transition: all 0.3s ease-in-out; */
+    /* -ms-transition: all 0.3s ease-in-out; */
+    /* -o-transition: all 0.3s ease-in-out; */
     transition: all 0.3s ease-in-out;
+    transition: cubic-bezier(.17,.67,.83,.67) 0.1s
 }
 
 nav ul a:after {
@@ -152,7 +153,7 @@ nav ul a:after {
     position: absolute;
     height: 0.2em;
     background: rgb(106, 212, 219);
-    transition: cubic-bezier(0.77, 0, 0.18, 1) 0.3s;
+    transition: cubic-bezier(.17,.67,.83,.67) 0.1s
 }
 
 nav ul a:hover::after {

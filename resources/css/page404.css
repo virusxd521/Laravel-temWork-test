@@ -1,0 +1,15 @@
+.section404 {
+    min-height: 100vh;
+    background-image: url(/images/backk.png);
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section404__title {
+    font-size: 30em;
+    color: white;
+    margin: 0 auto;
+}

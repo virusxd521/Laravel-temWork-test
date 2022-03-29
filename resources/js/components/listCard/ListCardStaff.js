@@ -1,7 +1,7 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCard({ item }) {
+function ListCardStaff({ item }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
@@ -18,12 +18,12 @@ function ListCard({ item }) {
             <div className="list-card__cnt">
               <ul className="list-card__cnt__ul">
                 <li>
-                  <h1>PLAYER</h1>
+                  <h1>STAFF</h1>
                 </li>
                 <li>AGE: {item.DateOfBirth}</li>
-                <li>RANK: {item.rank.map((item, i) => item.name)}</li>
+                {/* <li>RANK: {item.rank.map((item, i) => item.name)}</li> */}
                 <li>NATIONALITY: {item.nationality.name}</li>
-                <li>ROLE: {item.role.map((item, i) => item.name)}</li>
+                {/* <li>ROLE: {item.role.map((item, i) => item.name)}</li> */}
                 {/* <li>Language: {item.language}</li> */}
                 {/* <li>Server: {item.server}</li> */}
                 <li>USERNAME: {item.UserName}</li>
@@ -61,4 +61,4 @@ function ListCard({ item }) {
   );
 }
 
-export default ListCard;
+export default ListCardStaff;

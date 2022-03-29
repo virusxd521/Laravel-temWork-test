@@ -3243,7 +3243,7 @@ function CardWrapperOrg() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
       classa: "header-short"
     }), Object.keys(info).length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "card-wrapper",
+      className: "players__list__card",
       children: info.map(function (item, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListCardOrg__WEBPACK_IMPORTED_MODULE_1__["default"], {
           item: item
@@ -3311,7 +3311,7 @@ function CardWrapperPlayer() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
       classa: "header-short"
     }), Object.keys(info).length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "card-wrapper",
+      className: "players__list__card",
       children: info.map(function (item, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListCardPlayer__WEBPACK_IMPORTED_MODULE_1__["default"], {
           item: item

@@ -1,6 +1,7 @@
+// import "./ListCard.css";
 import { useState } from "react";
 
-function ListCard({ item }) {
+function ListCardOrg({ item }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
@@ -11,13 +12,13 @@ function ListCard({ item }) {
 
   return (
     <>
-      <div className="list__card">
-        <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
-          <div className="list__card__face list__card__face--front">
-            <div className="list__card__cnt--front">
-              <ul className="list__card__cnt--front__ul">
+      <div className="list-card">
+        <div className={`list-card__inner ${isFlipped ? "is-flipped" : ""}`}>
+          <div className="list-card__face list-card__face--front">
+            <div className="list-card__cnt">
+              <ul className="list-card__cnt__ul">
                 <li>
-                  <h1>PLAYER</h1>
+                  <h1>ORGANIZATION</h1>
                 </li>
                 <li>AGE: {item.DateOfBirth}</li>
                 <li>RANK: {item.rank.map((item, i) => item.name)}</li>
@@ -30,26 +31,26 @@ function ListCard({ item }) {
               </ul>
 
             </div>
-            <button className="list__card__button button" onClick={flip}>
+            <button className="list-card__button button" onClick={flip}>
                 More
             </button>
           </div>
-          <div className="list__card__face list__card__face--back">
-            <div className="list__card__cnt--back">        
-              <div className="list__card__cnt--back--content">
+          <div className="list-card__face list-card__face--back">
+            <div className="list-card__content">
+              <div className="list-card__body">
                 <ul>
                   <li>
-                    <strong>ABOUT:</strong> <span className="list__card__span"> </span>
+                    <strong>ABOUT:</strong> <span className="textik"> </span>
                   </li>
                   <li>
-                    <strong>GOALS:</strong> <span className="list__card__span"></span>
+                    <strong>GOALS:</strong> <span className="textik"></span>
                   </li>
                   <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
                   <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
                 </ul>
                 
               </div>
-              <button className="list__card__button button" onClick={flip}>
+              <button className="list-card__button button" onClick={flip}>
                 Back
               </button>
             </div>
@@ -60,4 +61,4 @@ function ListCard({ item }) {
   );
 }
 
-export default ListCard;
+export default ListCardOrg;

@@ -1,10 +1,10 @@
 import axios from "axios";
-import ListCard from "./ListCard";
+import ListCardStaff from "./ListCardStaff";
 import { useState,useEffect } from "react";
 import Header from "../Header";
 
 
-function CardWrapper() {
+function CardWrapperStaff() {
   const [info, setInfo] = useState({});
   const url = "/api/individual_advertisement";
   
@@ -28,7 +28,7 @@ function CardWrapper() {
       Object.keys(info).length !== 0 ?
       <div className="players__list__card">
       {info.map((item, i) => (
-        <ListCard item={item}/>
+        <ListCardStaff item={item}/>
       ))} 
     </div>
     : null
@@ -39,4 +39,4 @@ function CardWrapper() {
   );
 }
 
-export default CardWrapper;
+export default CardWrapperStaff;

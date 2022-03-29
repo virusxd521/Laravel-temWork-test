@@ -17,7 +17,7 @@ function PlayerForm() {
       <form className="form" >
         <h1 className="form__title">Organization register</h1>
         <div className="form__container">
-          <label>Nickname</label>
+          <label>Name</label>
           <input
             className="form__input"
             autoFocus
@@ -69,10 +69,22 @@ function PlayerForm() {
             className="form__input"
             autoFocus
             type="text"
-            placeholder="Experience"
+            placeholder="What we offer"
             // value={username}
             // onChange={(e) => setUsername(e.target.value)}
-            name="experience"
+            name="offer"
+          />
+        </div>
+
+        <div className="form__container">
+          <label>What we require</label>
+          <input
+            autoFocus
+            type="text"
+            placeholder="What we require"
+            // value={username}
+            // onChange={(e) => setUsername(e.target.value)}
+            name="requirement"
           />
         </div>
 

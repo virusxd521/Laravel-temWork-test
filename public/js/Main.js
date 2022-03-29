@@ -2235,17 +2235,13 @@ var AppMain = function AppMain() {
       responseData = _useState2[0],
       setResponseData = _useState2[1];
 
-<<<<<<< HEAD
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useNavigate)(); // Checking if the user is authenticated
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useNavigate)(); // Checking if the user is authenticated
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState4 = _slicedToArray(_useState3, 2),
       authenticatedUser = _useState4[0],
       SetAuthenticatedUser = _useState4[1]; // function for setting the state with the response from the server 
 
-=======
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useNavigate)(); // function for setting the state with the response from the server 
->>>>>>> master
 
   var functSettingData = function functSettingData(data) {
     setResponseData(data);
@@ -2265,29 +2261,19 @@ var AppMain = function AppMain() {
     navigate("/profile/".concat(data.id));
   };
 
-<<<<<<< HEAD
   var signingOut = function signingOut(data) {
     SetAuthenticatedUser(data);
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Routes, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
-=======
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
->>>>>>> master
       path: "/",
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_Homepage__WEBPACK_IMPORTED_MODULE_2__["default"], {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/login",
-<<<<<<< HEAD
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
         responsePassingUp: functSettingData,
         authenticatedUser: authenticatedUser
-=======
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        responsePassingUp: functSettingData
->>>>>>> master
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/register",
@@ -2306,14 +2292,9 @@ var AppMain = function AppMain() {
       element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_listCard_CardWrapper__WEBPACK_IMPORTED_MODULE_6__["default"], {})
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/profile",
-<<<<<<< HEAD
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_5__["default"], {
         responseData: responseData,
         authenticatedUser: authenticatedUser
-=======
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        responseData: responseData
->>>>>>> master
       }),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: ":user_id",
@@ -2321,9 +2302,9 @@ var AppMain = function AppMain() {
           responseData: responseData
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/logout",
-      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_page404_Page404__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_components_page404_Page404__WEBPACK_IMPORTED_MODULE_8__["default"], {
         authenticatedUser: authenticatedUser,
         signingOut: signingOut
       })
@@ -2590,7 +2571,6 @@ function Header(_ref) {
           to: "/register",
           className: "nav-ltr",
           children: "Register"
-<<<<<<< HEAD
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
           to: "/profile",
           className: "nav-ltr",
@@ -2601,9 +2581,6 @@ function Header(_ref) {
           onClick: signingOut,
           children: "Logout"
         }) : null]
-=======
-        })]
->>>>>>> master
       })]
     })
   });

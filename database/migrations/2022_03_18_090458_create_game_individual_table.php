@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('individual_id');
             $table->foreignId('game_id');
-            $table->foreignId('server_id');
-            $table->foreignId('game_role_id');
-            $table->foreignId('rank_id');
+            $table->foreignId('server_id')->nullable();
+            $table->foreignId('game_role_id')->nullable();
+            $table->foreignId('rank_id')->nullable();
             // $table->timestamps();
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->nullable();

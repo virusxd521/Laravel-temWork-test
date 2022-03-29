@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 40);
-            $table->string('code', 10);
-            $table->string('url', 50);
-            $table->foreignId('individual_id');
-            $table->foreignId('organization_id');
+            //$table->string('code', 10);
+            //$table->string('url', 127)->nullable();
+            
+            
         });
     }
 

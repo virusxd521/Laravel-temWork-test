@@ -91,7 +91,7 @@ class PlayerController extends Controller
 
     public function loopingOverData($table_name ,$data)
     {    
-        $data_for_form = [];
+        
         $data_array[$table_name] = [];
         foreach($data as $query_data)
         {
@@ -105,6 +105,11 @@ class PlayerController extends Controller
         return $data_array;
     }
 
+
+    public function submiting_a_player()
+    {
+        // return
+    }
 }
 
 

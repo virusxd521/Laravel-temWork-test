@@ -73,7 +73,7 @@
         color: black;
         border-radius: 5%;
         cursor: pointer;
-        box-shadow: inset 0 0 0 0 rgb(106,212,219);
+        box-shadow: inset 0 0 0 0 $neonblue;
         -webkit-transition: ease-out 0.4s;
         -moz-transition: ease-out 0.4s;
         transition: ease-out 0.4s;
@@ -88,7 +88,7 @@
         justify-content: center;
         align-items: center;
         margin: auto;
-        box-shadow: inset 0 0 0 0 rgb(106,212,219);
+        box-shadow: inset 0 0 0 0 $neonblue;
         -webkit-transition: ease-out 0.4s;
         -moz-transition: ease-out 0.4s;
         transition: ease-out 0.4s;
@@ -102,8 +102,8 @@
 }
 
 .card:hover .card__circle {
-    background: rgb(106,212,219);
-    box-shadow: inset 8em 0 0 0 rgb(106,212,219);
+    background: $neonblue;
+    box-shadow: inset 8em 0 0 0 $neonblue;
     color: white;
     border: 2px solid black;
 }
@@ -111,7 +111,7 @@
 .card:focus .card__btn {
     
  
-    box-shadow: inset 15.8em 0 0 0 rgb(106,212,219);
+    box-shadow: inset 15.8em 0 0 0 $neonblue;
     color: white;
 }
 

@@ -36,7 +36,7 @@ class Individual extends Model
 
     public function contact()
     {
-        return $this->hasMany(Contact::class);
+        return $this->belongsToMany(Contact::class);
     }
 
     public function advertisement()

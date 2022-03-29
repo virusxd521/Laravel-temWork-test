@@ -38,7 +38,7 @@ class GameSeeder extends Seeder
         foreach($games as $game) {
             $new_game = new Game;
             $new_game->name = $game['name'];
-            $new_game->code = $game['code'];
+            //$new_game->code = $game['code'];
             $new_game->save();
         }
     }

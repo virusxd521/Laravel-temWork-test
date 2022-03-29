@@ -23,7 +23,7 @@ class AdvertisementSeeder extends Seeder
         for($i = 1 ; $i <= 60 ; $i++){
             $organization = new Advertisement;
             $organization->position_id = rand(1,8);
-            $organization->language_id = rand(1, 148);
+            //$organization->language_id = rand(1, 148);
             $organization->game_id = rand(1,4);
             $organization->organization_id = rand(1,97);
             $organization->game_id = rand(1,4);

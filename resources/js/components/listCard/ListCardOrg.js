@@ -12,11 +12,11 @@ function ListCardOrg({ item }) {
 
   return (
     <>
-      <div className="list-card">
-        <div className={`list-card__inner ${isFlipped ? "is-flipped" : ""}`}>
-          <div className="list-card__face list-card__face--front">
-            <div className="list-card__cnt">
-              <ul className="list-card__cnt__ul">
+      <div className="list__card">
+        <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
+          <div className="list__card__face list-card__face--front">
+            <div className="list__card__cnt--front">
+              <ul className="list__card__cnt--front__ul">
                 <li>
                   <h1>ORGANIZATION</h1>
                 </li>
@@ -31,26 +31,26 @@ function ListCardOrg({ item }) {
               </ul>
 
             </div>
-            <button className="list-card__button button" onClick={flip}>
+            <button className="list__card__button button" onClick={flip}>
                 More
             </button>
           </div>
-          <div className="list-card__face list-card__face--back">
-            <div className="list-card__content">
-              <div className="list-card__body">
+          <div className="list__card__face list__card__face--back">
+            <div className="list__card__cnt--back">
+              <div className="list__card__cnt--back--content">
                 <ul>
                   <li>
-                    <strong>ABOUT:</strong> <span className="textik"> </span>
+                    <strong>ABOUT:</strong> <span className="list__card__span"> </span>
                   </li>
                   <li>
-                    <strong>GOALS:</strong> <span className="textik"></span>
+                    <strong>GOALS:</strong> <span className="list__card__span"></span>
                   </li>
                   <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
                   <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
                 </ul>
                 
               </div>
-              <button className="list-card__button button" onClick={flip}>
+              <button className="list__card__button button" onClick={flip}>
                 Back
               </button>
             </div>

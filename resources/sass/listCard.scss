@@ -20,7 +20,7 @@
   
 .list__card {
     display: flex;
-    width: 25%;
+    width: 10em;
     min-height: 38em;
     flex-direction: column;
     align-items: center;
@@ -92,6 +92,7 @@
                 font-weight: bold;
                 
                 
+
             }
         }
     }
@@ -113,7 +114,6 @@
 
             & ul li {
                 margin-top: 15px;
-                word-wrap: break-word;
             }
         }
     }

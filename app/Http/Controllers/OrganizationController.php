@@ -16,9 +16,9 @@ class OrganizationController extends Controller
     {
         $organization = new Organization;
 
-        $data = [
-            'number' => $organization->number_organization()
-        ];
+        // gsethrtherh;
+
+        $data = $organization->number_organization();
         return json_encode($data);
     }
 

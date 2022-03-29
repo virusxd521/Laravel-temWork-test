@@ -13,6 +13,7 @@ import StaffForm from './components/forms/StaffForm';
 import CardWrapperStaff from './components/listCard/CardWrapperStaff';
 import CardWrapperOrg from './components/listCard/CardWrapperOrg';
 
+
 const AppMain = () => {
 
     // response after login saving the data to pass to the right profile
@@ -70,6 +71,7 @@ const AppMain = () => {
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
             </Route>
             <Route path="/logout" element={<Page404 authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />
+            
         </Routes>
     )
 }

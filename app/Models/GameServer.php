@@ -9,6 +9,9 @@ class GameServer extends Model
 {
     use HasFactory;
 
+    // Daniel Note ----> 
+    // Do noe remove this, without it the model won't be able to read the table
+    protected $table = 'game_server';
 
     public function game()
     {

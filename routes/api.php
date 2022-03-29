@@ -76,5 +76,5 @@ Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
 Route::get('/martin', [OrganizationController::class, 'data_for_advertisement_organization']);
 
 
-
-
+// Api with static data from the data base to populate the form with data before the user will submit the data
+Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_data']);

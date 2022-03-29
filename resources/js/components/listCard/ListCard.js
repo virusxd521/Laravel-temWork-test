@@ -30,12 +30,10 @@ function ListCard({ item }) {
                 <li>NICKNAME: {item.NickName}</li>
               </ul>
 
-              <br />
-
-              <button className="list-card__button button" onClick={flip}>
-                More
-              </button>
             </div>
+            <button className="list-card__button button" onClick={flip}>
+                More
+            </button>
           </div>
           <div className="list-card__face list-card__face--back">
             <div className="list-card__content">
@@ -50,12 +48,11 @@ function ListCard({ item }) {
                   <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
                   <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
                 </ul>
-
-                <br />
-                <button className="list-card__button button" onClick={flip}>
-                  Back
-                </button>
+                
               </div>
+              <button className="list-card__button button" onClick={flip}>
+                Back
+              </button>
             </div>
           </div>
         </div>

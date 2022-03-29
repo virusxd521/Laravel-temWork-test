@@ -23,8 +23,8 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                 height: '15%',
                 top: '1.5rem',
                 left: '-1rem',
-                x: '50%',
-                y: '5%',
+                x: '56%',
+                y: '-45%',
                 position: 'fixed',
                 scrollTrigger: {
                     trigger: element.querySelector(".home"),
@@ -67,10 +67,14 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                     <Link to={`/profile`} className="nav-ltr" >Profile</Link>
                     {
                         authenticatedUser !== null && authenticatedUser !== undefined ? <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> : null
+<<<<<<< HEAD
                     }
                     
                     
 
+=======
+                    }                
+>>>>>>> Dnaiel/created_routes_logout
                 </ul>
             </nav>
             

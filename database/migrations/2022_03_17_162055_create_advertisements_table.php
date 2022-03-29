@@ -24,9 +24,9 @@ return new class extends Migration
             $table->foreignId('status_id');
             $table->foreignId('rank_id');
             $table->foreignId('game_role_id');
-            $table->string('offer', 255);
-            $table->string('expectation', 255);
-            $table->string('availability', 255);
+            $table->string('offer', 255)->nullable();
+            $table->string('expectation', 255)->nullable();
+            $table->string('availability', 255)->nullable();
         });
     }
 

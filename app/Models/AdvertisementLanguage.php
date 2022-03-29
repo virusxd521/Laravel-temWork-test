@@ -9,6 +9,8 @@ class AdvertisementLanguage extends Model
 {
     use HasFactory;
 
+    protected $table = 'advertisement_language';
+
     public function advertisement()
     {
         return $this->belongsTo(Advertisement::class);

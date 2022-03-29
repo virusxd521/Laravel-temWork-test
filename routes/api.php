@@ -51,9 +51,6 @@ Route::get('/individual_advertisement', [PlayerController::class, 'data_for_adve
 // Signing out
 Route::get('/logout', [CustomAuthController::class, 'signOut']);
 
-// Prepering the registration
-Route::get('/filip', [PlayerController::class, 'data_for_advertisement_organization']);
-
 // Route which will take care of the authentication
 Route::post('/login', [CustomAuthController::class, 'authenticate']);
 
@@ -61,7 +58,6 @@ Route::post('/login', [CustomAuthController::class, 'authenticate']);
 Route::post('/resgitration', [CustomAuthController::class, 'registration']);
 
 Route::get('/profile/{id?}', [StaffController::class, 'test_middleware']);
-
 
 // Test, sending back only the authenticated user 
 // The user don't have access to other usres data
@@ -78,3 +74,8 @@ Route::get('/martin', [OrganizationController::class, 'data_for_advertisement_or
 
 // Api with static data from the data base to populate the form with data before the user will submit the data
 Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_data']);
+
+
+// All three form submition routes
+
+// submiting_a_player

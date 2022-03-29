@@ -26,7 +26,7 @@ function CardWrapperOrg() {
     <Header classa="header-short" />
     {
       Object.keys(info).length !== 0 ?
-      <div className="card-wrapper">
+      <div className="players__list__card">
       {info.map((item, i) => (
         <ListCardOrg item={item}/>
       ))} 

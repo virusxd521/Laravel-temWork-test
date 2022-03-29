@@ -540,16 +540,18 @@ span {
   display: flex;
   min-height: 100vh;
   flex-wrap: wrap;
+  margin: auto;
+  flex-direction: row;
 }
 
 .list__card {
   display: flex;
-  width: 25%;
+  width: 26%;
   min-height: 38em;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 2em 4em;
+  margin: 2em auto;
 }
 .list__card__inner {
   width: 100%;
@@ -621,6 +623,7 @@ span {
 }
 .list__card__cnt--back--content ul li {
   margin-top: 15px;
+  word-wrap: break-word;
 }
 .list__card__button {
   height: 3.5em;

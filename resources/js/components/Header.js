@@ -67,10 +67,14 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                     <Link to={`/profile`} className="nav-ltr" >Profile</Link>
                     {
                         authenticatedUser !== null && authenticatedUser !== undefined ? <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> : null
+<<<<<<< HEAD
                     }
                     
                     
 
+=======
+                    }                
+>>>>>>> Dnaiel/created_routes_logout
                 </ul>
             </nav>
             

@@ -3681,19 +3681,17 @@ function ListCardStaff(_ref) {
   console.log(item);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "list-card",
+      className: "list__card",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "list-card__inner ".concat(isFlipped ? "is-flipped" : ""),
+        className: "list__card__inner ".concat(isFlipped ? "is-flipped" : ""),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "list-card__face list-card__face--front",
+          className: "list__card__face list__card__face--front",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "list-card__cnt",
+            className: "list__card__cnt",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-              className: "list-card__cnt__ul",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-                  children: "STAFF"
-                })
+              className: "list__card__cnt__ul",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+                children: "STAFF"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
                 children: ["AGE: ", item.DateOfBirth]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
@@ -3705,34 +3703,34 @@ function ListCardStaff(_ref) {
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "list-card__button button",
+            className: "list__card__button button",
             onClick: flip,
             children: "More"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "list-card__face list-card__face--back",
+          className: "list__card__face list__card__face--back",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "list-card__content",
+            className: "list__card__cnt--back",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              className: "list-card__body",
+              className: "list__card__cnt--back--content",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
                     children: "ABOUT:"
                   }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-                    className: "textik",
+                    className: "list__card__span",
                     children: " "
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
                     children: "GOALS:"
                   }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-                    className: "textik"
+                    className: "list__card__span"
                   })]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {})]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              className: "list-card__button button",
+              className: "list__card__button button",
               onClick: flip,
               children: "Back"
             })]
@@ -4410,7 +4408,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _AppMain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppMain */ "./resources/js/AppMain.jsx");
-/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../css/index.css */ "./public/css/index.css");
+/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../css/index.css */ "./public/css/index.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -12847,7 +12845,7 @@ function parsePath(path) {
   \***********************************/
 /***/ (() => {
 
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n   ╷\n88 │     color: $neonblue;\n   │            ^^^^^^^^^\n   ╵\n  resources/sass/index.scss 88:12  root stylesheet\n    at processResult (/Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/webpack/lib/NormalModule.js:758:19)\n    at /Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/webpack/lib/NormalModule.js:860:5\n    at /Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:399:11\n    at /Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:251:18\n    at context.callback (/Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/Users/pavelhajduch/Web/final_project/Laravel-temWork-test/node_modules/sass-loader/dist/index.js:69:5)");
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n   ╷\n88 │     color: $neonblue;\n   │            ^^^^^^^^^\n   ╵\n  resources/sass/index.scss 88:12  root stylesheet\n    at processResult (/Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/webpack/lib/NormalModule.js:758:19)\n    at /Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/webpack/lib/NormalModule.js:860:5\n    at /Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:399:11\n    at /Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:251:18\n    at context.callback (/Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/loader-runner/lib/LoaderRunner.js:124:13)\n    at Object.loader (/Users/xfilld/WEB-CODE-ROOT/Laravel-temWork-test/node_modules/sass-loader/dist/index.js:69:5)");
 
 /***/ }),
 

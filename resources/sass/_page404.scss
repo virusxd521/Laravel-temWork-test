@@ -6,10 +6,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &__title {
+        font-size: 30em;
+        color: white;
+        margin: 0 auto;
+    }
 }
 
-.section404__title {
-    font-size: 30em;
-    color: white;
-    margin: 0 auto;
-}

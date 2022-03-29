@@ -1,12 +1,12 @@
 import axios from "axios";
-import ListCard from "./ListCard";
-import { useState,useEffect } from "react";
+import ListCardTeams from "./ListCardTeams";
+import { useState, useEffect } from "react";
 import Header from "../Header";
 
 
-function CardWrapper() {
+function CardWrapperTeams() {
   const [info, setInfo] = useState({});
-  const url = "/api/individual_advertisement";
+  const url = "/api/martin";
   
 
   useEffect(() => {
@@ -14,21 +14,19 @@ function CardWrapper() {
 
     axios.get(url).then((response) => {
       setInfo(response.data);
-      
-  
     });
 
   }, []);
   console.log(info[0]);
 
   return (
-    <section className="players__list" >
+    <section className="teams__list" >
     <Header classa="header-short" />
     {
       Object.keys(info).length !== 0 ?
-      <div className="card-wrapper">
+      <div className="teams__list__card">
       {info.map((item, i) => (
-        <ListCard item={item}/>
+        <ListCardTeams item={item}/>
       ))} 
     </div>
     : null
@@ -39,4 +37,4 @@ function CardWrapper() {
   );
 }
 
-export default CardWrapper;
+export default CardWrapperTeams;

@@ -13,10 +13,10 @@ function UserInterface({responseData, authenticatedUser}) {
     return (
         <>
             <Header authenticatedUser={authenticatedUser} classa="header-short" />
-            <div className="UI__cnt">
+            <div className="UI">
                 
                 <h1 className="UI__title">Do you want to register as </h1>
-                <div className="UI_card__cnt">
+                <div className="UI--card__cnt">
                     <UI_card title="Player" destination="/register/player" />
                     <UI_card title="Organization" destination="/register/team" />
                     <UI_card title="Staff" destination="/register/staff" />

@@ -19,6 +19,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>Nickname</label>
           <input
+            className="form__input"
             autoFocus
             type="text"
             placeholder="Nickname"
@@ -65,6 +66,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>What do we offer</label>
           <input
+            className="form__input"
             autoFocus
             type="text"
             placeholder="Experience"

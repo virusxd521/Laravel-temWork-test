@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Card({title, number, img, delay, location}) {
   // const [isFlipped, setIsFlipped] = useState(false);
@@ -24,15 +24,14 @@ function Card({title, number, img, delay, location}) {
         <div className="card">
           <div className="card__body">
             <div className="card__body__bg">
-            <img className={img} />
+              <img className={img} />
             </div>
-            
             <h1 className="card__title">{title}</h1>
-          <div className="card__circle">
-          <h1 className="card__number">{number}</h1>
-        </div>
-        </div>
-          <button onClick={() => navigate(location)}className="card__btn button">Show list</button>
+            <div className="card__circle">
+              <h1 className="card__number">{number}</h1>
+            </div>
+          </div>
+          <button onClick={() => navigate(location)} className="card__btn button">Show list</button>
         </div>
       </div>
     </>

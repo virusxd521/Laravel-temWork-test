@@ -19,6 +19,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>Nickname</label>
           <input
+            className="form__input"
             autoFocus
             type="text"
             placeholder="Nickname"
@@ -31,6 +32,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>Date of birth</label>
           <input
+            className="form__input"
             type="date"
             // value={password}
             // onChange={(e) => setPassword(e.target.value)}
@@ -75,6 +77,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>Experience</label>
           <input
+            className="form__input"
             autoFocus
             type="text"
             placeholder="Experience"

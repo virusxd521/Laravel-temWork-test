@@ -75,14 +75,15 @@ export default function Login({responsePassingUp, authenticatedUser}) {
   }
 
   return (
-     <section className="login__section">
+     <section className="login">
         <Header height="0" classa="header-short" authenticatedUser={authenticatedUser}  />
         
-        <form className="login" onSubmit={handleSubmit}>
-            <h1 className="login__title">Login</h1>
-            <div className="login__container">
-                <label>Username</label>
+        <form className="login__form" onSubmit={handleSubmit}>
+            <h1 className="login__form__title">Login</h1>
+            <div className="login__form__container">
+                <label className="login__form__label">Username</label>
                 <input 
+                  className="login__form__input"
                   autoFocus
                   type="text"
                   placeholder='Username'
@@ -93,9 +94,10 @@ export default function Login({responsePassingUp, authenticatedUser}) {
             </div>
       
           
-            <div className="login__container">
-                <label>Password</label>
+            <div className="login__form__container">
+                <label className="login__form__label">Password</label>
                 <input 
+                  className="login__form__input"
                   type="password"
                   placeholder='Password'
                   value={password}
@@ -104,7 +106,7 @@ export default function Login({responsePassingUp, authenticatedUser}) {
                 />
             </div>
           
-          <button className="login__button button" type="submit" disabled={!validateForm()}>
+          <button className="login__form__button button" type="submit" disabled={!validateForm()}>
             Login
           </button>
         </form>

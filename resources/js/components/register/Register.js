@@ -127,11 +127,11 @@ const Register = () => {
   const path = useLocation();
 
   return (
-    <section className="register__section">
+    <section className="register">
         <Header classa="header-short" />
 
-          <form className="register" onSubmit={getValue}>
-            <h1 className="register__title">Register</h1>
+          <form className="register__form" onSubmit={getValue}>
+            <h1 className="register__form__title">Register</h1>
             {inputs.map((input) => (
               <FormInput
                 key={input.id}
@@ -140,9 +140,9 @@ const Register = () => {
                 onChange={onChange}
               />
             ))}
-            <label className="register__label--login">Already registered? {<a onClick={() => navigate('/login')} className="login__redirect">Log in</a>}</label>
+            <label className="register__form__label--login">Already registered? {<a onClick={() => navigate('/login')} className="login__redirect">Log in</a>}</label>
             
-            <button className="register__button button" type="submit">Register</button>
+            <button className="register__form__button button" type="submit">Register</button>
           </form>
     </section>
   );

@@ -5,13 +5,13 @@ import Homepage from './components/Homepage'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
 import UserInterface from './components/userInterface/UserInterface'
-import CardWrapper from './components/listCard/CardWrapper';
+import CardWrapperPlayer from './components/listCard/CardWrapperPlayer';
 import PlayerForm from './components/forms/PlayerForm';
 import Page404 from './components/page404/Page404';
 import Organization from './components/forms/Organization';
 import StaffForm from './components/forms/StaffForm';
-
-
+import CardWrapperStaff from './components/listCard/CardWrapperStaff';
+import CardWrapperOrg from './components/listCard/CardWrapperOrg';
 
 const AppMain = () => {
 
@@ -63,7 +63,9 @@ const AppMain = () => {
             <Route path="/register/player" element={<PlayerForm />} />
             <Route path="/register/team" element={<Organization />} />
             <Route path="/register/staff" element={<StaffForm />} />
-            <Route path="/list/players" element={<CardWrapper />} />
+            <Route path="/list/players" element={<CardWrapperPlayer />} />
+            <Route path="/list/staff" element={<CardWrapperStaff />} />
+            <Route path="/list/org" element={<CardWrapperOrg />} />
             <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                 <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
             </Route>

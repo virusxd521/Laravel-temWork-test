@@ -589,7 +589,6 @@ span {
   font-family: Arial, Helvetica, sans-serif;
 }
 .list__card__cnt--front {
-  color: black;
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -597,14 +596,16 @@ span {
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
 }
-.list__card__cnt--front ul {
+.list__card__cnt--front__ul {
   list-style: none;
   text-decoration: none;
   max-width: 90%;
+  color: red;
 }
-.list__card__cnt--front ul li {
+.list__card__cnt--front__ul li {
   margin-top: 30px;
   font-weight: bold;
+  color: red;
 }
 .list__card__cnt--back {
   width: 100%;
@@ -623,7 +624,6 @@ span {
 }
 .list__card__cnt--back--content ul li {
   margin-top: 15px;
-  word-wrap: break-word;
 }
 .list__card__button {
   height: 3.5em;
@@ -643,6 +643,10 @@ span {
 }
 .list__card__span {
   color: black;
+}
+
+.list__card__title {
+  color: red !important;
 }
 
 .form__section {
@@ -739,4 +743,10 @@ input:invalid[focused=true] ~ span {
   font-size: 30em;
   color: white;
   margin: 0 auto;
+}
+.section404__subtitle {
+  font-size: 10em;
+  color: white;
+  margin: 0 auto;
+  z-index: 3;
 }

@@ -48,10 +48,10 @@ nav {
 
 .logo-fixed {
   position: fixed;
-  width: 15%;
-  height: 15%;
+  width: 8%;
+  height: 8%;
   top: 1.5rem;
-  left: 0;
+  left: 2.7rem;
   transform: translate(0%, -45%);
   z-index: 4;
   padding-left: 1em;
@@ -61,7 +61,7 @@ nav {
 .first-page {
   height: 120vh;
   width: 100%;
-  background-image: url(/images/backround.svg?1b0925b30232e0adf15d10d190083f2a);
+  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
   background-size: 100vh;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -589,21 +589,21 @@ span {
   font-family: Arial, Helvetica, sans-serif;
 }
 .list__card__cnt--front {
-  color: black;
-  font-size: 20px;
+  font-size: 1.2em;
+  padding: 0.5em;
+  width: 26%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
 }
-.list__card__cnt--front ul {
+.list__card__cnt--front__ul {
   list-style: none;
   text-decoration: none;
-  max-width: 90%;
 }
-.list__card__cnt--front ul li {
-  margin-top: 30px;
+.list__card__cnt--front__ul li {
+  margin-top: 1em;
   font-weight: bold;
 }
 .list__card__cnt--back {
@@ -623,7 +623,6 @@ span {
 }
 .list__card__cnt--back--content ul li {
   margin-top: 15px;
-  word-wrap: break-word;
 }
 .list__card__button {
   height: 3.5em;
@@ -739,4 +738,10 @@ input:invalid[focused=true] ~ span {
   font-size: 30em;
   color: white;
   margin: 0 auto;
+}
+.section404__subtitle {
+  font-size: 10em;
+  color: white;
+  margin: 0 auto;
+  z-index: 3;
 }

@@ -3,6 +3,8 @@ import FormInput from "./FormInput";
 import Header from "../Header"
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from "axios";
+import { useContext } from "react";
+import { UserContext } from "../../context/context";
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -13,6 +15,7 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  const {setUser} = useContext(UserContext)
 
   // Data for submiting the form with JSON
   const [dataForJson, setDataForJson] = useState({
@@ -111,13 +114,19 @@ const Register = () => {
 
   const configuring_registration = async data => {
     document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    await axios.post('/api/resgitration', {
+    const res = await axios.post('/api/resgitration', {
       ...data,
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
-    ).then(response => {
-      console.log(response);
-    })
+    )
+    console.log(res)
+    if (res.data.error) {
+      setUser(null)
+      return
+    } else {
+      return navigate('/login')
+    }
+    
   }
 
 

@@ -31,7 +31,7 @@ class CustomAuthController extends Controller
 
         $data = $request->all();
         $check = $this->create($data);
-        return $data['username'];
+        return json_encode(['success' => true ]);
     }
 
     // Creating a new User
@@ -61,7 +61,11 @@ class CustomAuthController extends Controller
             return $user;
             // $request->session()->regenerate();
         }
-        return json_encode(['error' => 'ssssss']);
+        return json_encode(['error' => 'wrong credentials']);
+    }
+
+    public function getUser() {
+        return json_encode(['user' => Auth::user()]);
     }
 
     // Sign out of the app as a user
@@ -71,7 +75,7 @@ class CustomAuthController extends Controller
         Session::flush();
         Auth::logout();
         // $user = Auth::user();
-        return json_encode(['signed_out' => Auth::user()]);
+        return json_encode(['user' => null]);
         // return $logged;
     }
 

@@ -49,7 +49,7 @@ Route::get('/organization', [OrganizationController::class, 'getting_number']);
 Route::get('/individual_advertisement', [PlayerController::class, 'data_for_advertisement_user']);
 
 // Signing out
-Route::get('/logout', [CustomAuthController::class, 'signOut']);
+Route::post('/logout', [CustomAuthController::class, 'signOut']);
 
 // Route which will take care of the authentication
 Route::post('/login', [CustomAuthController::class, 'authenticate']);
@@ -58,6 +58,9 @@ Route::post('/login', [CustomAuthController::class, 'authenticate']);
 Route::post('/resgitration', [CustomAuthController::class, 'registration']);
 
 Route::get('/profile/{id?}', [StaffController::class, 'test_middleware']);
+
+
+Route::get('/user', [CustomAuthController::class, 'getUser']);
 
 // Test, sending back only the authenticated user 
 // The user don't have access to other usres data

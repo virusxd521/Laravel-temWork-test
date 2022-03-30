@@ -1,8 +1,9 @@
 import { UserContext } from '../../context/context';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import Header from '../Header';
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -20,19 +21,11 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   // const [signedOut, setSignedOut] = useState('Signed');
 
-  // const navigate = useNavigate();
-
-  const signingOut = () => {
-    axios.get('/api/logout').then( response => {
-    setUser(data.response.s)
-    console.log(response)
-  })}
+  const navigate = useNavigate();
 
   
-  // Getting a session-id-cookie from sancctum
-  axios.get('/sanctum/csrf-cookie').then(response => {
-    console.log(response);
-  });
+  
+  
 
   function validateForm() {
     return username.length > 0 && password.length > 0;
@@ -41,21 +34,12 @@ export default function Login({responsePassingUp, authenticatedUser}) {
   // handling the submition and registration of data
   const handleSubmit = e => {
     e.preventDefault();
-    // console.log(e.target);
-    
-    // axios.post('/login',).then(response => {
-    //   console.log(response);
-    // });
-
 
   // midiatory object between the form and the state 
     const data = {
       user_name: '',
       password: '',
     }
-
-
-
     const parentArr = Array.from(e.target);
     for(let key in values){
       parentArr.map((item, index) => {
@@ -72,19 +56,21 @@ export default function Login({responsePassingUp, authenticatedUser}) {
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     })
       console.log('ciao', res.data);
-      responsePassingUp(res.data);
+      //responsePassingUp(res.data);
 
       if (res.data.error) {
-        return
+        setUser(null)
+        return navigate('/')
       } else {
         setUser(res.data)
+        return navigate('/')
       }
     
   }
 
   return (
      <section className="login">
-        <Header classa="header-short" authenticatedUser={authenticatedUser} signingOut={signingOut} />
+        <Header classa="header-short" authenticatedUser={authenticatedUser} />
         
         <form className="login__form" onSubmit={handleSubmit}>
             <h1 className="login__form__title">Login</h1>

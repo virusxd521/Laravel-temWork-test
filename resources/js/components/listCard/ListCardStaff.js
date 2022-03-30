@@ -7,8 +7,7 @@ function ListCardStaff({ item }) {
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
-  console.log(isFlipped);
-  console.log(item);
+  
 
   return (
     <>

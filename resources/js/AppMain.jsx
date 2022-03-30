@@ -48,10 +48,7 @@ const AppMain = () => {
     const signingOut = data =>{
         SetAuthenticatedUser(data);
     }
-
     
-
-
     return (
         <Routes>
             <Route path="/" element={ <Homepage />} />

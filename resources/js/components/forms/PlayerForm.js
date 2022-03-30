@@ -1,20 +1,57 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Header from "../Header";
+import Option from './Option';
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
+  
+  // State with the data fetched from the API
+  const [responseData, setResponseData] = useState([]);
 
-  return (
+  // prepering a form object since axios cannot handle forms 
+  const loginFormData = new FormData();
+  
+  // fetching data to populate the form
+  const fetchingData = () => {
+    axios.get('/api/player_form_data')
+    .then(response => {
+      console.log(response.data);
+      setResponseData(response.data)
+    })
+  }
+
+  useEffect(() => {
+    fetchingData();
+  },[])
+
+  const submitionDataUser = () => {
+    axios.post('/api/submiting_player_advertisement',
+      loginFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    
+    )
+    .then(res => {
+      console.log(res)
+    })
+  }
+
+  // Hydrating the form Object with the data from the form
+  const hydrator = e => {
+    e.preventDefault(); 
+    Array.from(e.target).map(item => {
+      loginFormData.append(item['name'], item.value)
+    });
+    submitionDataUser();
+  }
+
+  return (    
+    
     <section className="form__section">
       <Header height="0" />
-
-      <form className="form" >
+      <form className="form" id="player_form" onSubmit={e => hydrator(e)}>
         <h1 className="form__title">Player register</h1>
         <div className="form__container">
           <label>Nickname</label>
@@ -38,56 +75,28 @@ function PlayerForm() {
           />
         </div>
         <div className="form__container">
-          <label>Nationality</label>
-          <select className="form__select">
-            <option>Czech</option>
-            <option>Slovak</option>
-            <option>Uk</option>
-            <option>Germany</option>
-          </select>
+          <label htmlFor="nationalities">Nationality</label>
+            <Option responseData={responseData} propOption={'nationalities'} />
         </div>
         <div className="form__container">
-          <label>Languages</label>
-          <select className="form__select">
-            <option>Czech</option>
-            <option>Slovak</option>
-            <option>English</option>
-          </select>
+          <label htmlFor="languages" >Languages</label>
+            <Option responseData={responseData} propOption={'languages'} />
         </div>
         <div className="form__container">
-          <label>Game</label>
-          <select className="form__select">
-            <option>League of legends</option>
-            <option>PUBG</option>
-            <option>CS:GO</option>
-          </select>
+          <label htmlFor="games">Game</label>
+          <Option responseData={responseData} propOption={'games'} />
         </div>
         <div className="form__container">
-          <label>Game role</label>
-          <select className="form__select">
-            <option>Top</option>
-            <option>Jungle</option>
-            <option>Mid</option>
-            <option>ADC</option>
-            <option>Support</option>
-          </select>
+          <label htmlFor="game_roles" >Game role</label>
+            <Option responseData={responseData} propOption={'game_roles'} />
         </div>
         <div className="form__container">
-          <label>Rank</label>
-          <select className="form__select">
-            <option>Bronze</option>
-            <option>Silver</option>
-            <option>Gold</option>
-            <option>Platinum</option>
-            <option>Diamond</option>
-            <option>Master</option>
-            <option>Grandmaster</option>
-            <option>Challenger</option>
-          </select>
+          <label htmlFor="ranks">Rank</label>
+            <Option responseData={responseData} propOption={'ranks'} />
         </div>
         <div className="form__container">
-          <label>Server</label>
-          <select className="form__select">
+          <label htmlFor="server">Server</label>
+          <select name="server" form="player_form" id="server" className="form__select">
             <option>EUNE</option>
             <option>EUW</option>
             <option>NA</option>
@@ -98,6 +107,9 @@ function PlayerForm() {
           className="form__button button"
           type="submit"
           // disabled={!validateForm()}
+          placeholder="Submit"
+          value="some_value"
+
         >
           Submit
         </button>

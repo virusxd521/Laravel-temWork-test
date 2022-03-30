@@ -10,12 +10,8 @@ function CardWrapper() {
   
 
   useEffect(() => {
-    
-
     axios.get(url).then((response) => {
       setInfo(response.data);
-      
-  
     });
 
   }, []);
@@ -23,7 +19,7 @@ function CardWrapper() {
 
   return (
     <section className="players__list" >
-    <Header classa="header-short" />
+    <Header className="header-short" />
     {
       Object.keys(info).length !== 0 ?
       <div className="card-wrapper">

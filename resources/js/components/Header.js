@@ -68,9 +68,7 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                     {
                         authenticatedUser !== null && authenticatedUser !== undefined ? <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> : null
                     }
-                    
-                    
-
+                
                 </ul>
             </nav>
             

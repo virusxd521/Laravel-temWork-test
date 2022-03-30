@@ -17,15 +17,11 @@ class AdvertisementLanguageSeeder extends Seeder
     public function run()
     {
         //
-
-
         for($i = 0; $i <= 60; $i++){
             $advertisement_language = new AdvertisementLanguage;
             $advertisement_language->advertisement_id = $i;
             $advertisement_language->language_id = rand(1, 148);
             $advertisement_language->save();
         }
-        
-
     }
 }

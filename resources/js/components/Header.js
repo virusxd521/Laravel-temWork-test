@@ -24,7 +24,7 @@ function Header({height, classa, authenticatedUser}) {
     
 // user context 
   const { user, setUser} = useContext(UserContext)
-  console.log('hi', user)
+
 
 //   animations logo
     gsap.registerPlugin(ScrollTrigger);

@@ -623,7 +623,6 @@ span {
 }
 .list__card__cnt--back--content ul li {
   margin-top: 15px;
-  word-wrap: break-word;
 }
 .list__card__button {
   height: 3.5em;

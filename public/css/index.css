@@ -589,9 +589,13 @@ span {
   font-family: Arial, Helvetica, sans-serif;
 }
 .list__card__cnt--front {
+<<<<<<< HEAD
   font-size: 1.2em;
   padding: 0.5em;
   width: 26%;
+=======
+  font-size: 20px;
+>>>>>>> master
   display: flex;
   justify-content: center;
   align-items: center;
@@ -601,10 +605,19 @@ span {
 .list__card__cnt--front__ul {
   list-style: none;
   text-decoration: none;
+<<<<<<< HEAD
 }
 .list__card__cnt--front__ul li {
   margin-top: 1em;
+=======
+  max-width: 90%;
+  color: red;
+}
+.list__card__cnt--front__ul li {
+  margin-top: 30px;
+>>>>>>> master
   font-weight: bold;
+  color: red;
 }
 .list__card__cnt--back {
   width: 100%;
@@ -642,6 +655,10 @@ span {
 }
 .list__card__span {
   color: black;
+}
+
+.list__card__title {
+  color: red !important;
 }
 
 .form__section {

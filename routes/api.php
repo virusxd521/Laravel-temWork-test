@@ -80,5 +80,5 @@ Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_
 
 
 // All three form submition routes
-
 // submiting_a_player
+Route::post('/submiting_player_advertisement', [PlayerController::class, 'submiting_a_player']);

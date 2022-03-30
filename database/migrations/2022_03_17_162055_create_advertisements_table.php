@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('position_id');
-            //$table->foreignId('language_id');
+            $table->foreignId('language_id');
             $table->foreignId('game_id')->nullable();
             $table->foreignId('organization_id')->nullable();
             $table->foreignId('individual_id')->nullable();
@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('offer', 255)->nullable();
             $table->string('expectation', 255)->nullable();
             $table->string('availability', 255)->nullable();
+
+            
         });
     }
 

@@ -2858,6 +2858,43 @@ function Card(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/Option.js":
+/*!*************************************************!*\
+  !*** ./resources/js/components/forms/Option.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+var Option = function Option(_ref) {
+  var responseData = _ref.responseData,
+      propOption = _ref.propOption;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("select", {
+    name: propOption,
+    className: "form__select",
+    id: "".concat(propOption),
+    form: "player_form",
+    children: responseData.map(function (item) {
+      return !!item[propOption] ? item[propOption].map(function (innerItem) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", {
+          value: innerItem,
+          children: innerItem
+        });
+      }) : null;
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Option);
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/OrganizationForm.js":
 /*!***********************************************************!*\
   !*** ./resources/js/components/forms/OrganizationForm.js ***!
@@ -3022,7 +3059,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Option__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Option */ "./resources/js/components/forms/Option.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -3030,26 +3081,63 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
+  // State with the data fetched from the API
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      responseData = _useState2[0],
+      setResponseData = _useState2[1]; // prepering a form object since axios cannot handle forms 
+
+
+  var loginFormData = new FormData(); // fetching data to populate the form
+
+  var fetchingData = function fetchingData() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/player_form_data').then(function (response) {
+      console.log(response.data);
+      setResponseData(response.data);
+    });
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    fetchingData();
+  }, []);
+
+  var submitionDataUser = function submitionDataUser() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/submiting_player_advertisement', loginFormData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then(function (res) {
+      console.log(res);
+    });
+  }; // Hydrating the form Object with the data from the form
+
+
+  var hydrator = function hydrator(e) {
+    e.preventDefault();
+    Array.from(e.target).map(function (item) {
+      loginFormData.append(item['name'], item.value);
+    });
+    submitionDataUser();
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     className: "form__section",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
       height: "0"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
       className: "form",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+      id: "player_form",
+      onSubmit: function onSubmit(e) {
+        return hydrator(e);
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
         className: "form__title",
         children: "Player register"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           children: "Nickname"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           className: "form__input",
           autoFocus: true,
           type: "text",
@@ -3058,121 +3146,86 @@ function PlayerForm() {
           ,
           name: "nick_name"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
           children: "Date of birth"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           className: "form__input",
           type: "date" // value={password}
           // onChange={(e) => setPassword(e.target.value)}
           ,
           name: "date_of_birth"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "nationalities",
           children: "Nationality"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Czech"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Slovak"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Uk"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Germany"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          responseData: responseData,
+          propOption: 'nationalities'
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "languages",
           children: "Languages"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Czech"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Slovak"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "English"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          responseData: responseData,
+          propOption: 'languages'
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "games",
           children: "Game"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "League of legends"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "PUBG"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "CS:GO"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          responseData: responseData,
+          propOption: 'games'
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "game_roles",
           children: "Game role"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Top"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Jungle"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Mid"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "ADC"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Support"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          responseData: responseData,
+          propOption: 'game_roles'
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "ranks",
           children: "Rank"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
-          className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Bronze"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Silver"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Gold"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Platinum"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Diamond"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Master"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Grandmaster"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-            children: "Challenger"
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          responseData: responseData,
+          propOption: 'ranks'
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "server",
           children: "Server"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+          name: "server",
+          form: "player_form",
+          id: "server",
           className: "form__select",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
             children: "EUNE"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
             children: "EUW"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
             children: "NA"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "form__button button",
         type: "submit" // disabled={!validateForm()}
         ,
+        placeholder: "Submit",
+        value: "some_value",
         children: "Submit"
       })]
     })]
@@ -3516,7 +3569,7 @@ function CardWrapperStaff() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     className: "players__list",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      classa: "header-short"
+      className: "header-short"
     }), Object.keys(info).length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: "players__list__card",
       children: info.map(function (item, i) {
@@ -4592,7 +4645,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
 /* harmony import */ var _AppMain__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AppMain */ "./resources/js/AppMain.jsx");
-/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../css/index.css */ "./public/css/index.css");
+/* harmony import */ var _css_index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../../../css/index.css */ "./public/css/index.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -4647,7 +4700,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
+<<<<<<< HEAD
 ___CSS_LOADER_EXPORT___.push([module.id, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nhtml, body {\n  background-color: black;\n  max-width: 100%;\n  box-sizing: border-box;\n  margin: 0 auto;\n}\n\n@font-face {\n  src: url(\"/fonts/Cornerstone.ttf\");\n  font-family: \"Cornerstone\";\n}\nbody {\n  margin: 0;\n  font-family: \"Cornerstone\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  width: 100%;\n}\n\n/* code {\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n        monospace;\n} */\nnav {\n  display: flex;\n  justify-content: space-between;\n  background: white;\n  justify-content: flex-end;\n}\n\n.logo {\n  position: fixed;\n  max-width: 90%;\n  height: 85%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 5;\n  cursor: pointer;\n  padding-left: 1em;\n}\n\n.logo-fixed {\n  position: fixed;\n  width: 8%;\n  height: 8%;\n  top: 1.5rem;\n  left: 2.7rem;\n  transform: translate(0%, -45%);\n  z-index: 4;\n  padding-left: 1em;\n  cursor: pointer;\n}\n\n.first-page {\n  height: 120vh;\n  width: 100%;\n  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);\n  background-size: 100vh;\n  background-repeat: no-repeat;\n  background-position: bottom;\n  color: white;\n  display: flex;\n  justify-content: space-around;\n  background-color: black;\n}\n\n.first-page h1 {\n  font-size: 3em;\n  text-align: center;\n  padding: 2em;\n  color: white;\n}\n\n.connections {\n  height: 70%;\n}\n\n.connections_header_text {\n  color: #6ad4db;\n}\n\n.second-page {\n  min-height: 100vh;\n  width: 100%;\n  background-color: black;\n  padding-top: 5em;\n}\n\n.second-page h2 {\n  color: white;\n  font-size: 3em;\n  padding: 2em;\n  text-align: center;\n}\n\n.card_cnt {\n  display: flex;\n  width: 70%;\n  margin: 0 auto;\n  justify-content: center;\n}\n\n.card_cnt > div {\n  width: 100%;\n}\n\n.second-page_card {\n  color: white;\n  width: 25%;\n  height: 25em;\n  border: 2px solid white;\n}\n\n.header {\n  height: 100vh;\n  width: 100%;\n  background-color: black;\n}\n\n.header-short {\n  height: 4.5vh;\n  width: 100%;\n  background-color: black;\n}\n\nnav ul {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  list-style: none;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  padding: 1.5em 5rem;\n  z-index: 3;\n  background-color: black;\n}\n\nnav ul a {\n  text-decoration: none;\n  font-size: 1.2rem;\n  color: white;\n  margin-left: 5rem;\n  z-index: 2;\n  transition: transform 100ms ease-in;\n}\n\nnav ul a:hover {\n  color: #6ad4db;\n  transform: scale(1.2);\n  /* -moz-transition: all 0.3s ease-in-out; */\n  /* -webkit-transition: all 0.3s ease-in-out; */\n  /* -ms-transition: all 0.3s ease-in-out; */\n  /* -o-transition: all 0.3s ease-in-out; */\n  transition: all 0.3s ease-in-out;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:after {\n  content: \"\";\n  display: block;\n  width: 0;\n  position: absolute;\n  height: 0.2em;\n  background: #6ad4db;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:hover::after {\n  width: 100%;\n}\n\nform {\n  border: none;\n  width: 90%;\n}\n\nbutton {\n  width: 100%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  padding: 1em;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n\nbutton:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n\n.wrapper {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(20rem, 16rem));\n  gap: 5rem;\n  justify-content: center;\n}\n\n.card {\n  height: 500px;\n  width: 20em;\n  overflow: hidden;\n  background-color: white;\n  box-shadow: 0 2px 20px grey;\n  border-radius: 5%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  cursor: pointer;\n  transition: transform 200ms ease-in;\n  align-items: center;\n}\n.card__player {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 4.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__team {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon1.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__staff {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 2.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__body__bg {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/backk.png\");\n}\n.card__title {\n  padding: 1rem;\n  text-align: center;\n}\n.card__number {\n  padding: 0 1rem;\n  text-align: center;\n}\n.card__btn {\n  padding: 1em;\n  width: 80%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n.card__circle {\n  border: 3px solid black;\n  border-radius: 50%;\n  width: 90px;\n  height: 90px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: auto;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n\n.card:hover {\n  transform: scale(1.1);\n}\n\n.card:hover .card__circle {\n  background: #6ad4db;\n  box-shadow: inset 8em 0 0 0 #6ad4db;\n  color: white;\n  border: 2px solid black;\n}\n\n.card:hover .card__btn,\n.card:focus .card__btn {\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n  color: white;\n}\n\n.card:hover .card__number {\n  color: white;\n}\n\n.login {\n  height: 100vh;\n  width: 100%;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.login__form {\n  height: 28em;\n  display: flex;\n  flex-direction: column;\n  margin: 15em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.login__form__container {\n  display: flex;\n  flex-direction: column;\n}\n.login__form__title {\n  color: black;\n  text-align: center;\n  padding: 0.5em 0;\n}\n.login__form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.login__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.login__form__input {\n  width: 15em;\n  height: 4em;\n  margin-top: 1em;\n}\n.login__form__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.login__form__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.login__form__label {\n  font-size: 1em;\n  color: black;\n  margin: 1em 2em 0 0;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.formInput {\n  display: flex;\n  flex-direction: column;\n  width: 18em;\n}\n.formInput__input {\n  padding: 15px;\n  margin: 1em 0px;\n  border-radius: 5px;\n  border: 1px solid gray;\n}\n.formInput__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.formInput__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.formInput__label {\n  font-size: 1em;\n  color: black;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.register {\n  height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.register__form {\n  height: 50em;\n  display: flex;\n  flex-direction: column;\n  margin: 5em auto;\n  width: 25em;\n  align-content: center;\n  align-items: center;\n  border: 5px solid black;\n  padding: 1em 2em;\n  justify-content: center;\n  justify-items: center;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.register__form__title {\n  color: black;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.register__form__button {\n  height: 3.5em;\n  width: 90%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.register__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.register__form__button__input {\n  width: auto;\n  height: 4em;\n}\n\n.login__redirect {\n  color: grey;\n  font-size: 1.5em;\n  cursor: pointer;\n}\n\n.login__redirect:hover {\n  color: #6ad4db;\n}\n\n.UI {\n  height: 100vh;\n  width: 100vw;\n  background-image: url(/images/backk.png?3312ff5c1ce3b46b2a36b7dda7cc9e89);\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  padding-top: 2em;\n}\n.UI--card__cnt {\n  display: flex;\n  justify-content: center;\n  margin-top: 5em;\n}\n.UI__title {\n  color: white;\n  padding-top: 2em;\n  font-size: 2.5em;\n  text-align: center;\n}\n.UI__title__text {\n  color: #6ad4db !important;\n}\n.UI__card {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  justify-content: space-around;\n  align-items: center;\n  border: 2px solid white;\n  color: white;\n  height: 50vh;\n  background-color: black;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  cursor: pointer;\n}\n.UI__card__title {\n  font-size: 3em;\n  transition: ease-out 0.6s;\n}\n.UI__card:hover {\n  box-shadow: inset 0 0 0 250px #6ad4db;\n}\n.UI__card:hover .UI_card__button {\n  background-color: black;\n}\n.UI__card:hover .UI_card__title {\n  color: black;\n}\n\n:root {\n  --primary: white;\n  --secondary: black;\n  --dark: #212121;\n  --light: #f3f3f3;\n  --clr-neon: #31c9b2;\n  --clr-bg: #17574e;\n}\n\n.players__list {\n  background-image: url(\"/images/backk.png\");\n}\n.players__list__card {\n  padding-top: 3em;\n  display: flex;\n  min-height: 100vh;\n  flex-wrap: wrap;\n  margin: auto;\n  flex-direction: row;\n}\n\n.list__card {\n  display: flex;\n  width: 26%;\n  min-height: 38em;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin: 2em auto;\n}\n.list__card__inner {\n  width: 100%;\n  margin: 0 auto;\n  height: 100%;\n  transition: transform 1s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n.list__card__inner.is-flipped {\n  transform: rotateY(180deg);\n}\n.list__card__face {\n  position: absolute;\n  width: 100%;\n  padding: 1em 1em;\n  height: 100%;\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  overflow: hidden;\n  border-radius: 3px;\n  background-color: white;\n  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);\n  box-shadow: inset 0 0 5px 5px black;\n}\n.list__card__face--front {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-direction: column;\n}\n.list__card__face--back {\n  background-color: var(--light);\n  transform: rotateY(180deg);\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front {\n  font-size: 1.2em;\n  padding: 0.5em;\n  width: 26%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front__ul {\n  list-style: none;\n  text-decoration: none;\n}\n.list__card__cnt--front__ul li {\n  margin-top: 1em;\n  font-weight: bold;\n}\n.list__card__cnt--back {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content {\n  padding: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content ul li {\n  margin-top: 15px;\n}\n.list__card__button {\n  height: 3.5em;\n  width: 50%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.list__card__span {\n  color: black;\n}\n\n.form__section {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.form__section .form {\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  margin: 10em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.form__section .form__container {\n  display: flex;\n  flex-direction: column;\n}\n.form__section .form__title {\n  color: black;\n  text-align: center;\n  padding: 0.7em 0;\n}\n.form__section .form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  /* transition: background 200ms ease-in, color 200ms ease-in; */\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.form__section .form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.form__section .form__input {\n  width: 15em;\n  height: 4em;\n  margin: 1em 0 1em 0;\n}\n.form__section .form__label {\n  font-size: 1em;\n  color: gray;\n  margin: 1em 2em 0 0;\n}\n.form__section .form__select {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  width: 200px;\n  height: 47px;\n  border-radius: 5px;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\ninput:invalid[focused=true] {\n  border: 1px solid red;\n}\n\ninput:invalid[focused=true] ~ span {\n  display: block;\n}\n\n.section404 {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.section404__title {\n  font-size: 30em;\n  color: white;\n  margin: 0 auto;\n}\n.section404__subtitle {\n  font-size: 10em;\n  color: white;\n  margin: 0 auto;\n  z-index: 3;\n}\n", ""]);
+=======
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nhtml, body {\n  background-color: black;\n  max-width: 100%;\n  box-sizing: border-box;\n  margin: 0 auto;\n}\n\n@font-face {\n  src: url(\"/fonts/Cornerstone.ttf\");\n  font-family: \"Cornerstone\";\n}\nbody {\n  margin: 0;\n  font-family: \"Cornerstone\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  width: 100%;\n}\n\n/* code {\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n        monospace;\n} */\nnav {\n  display: flex;\n  justify-content: space-between;\n  background: white;\n  justify-content: flex-end;\n}\n\n.logo {\n  position: fixed;\n  max-width: 90%;\n  height: 85%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 5;\n  cursor: pointer;\n  padding-left: 1em;\n}\n\n.logo-fixed {\n  position: fixed;\n  width: 15%;\n  height: 15%;\n  top: 1.5rem;\n  left: 0;\n  transform: translate(0%, -45%);\n  z-index: 4;\n  padding-left: 1em;\n  cursor: pointer;\n}\n\n.first-page {\n  height: 120vh;\n  width: 100%;\n  background-image: url(/images/backround.svg?1b0925b30232e0adf15d10d190083f2a);\n  background-size: 100vh;\n  background-repeat: no-repeat;\n  background-position: bottom;\n  color: white;\n  display: flex;\n  justify-content: space-around;\n  background-color: black;\n}\n\n.first-page h1 {\n  font-size: 3em;\n  text-align: center;\n  padding: 2em;\n  color: white;\n}\n\n.connections {\n  height: 70%;\n}\n\n.connections_header_text {\n  color: #6ad4db;\n}\n\n.second-page {\n  min-height: 100vh;\n  width: 100%;\n  background-color: black;\n  padding-top: 5em;\n}\n\n.second-page h2 {\n  color: white;\n  font-size: 3em;\n  padding: 2em;\n  text-align: center;\n}\n\n.card_cnt {\n  display: flex;\n  width: 70%;\n  margin: 0 auto;\n  justify-content: center;\n}\n\n.card_cnt > div {\n  width: 100%;\n}\n\n.second-page_card {\n  color: white;\n  width: 25%;\n  height: 25em;\n  border: 2px solid white;\n}\n\n.header {\n  height: 100vh;\n  width: 100%;\n  background-color: black;\n}\n\n.header-short {\n  height: 4.5vh;\n  width: 100%;\n  background-color: black;\n}\n\nnav ul {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  list-style: none;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  padding: 1.5em 5rem;\n  z-index: 3;\n  background-color: black;\n}\n\nnav ul a {\n  text-decoration: none;\n  font-size: 1.2rem;\n  color: white;\n  margin-left: 5rem;\n  z-index: 2;\n  transition: transform 100ms ease-in;\n}\n\nnav ul a:hover {\n  color: #6ad4db;\n  transform: scale(1.2);\n  /* -moz-transition: all 0.3s ease-in-out; */\n  /* -webkit-transition: all 0.3s ease-in-out; */\n  /* -ms-transition: all 0.3s ease-in-out; */\n  /* -o-transition: all 0.3s ease-in-out; */\n  transition: all 0.3s ease-in-out;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:after {\n  content: \"\";\n  display: block;\n  width: 0;\n  position: absolute;\n  height: 0.2em;\n  background: #6ad4db;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:hover::after {\n  width: 100%;\n}\n\nform {\n  border: none;\n  width: 90%;\n}\n\nbutton {\n  width: 100%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  padding: 1em;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n\nbutton:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n\n.wrapper {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(20rem, 16rem));\n  gap: 5rem;\n  justify-content: center;\n}\n\n.card {\n  height: 500px;\n  width: 20em;\n  overflow: hidden;\n  background-color: white;\n  box-shadow: 0 2px 20px grey;\n  border-radius: 5%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  cursor: pointer;\n  transition: transform 200ms ease-in;\n  align-items: center;\n}\n.card__player {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 4.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__team {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon1.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__staff {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 2.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__body__bg {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/backk.png\");\n}\n.card__title {\n  padding: 1rem;\n  text-align: center;\n}\n.card__number {\n  padding: 0 1rem;\n  text-align: center;\n}\n.card__btn {\n  padding: 1em;\n  width: 80%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n.card__circle {\n  border: 3px solid black;\n  border-radius: 50%;\n  width: 90px;\n  height: 90px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: auto;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n\n.card:hover {\n  transform: scale(1.1);\n}\n\n.card:hover .card__circle {\n  background: #6ad4db;\n  box-shadow: inset 8em 0 0 0 #6ad4db;\n  color: white;\n  border: 2px solid black;\n}\n\n.card:hover .card__btn,\n.card:focus .card__btn {\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n  color: white;\n}\n\n.card:hover .card__number {\n  color: white;\n}\n\n.login {\n  height: 100vh;\n  width: 100%;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.login__form {\n  height: 28em;\n  display: flex;\n  flex-direction: column;\n  margin: 15em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.login__form__container {\n  display: flex;\n  flex-direction: column;\n}\n.login__form__title {\n  color: black;\n  text-align: center;\n  padding: 0.5em 0;\n}\n.login__form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.login__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.login__form__input {\n  width: 15em;\n  height: 4em;\n  margin-top: 1em;\n}\n.login__form__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.login__form__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.login__form__label {\n  font-size: 1em;\n  color: black;\n  margin: 1em 2em 0 0;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.formInput {\n  display: flex;\n  flex-direction: column;\n  width: 18em;\n}\n.formInput__input {\n  padding: 15px;\n  margin: 1em 0px;\n  border-radius: 5px;\n  border: 1px solid gray;\n}\n.formInput__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.formInput__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.formInput__label {\n  font-size: 1em;\n  color: black;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.register {\n  height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.register__form {\n  height: 50em;\n  display: flex;\n  flex-direction: column;\n  margin: 5em auto;\n  width: 25em;\n  align-content: center;\n  align-items: center;\n  border: 5px solid black;\n  padding: 1em 2em;\n  justify-content: center;\n  justify-items: center;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.register__form__title {\n  color: black;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.register__form__button {\n  height: 3.5em;\n  width: 90%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.register__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.register__form__button__input {\n  width: auto;\n  height: 4em;\n}\n\n.login__redirect {\n  color: grey;\n  font-size: 1.5em;\n  cursor: pointer;\n}\n\n.login__redirect:hover {\n  color: #6ad4db;\n}\n\n.UI {\n  height: 100vh;\n  width: 100vw;\n  background-image: url(/images/backk.png?3312ff5c1ce3b46b2a36b7dda7cc9e89);\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  padding-top: 2em;\n}\n.UI--card__cnt {\n  display: flex;\n  justify-content: center;\n  margin-top: 5em;\n}\n.UI__title {\n  color: white;\n  padding-top: 2em;\n  font-size: 2.5em;\n  text-align: center;\n}\n.UI__title__text {\n  color: #6ad4db !important;\n}\n.UI__card {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  justify-content: space-around;\n  align-items: center;\n  border: 2px solid white;\n  color: white;\n  height: 50vh;\n  background-color: black;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  cursor: pointer;\n}\n.UI__card__title {\n  font-size: 3em;\n  transition: ease-out 0.6s;\n}\n.UI__card:hover {\n  box-shadow: inset 0 0 0 250px #6ad4db;\n}\n.UI__card:hover .UI_card__button {\n  background-color: black;\n}\n.UI__card:hover .UI_card__title {\n  color: black;\n}\n\n:root {\n  --primary: white;\n  --secondary: black;\n  --dark: #212121;\n  --light: #f3f3f3;\n  --clr-neon: #31c9b2;\n  --clr-bg: #17574e;\n}\n\n.players__list {\n  background-image: url(\"/images/backk.png\");\n}\n.players__list__card {\n  padding-top: 3em;\n  display: flex;\n  min-height: 100vh;\n  flex-wrap: wrap;\n  margin: auto;\n  flex-direction: row;\n}\n\n.list__card {\n  display: flex;\n  width: 26%;\n  min-height: 38em;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  margin: 2em auto;\n}\n.list__card__inner {\n  width: 100%;\n  margin: 0 auto;\n  height: 100%;\n  transition: transform 1s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n.list__card__inner.is-flipped {\n  transform: rotateY(180deg);\n}\n.list__card__face {\n  position: absolute;\n  width: 100%;\n  padding: 1em 1em;\n  height: 100%;\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  overflow: hidden;\n  border-radius: 3px;\n  background-color: white;\n  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);\n  box-shadow: inset 0 0 5px 5px black;\n}\n.list__card__face--front {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-direction: column;\n}\n.list__card__face--back {\n  background-color: var(--light);\n  transform: rotateY(180deg);\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front {\n  font-size: 20px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front__ul {\n  list-style: none;\n  text-decoration: none;\n  max-width: 90%;\n  color: red;\n}\n.list__card__cnt--front__ul li {\n  margin-top: 30px;\n  font-weight: bold;\n  color: red;\n}\n.list__card__cnt--back {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content {\n  padding: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content ul li {\n  margin-top: 15px;\n}\n.list__card__button {\n  height: 3.5em;\n  width: 50%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.list__card__span {\n  color: black;\n}\n\n.list__card__title {\n  color: red !important;\n}\n\n.form__section {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.form__section .form {\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  margin: 10em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.form__section .form__container {\n  display: flex;\n  flex-direction: column;\n}\n.form__section .form__title {\n  color: black;\n  text-align: center;\n  padding: 0.7em 0;\n}\n.form__section .form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  /* transition: background 200ms ease-in, color 200ms ease-in; */\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.form__section .form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.form__section .form__input {\n  width: 15em;\n  height: 4em;\n  margin: 1em 0 1em 0;\n}\n.form__section .form__label {\n  font-size: 1em;\n  color: gray;\n  margin: 1em 2em 0 0;\n}\n.form__section .form__select {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  width: 200px;\n  height: 47px;\n  border-radius: 5px;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\ninput:invalid[focused=true] {\n  border: 1px solid red;\n}\n\ninput:invalid[focused=true] ~ span {\n  display: block;\n}\n\n.section404 {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.section404__title {\n  font-size: 30em;\n  color: white;\n  margin: 0 auto;\n}\n.section404__subtitle {\n  font-size: 10em;\n  color: white;\n  margin: 0 auto;\n  z-index: 3;\n}\n", ""]);
+>>>>>>> master
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

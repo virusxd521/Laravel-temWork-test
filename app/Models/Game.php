@@ -57,7 +57,7 @@ class Game extends Model
     }
 
     // Game has many roles
-    public function games_role()
+    public function game_role()
     {
         return $this->hasMany(GameRole::class);
     }

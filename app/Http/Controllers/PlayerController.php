@@ -31,7 +31,9 @@ class PlayerController extends Controller
 
     public function data_for_advertisement_user()
     {
-        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])->get();
+        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])
+            ->orderBy('individuals.id', 'desc')
+            ->get();
 
 
         $data = [];
@@ -171,6 +173,7 @@ class PlayerController extends Controller
         $game_individual->game_role_id = $game_id_role;
         $game_individual->save();
     }
+
 }
 
 

@@ -48,10 +48,10 @@ nav {
 
 .logo-fixed {
   position: fixed;
-  width: 15%;
-  height: 15%;
+  width: 8%;
+  height: 8%;
   top: 1.5rem;
-  left: 0;
+  left: 2.7rem;
   transform: translate(0%, -45%);
   z-index: 4;
   padding-left: 1em;
@@ -589,7 +589,9 @@ span {
   font-family: Arial, Helvetica, sans-serif;
 }
 .list__card__cnt--front {
-  font-size: 20px;
+  font-size: 1.2em;
+  padding: 0.5em;
+  width: 26%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -599,13 +601,10 @@ span {
 .list__card__cnt--front__ul {
   list-style: none;
   text-decoration: none;
-  max-width: 90%;
-  color: red;
 }
 .list__card__cnt--front__ul li {
-  margin-top: 30px;
+  margin-top: 1em;
   font-weight: bold;
-  color: red;
 }
 .list__card__cnt--back {
   width: 100%;
@@ -643,10 +642,6 @@ span {
 }
 .list__card__span {
   color: black;
-}
-
-.list__card__title {
-  color: red !important;
 }
 
 .form__section {

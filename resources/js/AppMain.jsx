@@ -57,13 +57,22 @@ const AppMain = () => {
     
     const userLogin = async() => {
         
+        axios.get('/sanctum/csrf-cookie').then(response => {
+            console.log('session', response);
+          });
+
+
         const res=await axios.get('/api/user')
-        console.log('/api/user',res.data)
-        setUser(res.data)
+        console.log('/api/user',res.data.user)
+        if (res?.data?.user) {
+            return setUser(res.data.user)
+        }
+        return setUser(null)
     }
 
     useEffect(()=> {
         userLogin()
+        
     }, [])
 
     return (
@@ -84,7 +93,7 @@ const AppMain = () => {
                 <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                     <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
                 </Route>
-                <Route path="/logout" element={<Homepage authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />
+                {/* {<Route path="/logout" element={<Homepage authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />} */}
                 <Route path="/*" element={<Page404 />} />
             </Routes>
         </UserContext.Provider>

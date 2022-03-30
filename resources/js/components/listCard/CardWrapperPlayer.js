@@ -19,7 +19,7 @@ function CardWrapperPlayer() {
     });
 
   }, []);
-  console.log(info[0]);
+  
 
   return (
     <section className="players__list" >

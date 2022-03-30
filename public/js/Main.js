@@ -2620,8 +2620,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function Header(_ref) {
   var height = _ref.height,
-      classa = _ref.classa,
-      authenticatedUser = _ref.authenticatedUser;
+      classa = _ref.classa;
 
   var signingOut = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
@@ -2639,9 +2638,10 @@ function Header(_ref) {
               res = _context.sent;
               console.log('heyyyy', res);
               setUser(null);
-              navigate('/'); //console.log(res.data)
+              alert('You have successfully logged out');
+              navigate('/');
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -2657,7 +2657,7 @@ function Header(_ref) {
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_2__.UserContext),
       user = _useContext.user,
-      setUser = _useContext.setUser; //   animations logo
+      setUser = _useContext.setUser; //   logo animation
 
 
   gsap__WEBPACK_IMPORTED_MODULE_5__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_6__.ScrollTrigger);
@@ -2669,13 +2669,13 @@ function Header(_ref) {
     }, {
       width: '8%',
       height: '8%',
-      top: '1.5rem',
+      top: '2rem',
       left: '1rem',
       x: '70%',
       y: '5%',
       position: 'fixed',
       scrollTrigger: {
-        trigger: element.querySelector(".home"),
+        trigger: element.querySelector(".header"),
         start: '0%',
         end: '30%',
         scrub: 1
@@ -2683,8 +2683,7 @@ function Header(_ref) {
     });
   }, []);
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useNavigate)();
-  var path = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)(); //console.log(authenticatedUser);
-
+  var path = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useLocation)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
     className: classa,
     ref: ref,
@@ -3594,7 +3593,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _context_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/context */ "./resources/js/context/context.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3607,7 +3607,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import "./ListCard.css";
+
 
 
 
@@ -3619,61 +3619,75 @@ function ListCardOrg(_ref) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       isFlipped = _useState2[0],
-      setIsFlipped = _useState2[1];
+      setIsFlipped = _useState2[1]; // function for flipping, runs only if user is logged in (means that its value is not null)
+
 
   var flip = function flip() {
-    setIsFlipped(!isFlipped);
-  };
+    user && setIsFlipped(!isFlipped);
+    !user && alert('You need to be registered to see the contact info');
+  }; // checking if user is logged in or not and pass it to our user context
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [console.log('ffff', item.name), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+  var getUser = function getUser() {
+    if (res.data.error) {
+      setUser(null);
+    } else {
+      setUser(res.data);
+    }
+  }; // calling the function getUser on every rerender of the page
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getUser;
+  }, []); // importing UserContext
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_1__.UserContext),
+      user = _useContext.user,
+      setUser = _useContext.setUser;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "list__card",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "list__card__inner ".concat(isFlipped ? "is-flipped" : ""),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "list__card__face list-card__face--front",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "list__card__face list__card__face--front",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "list__card__cnt--front",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
               className: "list__card__cnt--front__ul",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
                   className: "list__card__title",
                   children: "ORGANIZATION"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["NAME: ", item.name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["GAME: ", item.game.map(function (item, i) {
                   return item;
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["ROLE: ", item.role.map(function (item, i) {
                   return item;
                 })]
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             className: "list__card__button button",
             onClick: flip,
-            children: "More"
+            children: "Contact"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "list__card__face list__card__face--back",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "list__card__cnt--back",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "list__card__cnt--back--content",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("strong", {
-                    children: ["CONTACT: ", item.contact.map(function (item, i) {
-                      return item;
-                    })]
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {})]
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {})]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "list__card__button button",
               onClick: flip,
               children: "Back"
@@ -3681,7 +3695,7 @@ function ListCardOrg(_ref) {
           })
         })]
       })
-    })]
+    })
   });
 }
 
@@ -3701,7 +3715,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _context_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/context */ "./resources/js/context/context.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3719,90 +3734,111 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function ListCardPlayer(_ref) {
   var item = _ref.item;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       isFlipped = _useState2[0],
-      setIsFlipped = _useState2[1];
+      setIsFlipped = _useState2[1]; // function for flipping, runs only if user is logged in (means that its value is not null)
+
 
   var flip = function flip() {
-    setIsFlipped(!isFlipped);
-  };
+    user && setIsFlipped(!isFlipped);
+    !user && alert('You need to be registered to see the contact info');
+  }; // checking if user is logged in or not and pass it to our user context
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+  var getUser = function getUser() {
+    if (res.data.error) {
+      setUser(null);
+    } else {
+      setUser(res.data);
+    }
+  }; // calling the function getUser on every rerender of the page
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getUser;
+  }, []); // importing UserContext
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_1__.UserContext),
+      user = _useContext.user,
+      setUser = _useContext.setUser;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "list__card",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "list__card__inner ".concat(isFlipped ? "is-flipped" : ""),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "list__card__face list__card__face--front",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "list__card__cnt--front",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
               className: "list__card__cnt--front__ul",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
                   className: "list__card__title",
                   children: "PLAYER"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                   children: "AGE: "
                 }), item.DateOfBirth]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["RANK: ", item.rank.map(function (item, i) {
                   return item.name;
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["NATIONALITY: ", item.nationality.name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["ROLE: ", item.role.map(function (item, i) {
                   return item.name;
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["USERNAME: ", item.UserName]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["NICKNAME: ", item.NickName]
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             className: "list__card__button button",
             onClick: flip,
-            children: "More"
+            children: "Contact"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "list__card__face list__card__face--back",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "list__card__cnt--back",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "list__card__cnt--back--content",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "ABOUT:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "list__card__span",
                     children: " "
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "GOALS:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "list__card__span"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "DISCORD:"
                   }), " ", item.discord, " "]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "EMAIL:"
                   }), " ", item.email]
                 })]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "list__card__button button",
               onClick: flip,
               children: "Back"
@@ -3830,7 +3866,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _context_context__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/context */ "./resources/js/context/context.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3843,7 +3880,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-// import "./ListCard.css";
+
 
 
 
@@ -3855,64 +3892,84 @@ function ListCardStaff(_ref) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       isFlipped = _useState2[0],
-      setIsFlipped = _useState2[1];
+      setIsFlipped = _useState2[1]; // function for flipping, runs only if user is logged in (means that its value is not null)
+
 
   var flip = function flip() {
-    setIsFlipped(!isFlipped);
-  };
+    user && setIsFlipped(!isFlipped);
+    !user && alert('You need to be registered to see the contact info');
+  }; // checking if user is logged in or not and pass it to our user context
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+  var getUser = function getUser() {
+    if (res.data.error) {
+      setUser(null);
+    } else {
+      setUser(res.data);
+    }
+  }; // calling the function getUser on every rerender of the page
+
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getUser;
+  }, []); // importing UserContext
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_1__.UserContext),
+      user = _useContext.user,
+      setUser = _useContext.setUser;
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "list__card",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "list__card__inner ".concat(isFlipped ? "is-flipped" : ""),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
           className: "list__card__face list__card__face--front",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             className: "list__card__cnt--front",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
               className: "list__card__cnt--front__ul",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
                 className: "list__card__title",
                 children: "STAFF"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["AGE: ", item.DateOfBirth]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["NATIONALITY: ", item.nationality.name]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["USERNAME: ", item.UserName]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                 children: ["NICKNAME: ", item.NickName]
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
             className: "list__card__button button",
             onClick: flip,
-            children: "More"
+            children: "Contact"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "list__card__face list__card__face--back",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "list__card__cnt--back",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "list__card__cnt--back--content",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("ul", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "ABOUT:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "list__card__span",
                     children: " "
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("strong", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "GOALS:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "list__card__span"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {})]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {})]
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "list__card__button button",
               onClick: flip,
               children: "Back"
@@ -3980,10 +4037,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function Login(_ref) {
-  var responsePassingUp = _ref.responsePassingUp,
-      authenticatedUser = _ref.authenticatedUser;
-
+function Login() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       username = _useState2[0],
@@ -4000,20 +4054,16 @@ function Login(_ref) {
   }),
       _useState6 = _slicedToArray(_useState5, 2),
       values = _useState6[0],
-      setValues = _useState6[1];
+      setValues = _useState6[1]; // setting the SserContext
+
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_3__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_1__.UserContext),
       user = _useContext.user,
       setUser = _useContext.setUser;
 
-  console.log('hi', user); // const [signedOut, setSignedOut] = useState('Signed');
+  console.log('I am the user', user); // useNavigate init
 
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
-
-  function validateForm() {
-    return username.length > 0 && password.length > 0;
-  } // handling the submition and registration of data
-
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)(); // handling the submition and registration of data
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault(); // midiatory object between the form and the state 
@@ -4034,11 +4084,11 @@ function Login(_ref) {
       _loop(key);
     }
 
-    configuring_registration(data);
+    configuring_login(data);
   };
 
-  var configuring_registration = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
+  var configuring_login = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(data) {
       var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
@@ -4052,7 +4102,7 @@ function Login(_ref) {
 
             case 3:
               res = _context.sent;
-              console.log('ciao', res.data); //responsePassingUp(res.data);
+              console.log('ciao', res.data);
 
               if (!res.data.error) {
                 _context.next = 10;
@@ -4060,7 +4110,9 @@ function Login(_ref) {
               }
 
               setUser(null);
-              return _context.abrupt("return", navigate('/'));
+              alert('Wrong username or password, try it again');
+              _context.next = 12;
+              break;
 
             case 10:
               setUser(res.data);
@@ -4074,16 +4126,15 @@ function Login(_ref) {
       }, _callee);
     }));
 
-    return function configuring_registration(_x) {
-      return _ref2.apply(this, arguments);
+    return function configuring_login(_x) {
+      return _ref.apply(this, arguments);
     };
   }();
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("section", {
     className: "login",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      classa: "header-short",
-      authenticatedUser: authenticatedUser
+      classa: "header-short"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
       className: "login__form",
       onSubmit: handleSubmit,
@@ -4124,7 +4175,6 @@ function Login(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
         className: "login__form__button button",
         type: "submit",
-        disabled: !validateForm(),
         children: "Login"
       })]
     })]
@@ -4174,7 +4224,7 @@ function Page404(_ref) {
         children: "404"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
         className: "section404__subtitle",
-        children: "Page not found, try different path"
+        children: "Page not found, try a different path"
       })]
     })]
   });
@@ -4375,9 +4425,9 @@ var Register = function Register() {
     name: "password",
     type: "password",
     placeholder: "Password",
-    errorMessage: "Password should be 6-8 characters and include at least 1 letter, 1 number and 1 special character!",
+    errorMessage: "Password should be 6-10 characters and include at least 1 letter, 1 number and 1 special character!",
     label: "Password",
-    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$" // required: true,
+    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,10}$" // required: true,
 
   }, {
     id: 5,
@@ -4451,9 +4501,10 @@ var Register = function Register() {
               return _context.abrupt("return");
 
             case 10:
+              alert('You have successfully registered');
               return _context.abrupt("return", navigate('/login'));
 
-            case 11:
+            case 12:
             case "end":
               return _context.stop();
           }
@@ -4692,7 +4743,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nhtml, body {\n  background-color: black;\n  max-width: 100%;\n  box-sizing: border-box;\n  margin: 0 auto;\n}\n\n@font-face {\n  src: url(\"/fonts/Cornerstone.ttf\");\n  font-family: \"Cornerstone\";\n}\nbody {\n  margin: 0;\n  font-family: \"Cornerstone\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  width: 100%;\n}\n\n/* code {\n    font-family: source-code-pro, Menlo, Monaco, Consolas, \"Courier New\",\n        monospace;\n} */\nnav {\n  display: flex;\n  justify-content: space-between;\n  background: white;\n  justify-content: flex-end;\n}\n\n.logo {\n  position: fixed;\n  max-width: 90%;\n  height: 85%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 5;\n  cursor: pointer;\n  padding-left: 1em;\n}\n\n.logo-fixed {\n  position: fixed;\n  width: 8%;\n  height: 8%;\n  top: 1.5rem;\n  left: 2.7rem;\n  transform: translate(0%, -45%);\n  z-index: 4;\n  padding-left: 1em;\n  cursor: pointer;\n}\n\n.first-page {\n  height: 120vh;\n  width: 100%;\n  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);\n  background-size: 100vh;\n  background-repeat: no-repeat;\n  background-position: bottom;\n  color: white;\n  display: flex;\n  justify-content: space-around;\n  background-color: black;\n}\n\n.first-page h1 {\n  font-size: 3em;\n  text-align: center;\n  padding: 2em;\n  color: white;\n}\n\n.connections {\n  height: 70%;\n}\n\n.connections_header_text {\n  color: #6ad4db;\n}\n\n.second-page {\n  min-height: 100vh;\n  width: 100%;\n  background-color: black;\n  padding-top: 5em;\n}\n\n.second-page h2 {\n  color: white;\n  font-size: 3em;\n  padding: 2em;\n  text-align: center;\n}\n\n.card_cnt {\n  display: flex;\n  width: 70%;\n  margin: 0 auto;\n  justify-content: center;\n}\n\n.card_cnt > div {\n  width: 100%;\n}\n\n.second-page_card {\n  color: white;\n  width: 25%;\n  height: 25em;\n  border: 2px solid white;\n}\n\n.header {\n  height: 100vh;\n  width: 100%;\n  background-color: black;\n}\n\n.header-short {\n  height: 4.5vh;\n  width: 100%;\n  background-color: black;\n}\n\nnav ul {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  list-style: none;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  padding: 1.5em 5rem;\n  z-index: 3;\n  background-color: black;\n}\n\nnav ul a {\n  text-decoration: none;\n  font-size: 1.2rem;\n  color: white;\n  margin-left: 5rem;\n  z-index: 2;\n  transition: transform 100ms ease-in;\n}\n\nnav ul a:hover {\n  color: #6ad4db;\n  transform: scale(1.2);\n  /* -moz-transition: all 0.3s ease-in-out; */\n  /* -webkit-transition: all 0.3s ease-in-out; */\n  /* -ms-transition: all 0.3s ease-in-out; */\n  /* -o-transition: all 0.3s ease-in-out; */\n  transition: all 0.3s ease-in-out;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:after {\n  content: \"\";\n  display: block;\n  width: 0;\n  position: absolute;\n  height: 0.2em;\n  background: #6ad4db;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:hover::after {\n  width: 100%;\n}\n\nform {\n  border: none;\n  width: 90%;\n}\n\nbutton {\n  width: 100%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  padding: 1em;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n\nbutton:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n\n.wrapper {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(20rem, 16rem));\n  gap: 5rem;\n  justify-content: center;\n}\n\n.card {\n  height: 500px;\n  width: 20em;\n  overflow: hidden;\n  background-color: white;\n  box-shadow: 0 2px 20px grey;\n  border-radius: 5%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  cursor: pointer;\n  transition: transform 200ms ease-in;\n  align-items: center;\n}\n.card__player {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 4.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__team {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon1.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__staff {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 2.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__body__bg {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/backk.png\");\n}\n.card__title {\n  padding: 1rem;\n  text-align: center;\n}\n.card__number {\n  padding: 0 1rem;\n  text-align: center;\n}\n.card__btn {\n  padding: 1em;\n  width: 80%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n.card__circle {\n  border: 3px solid black;\n  border-radius: 50%;\n  width: 90px;\n  height: 90px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: auto;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n\n.card:hover {\n  transform: scale(1.1);\n}\n\n.card:hover .card__circle {\n  background: #6ad4db;\n  box-shadow: inset 8em 0 0 0 #6ad4db;\n  color: white;\n  border: 2px solid black;\n}\n\n.card:hover .card__btn,\n.card:focus .card__btn {\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n  color: white;\n}\n\n.card:hover .card__number {\n  color: white;\n}\n\n.login {\n  height: 100vh;\n  width: 100%;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.login__form {\n  height: 28em;\n  display: flex;\n  flex-direction: column;\n  margin: 15em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.login__form__container {\n  display: flex;\n  flex-direction: column;\n}\n.login__form__title {\n  color: black;\n  text-align: center;\n  padding: 0.5em 0;\n}\n.login__form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.login__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.login__form__input {\n  width: 15em;\n  height: 4em;\n  margin-top: 1em;\n}\n.login__form__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.login__form__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.login__form__label {\n  font-size: 1em;\n  color: black;\n  margin: 1em 2em 0 0;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.formInput {\n  display: flex;\n  flex-direction: column;\n  width: 18em;\n}\n.formInput__input {\n  padding: 15px;\n  margin: 1em 0px;\n  border-radius: 5px;\n  border: 1px solid gray;\n}\n.formInput__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.formInput__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.formInput__label {\n  font-size: 1em;\n  color: black;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.register {\n  height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.register__form {\n  height: 50em;\n  display: flex;\n  flex-direction: column;\n  margin: 5em auto;\n  width: 25em;\n  align-content: center;\n  align-items: center;\n  border: 5px solid black;\n  padding: 1em 2em;\n  justify-content: center;\n  justify-items: center;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.register__form__title {\n  color: black;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.register__form__button {\n  height: 3.5em;\n  width: 90%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.register__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.register__form__button__input {\n  width: auto;\n  height: 4em;\n}\n\n.login__redirect {\n  color: grey;\n  font-size: 1.5em;\n  cursor: pointer;\n}\n\n.login__redirect:hover {\n  color: #6ad4db;\n}\n\n.UI {\n  height: 100vh;\n  width: 100vw;\n  background-image: url(/images/backk.png?3312ff5c1ce3b46b2a36b7dda7cc9e89);\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  padding-top: 2em;\n}\n.UI--card__cnt {\n  display: flex;\n  justify-content: center;\n  margin-top: 5em;\n  flex-wrap: wrap;\n}\n.UI__title {\n  color: white;\n  padding-top: 2em;\n  font-size: 2.5em;\n  text-align: center;\n}\n.UI__title__text {\n  color: #6ad4db !important;\n}\n.UI__card {\n  display: flex;\n  flex-direction: column;\n  width: 33%;\n  justify-content: space-around;\n  align-items: center;\n  border: 2px solid white;\n  color: white;\n  height: 50vh;\n  background-color: black;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  cursor: pointer;\n  flex-wrap: wrap;\n}\n.UI__card:hover .UI__card__title {\n  color: black;\n}\n@media (min-width: 800px) and (max-width: 1200px) {\n  .UI__card {\n    width: 45%;\n    margin: 1em;\n  }\n}\n@media (max-width: 800px) {\n  .UI__card {\n    width: 90%;\n  }\n}\n.UI__card__title {\n  font-size: 3em;\n  transition: ease-out 0.6s;\n}\n.UI__card:hover {\n  box-shadow: inset 0 0 0 250px #6ad4db;\n}\n\n:root {\n  --primary: white;\n  --secondary: black;\n  --dark: #212121;\n  --light: #f3f3f3;\n  --clr-neon: #31c9b2;\n  --clr-bg: #17574e;\n}\n\n.players__list {\n  background-image: url(\"/images/backk.png\");\n  margin-top: 5em;\n}\n.players__list__card {\n  padding-top: 3em;\n  display: flex;\n  min-height: 100vh;\n  flex-wrap: wrap;\n  margin: auto;\n  flex-direction: row;\n}\n\n.list__card {\n  display: flex;\n  width: 29%;\n  min-height: 38em;\n  flex-direction: column;\n  margin: 1em auto;\n}\n.list__card__inner {\n  width: 100%;\n  margin: 0 auto;\n  height: 100%;\n  transition: transform 1s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n.list__card__inner.is-flipped {\n  transform: rotateY(180deg);\n}\n.list__card__face {\n  position: absolute;\n  width: 100%;\n  padding: 1em 1em;\n  height: 100%;\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  overflow: hidden;\n  border-radius: 3px;\n  background-color: white;\n  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);\n  box-shadow: inset 0 0 5px 5px black;\n}\n.list__card__face--front {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-direction: column;\n}\n.list__card__face--back {\n  background-color: var(--light);\n  transform: rotateY(180deg);\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front {\n  font-size: 1.2em;\n  padding: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front__ul {\n  list-style: none;\n  text-decoration: none;\n}\n.list__card__cnt--front__ul li {\n  margin-top: 1em;\n  font-weight: bold;\n  word-wrap: normal;\n  white-space: normal;\n}\n.list__card__cnt--back {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content {\n  padding: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  align-content: flex-start;\n}\n.list__card__cnt--back--content ul {\n  list-style-type: none;\n}\n.list__card__cnt--back--content ul li {\n  margin-top: 1em;\n  font-size: 1.2em;\n  text-align: left;\n}\n.list__card__button {\n  height: 3.5em;\n  width: 50%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.list__card__span {\n  color: black;\n}\n.list__card__title {\n  font-family: \"Cornerstone\", sans-serif;\n  text-align: center;\n  color: #6ad4db;\n  box-shadow: inset 2px 0 0 0 #6ad4db;\n  margin-bottom: 2em;\n}\n\n@media (min-width: 800px) and (max-width: 1200px) {\n  .list__card {\n    width: 45%;\n    margin: 1em;\n  }\n}\n@media (max-width: 800px) {\n  .list__card {\n    width: 90%;\n  }\n}\n.form__section {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.form__section .form {\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  margin: 10em auto;\n  width: 30em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.form__section .form__container {\n  display: flex;\n  flex-direction: column;\n}\n.form__section .form__title {\n  color: black;\n  text-align: center;\n  padding: 0.7em 0;\n}\n.form__section .form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  /* transition: background 200ms ease-in, color 200ms ease-in; */\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.form__section .form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.form__section .form__input {\n  width: 24em;\n  height: 4em;\n  margin: 1em 0 1em 0;\n}\n.form__section .form__label {\n  font-size: 1em;\n  color: gray;\n  margin: 1em 2em 0 0;\n}\n.form__section .form__select {\n  margin-top: 0.5em;\n  margin-bottom: 0.5em;\n  width: 24em;\n  height: 4em;\n  border-radius: 0.2em;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\ninput:invalid[focused=true] {\n  border: 1px solid red;\n}\n\ninput:invalid[focused=true] ~ span {\n  display: block;\n}\n\n.section404 {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.section404__title {\n  font-size: 30em;\n  color: white;\n  margin: 0 auto;\n}\n.section404__subtitle {\n  font-size: 10em;\n  color: white;\n  margin: 0 auto;\n  z-index: 3;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  padding: 0;\n  margin: 0;\n  box-sizing: border-box;\n}\n\nhtml, body {\n  background-color: black;\n  max-width: 100%;\n  box-sizing: border-box;\n  margin: 0 auto;\n}\n\n@font-face {\n  src: url(\"/fonts/Cornerstone.ttf\");\n  font-family: \"Cornerstone\";\n}\nbody {\n  margin: 0;\n  font-family: \"Cornerstone\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n  width: 100%;\n}\n\nnav {\n  display: flex;\n  justify-content: space-between;\n  background: white;\n  justify-content: flex-end;\n}\n\n.logo {\n  position: fixed;\n  max-width: 90%;\n  height: 85%;\n  left: 50%;\n  top: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 5;\n  cursor: pointer;\n  padding-left: 1em;\n}\n\n.logo-fixed {\n  position: fixed;\n  width: 8%;\n  height: 8%;\n  top: 2rem;\n  left: 2.7rem;\n  transform: translate(0%, -45%);\n  z-index: 4;\n  padding-left: 1em;\n  cursor: pointer;\n}\n\n.first-page {\n  height: 120vh;\n  width: 100%;\n  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);\n  background-size: 100vh;\n  background-repeat: no-repeat;\n  background-position: bottom;\n  color: white;\n  display: flex;\n  justify-content: space-around;\n  background-color: black;\n}\n\n.first-page h1 {\n  font-size: 3em;\n  text-align: center;\n  padding: 2em;\n  color: white;\n}\n\n.connections {\n  height: 70%;\n}\n\n.connections_header_text {\n  color: #6ad4db;\n}\n\n.second-page {\n  min-height: 100vh;\n  width: 100%;\n  background-color: black;\n  padding-top: 5em;\n}\n\n.second-page h2 {\n  color: white;\n  font-size: 3em;\n  padding: 2em;\n  text-align: center;\n}\n\n.card_cnt {\n  display: flex;\n  width: 70%;\n  margin: 0 auto;\n  justify-content: center;\n}\n\n.card_cnt > div {\n  width: 100%;\n}\n\n.second-page_card {\n  color: white;\n  width: 25%;\n  height: 25em;\n  border: 2px solid white;\n}\n\n.header {\n  height: 100vh;\n  width: 100%;\n  background-color: black;\n}\n\n.header-short {\n  height: 4.5vh;\n  width: 100%;\n  background-color: black;\n}\n\nnav ul {\n  display: flex;\n  width: 100%;\n  justify-content: flex-end;\n  list-style: none;\n  align-items: center;\n  position: fixed;\n  top: 0;\n  padding: 1.5em 5rem;\n  z-index: 3;\n  background-color: black;\n}\n\nnav ul a {\n  text-decoration: none;\n  font-size: 1.2rem;\n  color: white;\n  margin-left: 5rem;\n  z-index: 2;\n  transition: transform 100ms ease-in;\n}\n\nnav ul a:hover {\n  color: #6ad4db;\n  transform: scale(1.2);\n  transition: all 0.3s ease-in-out;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:after {\n  content: \"\";\n  display: block;\n  width: 0;\n  position: absolute;\n  height: 0.2em;\n  background: #6ad4db;\n  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;\n}\n\nnav ul a:hover::after {\n  width: 100%;\n}\n\nform {\n  border: none;\n  width: 90%;\n}\n\nbutton {\n  width: 100%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  padding: 1em;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n\nbutton:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n\n.wrapper {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(20rem, 16rem));\n  gap: 5rem;\n  justify-content: center;\n}\n\n.card {\n  height: 500px;\n  width: 20em;\n  overflow: hidden;\n  background-color: white;\n  box-shadow: 0 2px 20px grey;\n  border-radius: 5%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  cursor: pointer;\n  transition: transform 200ms ease-in;\n  align-items: center;\n}\n.card__player {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 4.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__team {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon1.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__staff {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/icon 2.png\");\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n.card__body__bg {\n  height: 12rem;\n  width: 20rem;\n  background: url(\"/images/backk.png\");\n}\n.card__title {\n  padding: 1rem;\n  text-align: center;\n}\n.card__number {\n  padding: 0 1rem;\n  text-align: center;\n}\n.card__btn {\n  padding: 1em;\n  width: 80%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n.card__circle {\n  border: 3px solid black;\n  border-radius: 50%;\n  width: 90px;\n  height: 90px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  margin: auto;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n}\n\n.card:hover {\n  transform: scale(1.1);\n}\n\n.card:hover .card__circle {\n  background: #6ad4db;\n  box-shadow: inset 8em 0 0 0 #6ad4db;\n  color: white;\n  border: 2px solid black;\n}\n\n.card:hover .card__btn,\n.card:focus .card__btn {\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n  color: white;\n}\n\n.card:hover .card__number {\n  color: white;\n}\n\n.login {\n  height: 100vh;\n  width: 100%;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.login__form {\n  height: 28em;\n  display: flex;\n  flex-direction: column;\n  margin: 15em auto;\n  width: 20em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.login__form__container {\n  display: flex;\n  flex-direction: column;\n}\n.login__form__title {\n  color: black;\n  text-align: center;\n  padding: 0.5em 0;\n}\n.login__form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.login__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.login__form__input {\n  width: 15em;\n  height: 4em;\n  margin-top: 1em;\n}\n.login__form__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.login__form__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.login__form__label {\n  font-size: 1em;\n  color: black;\n  margin: 1em 2em 0 0;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.formInput {\n  display: flex;\n  flex-direction: column;\n  width: 18em;\n}\n.formInput__input {\n  padding: 15px;\n  margin: 1em 0px;\n  border-radius: 5px;\n  border: 1px solid gray;\n}\n.formInput__input:invalid[focused=true] {\n  border: 1px solid red;\n}\n.formInput__input:invalid[focused=true] ~ span {\n  display: block;\n}\n.formInput__label {\n  font-size: 1em;\n  color: black;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\n.register {\n  height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.register__form {\n  height: 50em;\n  display: flex;\n  flex-direction: column;\n  margin: 5em auto;\n  width: 25em;\n  align-content: center;\n  align-items: center;\n  border: 5px solid black;\n  padding: 1em 2em;\n  justify-content: center;\n  justify-items: center;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.register__form__title {\n  color: black;\n  text-align: center;\n  margin-top: 1em;\n  margin-bottom: 2em;\n}\n.register__form__button {\n  height: 3.5em;\n  width: 90%;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.register__form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.register__form__button__input {\n  width: auto;\n  height: 4em;\n}\n\n.login__redirect {\n  color: grey;\n  font-size: 1.5em;\n  cursor: pointer;\n}\n\n.login__redirect:hover {\n  color: #6ad4db;\n}\n\n.UI {\n  height: 100vh;\n  width: 100vw;\n  background-image: url(/images/backk.png?3312ff5c1ce3b46b2a36b7dda7cc9e89);\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n  padding-top: 2em;\n}\n.UI--card__cnt {\n  display: flex;\n  justify-content: center;\n  margin-top: 5em;\n  flex-wrap: wrap;\n}\n.UI__title {\n  color: white;\n  padding-top: 2em;\n  font-size: 2.5em;\n  text-align: center;\n}\n.UI__title__text {\n  color: #6ad4db !important;\n}\n.UI__card {\n  display: flex;\n  flex-direction: column;\n  width: 33%;\n  justify-content: space-around;\n  align-items: center;\n  border: 2px solid white;\n  color: white;\n  height: 50vh;\n  background-color: black;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  cursor: pointer;\n  flex-wrap: wrap;\n}\n.UI__card:hover .UI__card__title {\n  color: black;\n}\n@media (min-width: 800px) and (max-width: 1200px) {\n  .UI__card {\n    width: 45%;\n    margin: 1em;\n  }\n}\n@media (max-width: 800px) {\n  .UI__card {\n    width: 90%;\n  }\n}\n.UI__card__title {\n  font-size: 3em;\n  transition: ease-out 0.6s;\n}\n.UI__card:hover {\n  box-shadow: inset 0 0 0 250px #6ad4db;\n}\n\n:root {\n  --primary: white;\n  --secondary: black;\n  --dark: #212121;\n  --light: #f3f3f3;\n  --clr-neon: #31c9b2;\n  --clr-bg: #17574e;\n}\n\n.players__list {\n  background-image: url(\"/images/backk.png\");\n  margin-top: 5em;\n}\n.players__list__card {\n  padding-top: 3em;\n  display: flex;\n  min-height: 100vh;\n  flex-wrap: wrap;\n  margin: auto;\n  flex-direction: row;\n}\n\n.list__card {\n  display: flex;\n  width: 29%;\n  min-height: 38em;\n  flex-direction: column;\n  margin: 1em auto;\n}\n.list__card__inner {\n  width: 100%;\n  margin: 0 auto;\n  height: 100%;\n  transition: transform 1s;\n  transform-style: preserve-3d;\n  position: relative;\n}\n.list__card__inner.is-flipped {\n  transform: rotateY(180deg);\n}\n.list__card__face {\n  position: absolute;\n  width: 100%;\n  padding: 1em 1em;\n  height: 100%;\n  -webkit-backface-visibility: hidden;\n  backface-visibility: hidden;\n  overflow: hidden;\n  border-radius: 3px;\n  background-color: white;\n  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);\n  box-shadow: inset 0 0 5px 5px black;\n}\n.list__card__face--front {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-direction: column;\n}\n.list__card__face--back {\n  background-color: var(--light);\n  transform: rotateY(180deg);\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front {\n  font-size: 1.2em;\n  padding: 1em;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  font-family: Arial, Helvetica, sans-serif;\n}\n.list__card__cnt--front__ul {\n  list-style: none;\n  text-decoration: none;\n}\n.list__card__cnt--front__ul li {\n  margin-top: 1em;\n  font-weight: bold;\n  word-wrap: normal;\n  white-space: normal;\n}\n.list__card__cnt--back {\n  width: 100%;\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: center;\n}\n.list__card__cnt--back--content {\n  padding: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  align-content: flex-start;\n}\n.list__card__cnt--back--content ul {\n  list-style-type: none;\n}\n.list__card__cnt--back--content ul li {\n  margin-top: 1em;\n  font-size: 1.2em;\n  text-align: left;\n}\n.list__card__button {\n  height: 3.5em;\n  width: 50%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.list__card__span {\n  color: black;\n}\n.list__card__title {\n  font-family: \"Cornerstone\", sans-serif;\n  text-align: center;\n  color: #6ad4db;\n  box-shadow: inset 2px 0 0 0 #6ad4db;\n  margin-bottom: 2em;\n}\n\n@media (min-width: 800px) and (max-width: 1200px) {\n  .list__card {\n    width: 45%;\n    margin: 1em;\n  }\n}\n@media (max-width: 800px) {\n  .list__card {\n    width: 90%;\n  }\n}\n.form__section {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n}\n.form__section .form {\n  height: auto;\n  display: flex;\n  flex-direction: column;\n  margin: 10em auto;\n  width: 30em;\n  align-items: center;\n  border: 5px solid black;\n  padding: 3em 2em;\n  background-color: white;\n  box-shadow: inset 0px 0px 5px 5px black;\n}\n.form__section .form__container {\n  display: flex;\n  flex-direction: column;\n}\n.form__section .form__title {\n  color: black;\n  text-align: center;\n  padding: 0.7em 0;\n}\n.form__section .form__button {\n  height: 3.5em;\n  width: 80%;\n  font-family: \"Montserrat\", sans-serif;\n  font-weight: bold;\n  font-size: 1rem;\n  margin: 2rem;\n  border: 2px solid black;\n  background: transparent;\n  color: black;\n  border-radius: 5%;\n  /* transition: background 200ms ease-in, color 200ms ease-in; */\n  cursor: pointer;\n  box-shadow: inset 0 0 0 0 #6ad4db;\n  transition: ease-out 0.4s;\n  font-family: \"Cornerstone\", sans-serif;\n}\n.form__section .form__button:hover {\n  color: white;\n  border: 2px solid black;\n  box-shadow: inset 15.8em 0 0 0 #6ad4db;\n}\n.form__section .form__input {\n  width: 24em;\n  height: 4em;\n  margin: 1em 0 2em 0;\n}\n.form__section .form__label {\n  font-size: 1em;\n  color: gray;\n  margin: 1.5em 2em 0 0;\n}\n.form__section .form__select {\n  margin-top: 1em;\n  margin-bottom: 2em;\n  width: 24em;\n  height: 4em;\n  border-radius: 0.2em;\n}\n\nspan {\n  font-size: 12px;\n  padding: 3px;\n  color: red;\n  display: none;\n}\n\ninput:invalid[focused=true] {\n  border: 1px solid red;\n}\n\ninput:invalid[focused=true] ~ span {\n  display: block;\n}\n\n.section404 {\n  min-height: 100vh;\n  background-image: url(/images/backk.png);\n  background-position: center;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n}\n.section404__title {\n  font-size: 30em;\n  color: white;\n  margin: 0 auto;\n}\n.section404__subtitle {\n  font-size: 3em;\n  color: white;\n  margin: 0 auto;\n  z-index: 3;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

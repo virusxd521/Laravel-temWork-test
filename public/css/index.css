@@ -23,10 +23,6 @@ body {
   width: 100%;
 }
 
-/* code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
-} */
 nav {
   display: flex;
   justify-content: space-between;
@@ -50,7 +46,7 @@ nav {
   position: fixed;
   width: 8%;
   height: 8%;
-  top: 1.5rem;
+  top: 2rem;
   left: 2.7rem;
   transform: translate(0%, -45%);
   z-index: 4;
@@ -155,10 +151,6 @@ nav ul a {
 nav ul a:hover {
   color: #6ad4db;
   transform: scale(1.2);
-  /* -moz-transition: all 0.3s ease-in-out; */
-  /* -webkit-transition: all 0.3s ease-in-out; */
-  /* -ms-transition: all 0.3s ease-in-out; */
-  /* -o-transition: all 0.3s ease-in-out; */
   transition: all 0.3s ease-in-out;
   transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;
 }
@@ -729,16 +721,16 @@ span {
 .form__section .form__input {
   width: 24em;
   height: 4em;
-  margin: 1em 0 1em 0;
+  margin: 1em 0 2em 0;
 }
 .form__section .form__label {
   font-size: 1em;
   color: gray;
-  margin: 1em 2em 0 0;
+  margin: 1.5em 2em 0 0;
 }
 .form__section .form__select {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 2em;
   width: 24em;
   height: 4em;
   border-radius: 0.2em;
@@ -774,7 +766,7 @@ input:invalid[focused=true] ~ span {
   margin: 0 auto;
 }
 .section404__subtitle {
-  font-size: 10em;
+  font-size: 3em;
   color: white;
   margin: 0 auto;
   z-index: 3;

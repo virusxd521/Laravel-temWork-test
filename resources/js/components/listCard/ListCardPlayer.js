@@ -1,14 +1,31 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../context/context";
 
 function ListCardPlayer({ item }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  // function for flipping, runs only if user is logged in (means that its value is not null)
   const flip = () => {
-    setIsFlipped(!isFlipped);
+    user && setIsFlipped(!isFlipped);
+    !user && alert('You need to be registered to see the contact info');
   };
 
+  // checking if user is logged in or not and pass it to our user context
+  const getUser = () => {
+    if (res.data.error) {
+      setUser(null)
+    } else {
+      setUser(res.data)
+    }
+  }
 
+  // calling the function getUser on every rerender of the page
+  useEffect(() => {
+    getUser
+  }, []);
 
+  // importing UserContext
+  const { user, setUser} = useContext(UserContext)
 
   return (
     <>
@@ -32,7 +49,7 @@ function ListCardPlayer({ item }) {
 
             </div>
             <button className="list__card__button button" onClick={flip}>
-                More
+                Contact
             </button>
           </div>
           <div className="list__card__face list__card__face--back">

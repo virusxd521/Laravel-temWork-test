@@ -21,7 +21,7 @@ function Page404({authenticatedUser, signingOut}) {
             <Header/>
             <section className="section404">
                 <h1 className="section404__title">404</h1>
-                <h2 className="section404__subtitle">Page not found</h2>
+                <h2 className="section404__subtitle">Page not found, try different path</h2>
             </section> 
         </>
     )

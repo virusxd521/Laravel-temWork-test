@@ -23,10 +23,6 @@ body {
   width: 100%;
 }
 
-/* code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
-} */
 nav {
   display: flex;
   justify-content: space-between;
@@ -50,7 +46,7 @@ nav {
   position: fixed;
   width: 8%;
   height: 8%;
-  top: 1.5rem;
+  top: 2rem;
   left: 2.7rem;
   transform: translate(0%, -45%);
   z-index: 4;
@@ -61,7 +57,7 @@ nav {
 .first-page {
   height: 120vh;
   width: 100%;
-  background-image: url(/images/backround.svg?1b0925b30232e0adf15d10d190083f2a);
+  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
   background-size: 100vh;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -155,10 +151,6 @@ nav ul a {
 nav ul a:hover {
   color: #6ad4db;
   transform: scale(1.2);
-  /* -moz-transition: all 0.3s ease-in-out; */
-  /* -webkit-transition: all 0.3s ease-in-out; */
-  /* -ms-transition: all 0.3s ease-in-out; */
-  /* -o-transition: all 0.3s ease-in-out; */
   transition: all 0.3s ease-in-out;
   transition: cubic-bezier(0.17, 0.67, 0.83, 0.67) 0.1s;
 }
@@ -485,6 +477,7 @@ span {
   display: flex;
   justify-content: center;
   margin-top: 5em;
+  flex-wrap: wrap;
 }
 .UI__title {
   color: white;
@@ -498,7 +491,7 @@ span {
 .UI__card {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 33%;
   justify-content: space-around;
   align-items: center;
   border: 2px solid white;
@@ -508,6 +501,21 @@ span {
   box-shadow: inset 0 0 0 0 #6ad4db;
   transition: ease-out 0.4s;
   cursor: pointer;
+  flex-wrap: wrap;
+}
+.UI__card:hover .UI__card__title {
+  color: black;
+}
+@media (min-width: 800px) and (max-width: 1200px) {
+  .UI__card {
+    width: 45%;
+    margin: 1em;
+  }
+}
+@media (max-width: 800px) {
+  .UI__card {
+    width: 90%;
+  }
 }
 .UI__card__title {
   font-size: 3em;
@@ -515,12 +523,6 @@ span {
 }
 .UI__card:hover {
   box-shadow: inset 0 0 0 250px #6ad4db;
-}
-.UI__card:hover .UI_card__button {
-  background-color: black;
-}
-.UI__card:hover .UI_card__title {
-  color: black;
 }
 
 :root {
@@ -534,6 +536,7 @@ span {
 
 .players__list {
   background-image: url("/images/backk.png");
+  margin-top: 5em;
 }
 .players__list__card {
   padding-top: 3em;
@@ -546,12 +549,10 @@ span {
 
 .list__card {
   display: flex;
-  width: 26%;
+  width: 29%;
   min-height: 38em;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2em auto;
+  margin: 1em auto;
 }
 .list__card__inner {
   width: 100%;
@@ -590,8 +591,7 @@ span {
 }
 .list__card__cnt--front {
   font-size: 1.2em;
-  padding: 0.5em;
-  width: 26%;
+  padding: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -605,6 +605,8 @@ span {
 .list__card__cnt--front__ul li {
   margin-top: 1em;
   font-weight: bold;
+  word-wrap: normal;
+  white-space: normal;
 }
 .list__card__cnt--back {
   width: 100%;
@@ -618,11 +620,17 @@ span {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.list__card__cnt--back--content ul {
+  list-style-type: none;
 }
 .list__card__cnt--back--content ul li {
-  margin-top: 15px;
+  margin-top: 1em;
+  font-size: 1.2em;
+  text-align: left;
 }
 .list__card__button {
   height: 3.5em;
@@ -643,7 +651,25 @@ span {
 .list__card__span {
   color: black;
 }
+.list__card__title {
+  font-family: "Cornerstone", sans-serif;
+  text-align: center;
+  color: #6ad4db;
+  box-shadow: inset 2px 0 0 0 #6ad4db;
+  margin-bottom: 2em;
+}
 
+@media (min-width: 800px) and (max-width: 1200px) {
+  .list__card {
+    width: 45%;
+    margin: 1em;
+  }
+}
+@media (max-width: 800px) {
+  .list__card {
+    width: 90%;
+  }
+}
 .form__section {
   min-height: 100vh;
   background-image: url(/images/backk.png);
@@ -654,7 +680,7 @@ span {
   display: flex;
   flex-direction: column;
   margin: 10em auto;
-  width: 20em;
+  width: 30em;
   align-items: center;
   border: 5px solid black;
   padding: 3em 2em;
@@ -693,21 +719,21 @@ span {
   box-shadow: inset 15.8em 0 0 0 #6ad4db;
 }
 .form__section .form__input {
-  width: 15em;
+  width: 24em;
   height: 4em;
-  margin: 1em 0 1em 0;
+  margin: 1em 0 2em 0;
 }
 .form__section .form__label {
   font-size: 1em;
   color: gray;
-  margin: 1em 2em 0 0;
+  margin: 1.5em 2em 0 0;
 }
 .form__section .form__select {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 200px;
-  height: 47px;
-  border-radius: 5px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  width: 24em;
+  height: 4em;
+  border-radius: 0.2em;
 }
 
 span {
@@ -740,7 +766,7 @@ input:invalid[focused=true] ~ span {
   margin: 0 auto;
 }
 .section404__subtitle {
-  font-size: 10em;
+  font-size: 3em;
   color: white;
   margin: 0 auto;
   z-index: 3;

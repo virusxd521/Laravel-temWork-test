@@ -38,9 +38,6 @@ const AppMain = () => {
         Object.keys(responseData).length !== 0 ? settingRouteId(responseData) : null;
     }, [responseData]);
 
-
-     console.log(authenticatedUser);
-
     // function which will set the query parameter 
     // so that it will show the id or name of the right user 
     const settingRouteId = data => { 
@@ -73,8 +70,6 @@ const AppMain = () => {
         return setUser(null)
     }
 
-
-
     useEffect(()=> {
         userLogin()
         
@@ -98,7 +93,6 @@ const AppMain = () => {
                 <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                     <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
                 </Route>
-                {/* {<Route path="/logout" element={<Homepage authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />} */}
                 <Route path="/*" element={<Page404 />} />
             </Routes>
         </UserContext.Provider>

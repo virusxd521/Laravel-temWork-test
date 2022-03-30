@@ -8,7 +8,7 @@ import { Fragment } from 'react';
 import axios from 'axios';
 
 
-function Header({height, classa, authenticatedUser}) {
+function Header({height, classa}) {
 
     
     const signingOut = async(e) => {
@@ -18,15 +18,15 @@ function Header({height, classa, authenticatedUser}) {
     
         console.log('heyyyy', res)
         setUser(null)
+        alert('You have successfully logged out')
         navigate('/')
-        //console.log(res.data)
-      }
+    }
     
-// user context 
-  const { user, setUser} = useContext(UserContext)
-  console.log('hi', user)
+    // user context 
+    const { user, setUser} = useContext(UserContext)
 
-//   animations logo
+
+    //   logo animation
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
 
@@ -40,13 +40,13 @@ function Header({height, classa, authenticatedUser}) {
             {
                 width: '8%',
                 height: '8%',
-                top: '1.5rem',
+                top: '2rem',
                 left: '1rem',
                 x: '70%',
                 y: '5%',
                 position: 'fixed',
                 scrollTrigger: {
-                    trigger: element.querySelector(".home"),
+                    trigger: element.querySelector(".header"),
                     start: '0%',
                     end: '30%',
                     scrub: 1
@@ -59,7 +59,6 @@ function Header({height, classa, authenticatedUser}) {
     const navigate = useNavigate(); 
 
     const path = useLocation();
-    //console.log(authenticatedUser);
     
     return (
         <section className={classa} ref={ref} style={{height: height + 'em'}}>

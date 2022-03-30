@@ -117,7 +117,7 @@ class OrganizationController extends Controller
             }
         
         }
-        dd($organizationsForJson);
+        // dd($organizationsForJson);
         return $organizationsForJson;
     }
 }

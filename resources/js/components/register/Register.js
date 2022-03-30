@@ -61,9 +61,9 @@ const Register = () => {
       type: "password",
       placeholder: "Password",
       errorMessage:
-        "Password should be 6-8 characters and include at least 1 letter, 1 number and 1 special character!",
+        "Password should be 6-10 characters and include at least 1 letter, 1 number and 1 special character!",
       label: "Password",
-      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$`,
+      pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,10}$`,
       // required: true,
     },
     {
@@ -124,6 +124,7 @@ const Register = () => {
       setUser(null)
       return
     } else {
+      alert('You have successfully registered')
       return navigate('/login')
     }
     

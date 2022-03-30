@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 
-export default function Login({responsePassingUp, authenticatedUser}) {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [values, setValues] = useState({
@@ -16,20 +16,12 @@ export default function Login({responsePassingUp, authenticatedUser}) {
     password: "",
   });
 
+  // setting the SserContext
   const { user, setUser} = useContext(UserContext)
-  console.log('hi', user)
+  console.log('I am the user', user)
 
-  // const [signedOut, setSignedOut] = useState('Signed');
-
+  // useNavigate init
   const navigate = useNavigate();
-
-  
-  
-  
-
-  function validateForm() {
-    return username.length > 0 && password.length > 0;
-  }
 
   // handling the submition and registration of data
   const handleSubmit = e => {
@@ -46,21 +38,21 @@ export default function Login({responsePassingUp, authenticatedUser}) {
           return key === item.name ? data[key] = item.value : null;
       });
     }
-    configuring_registration(data);
+    configuring_login(data);
   }
 
-  const configuring_registration = async data => {
+  const configuring_login = async data => {
         document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         const res = await axios.post('/api/login', {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     })
       console.log('ciao', res.data);
-      //responsePassingUp(res.data);
 
       if (res.data.error) {
         setUser(null)
-        return navigate('/')
+        alert('Wrong username or password, try it again')
+        
       } else {
         setUser(res.data)
         return navigate('/')
@@ -70,7 +62,7 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   return (
      <section className="login">
-        <Header classa="header-short" authenticatedUser={authenticatedUser} />
+        <Header classa="header-short" />
         
         <form className="login__form" onSubmit={handleSubmit}>
             <h1 className="login__form__title">Login</h1>
@@ -100,7 +92,7 @@ export default function Login({responsePassingUp, authenticatedUser}) {
                 />
             </div>
           
-          <button className="login__form__button button" type="submit" disabled={!validateForm()}>
+          <button className="login__form__button button" type="submit">
             Login
           </button>
         </form>

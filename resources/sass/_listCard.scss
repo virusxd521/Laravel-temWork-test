@@ -9,6 +9,7 @@
   
   .players__list {
     background-image: url('/images/backk.png');
+    margin-top: 5em;
 
     &__card {
         padding-top: 3em;
@@ -22,12 +23,12 @@
   
 .list__card {
     display: flex;
-    width: 26%;
+    width: 29%;
     min-height: 38em;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2em auto;
+    // align-items: center;
+    // justify-content: center;
+    margin: 1em auto;
     
 
     &__inner {
@@ -37,7 +38,6 @@
         transition: transform 1s;
         transform-style: preserve-3d;
         position: relative;
-        
 
         &.is-flipped {
             transform: rotateY(180deg);
@@ -76,22 +76,23 @@
 
     &__cnt--front {
         font-size: 1.2em;
-        padding: 0.5em;
-        width: 26%;
+        padding: 1em;
         display:flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         font-family: Arial, Helvetica, sans-serif;
+        
 
         &__ul {
             list-style: none;
             text-decoration: none;
             
-
             & li {
                 margin-top: 1em;
                 font-weight: bold;
+                word-wrap: normal;
+                white-space: normal;
             }
         }
     }
@@ -108,11 +109,18 @@
             padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: flex-start;
+            align-items: flex-start;
+            align-content: flex-start;
+
+            & ul {
+                list-style-type: none;
+            }
 
             & ul li {
-                margin-top: 15px;
+                margin-top: 1em;
+                font-size: 1.2em;
+                text-align: left;
            }
         }
     }
@@ -129,7 +137,7 @@
         color: black;
         border-radius: 5%;
         cursor: pointer;
-        box-shadow: inset 0 0 0 0 rgb(106,212,219);
+        box-shadow: inset 0 0 0 0 $neonblue;
         -webkit-transition: ease-out 0.4s;
         -moz-transition: ease-out 0.4s;
         transition: ease-out 0.4s;
@@ -139,10 +147,28 @@
     &__span {
         color: black;
     }
+
+    &__title {
+        font-family: "Cornerstone", sans-serif;
+        text-align: center;
+        color: $neonblue;
+        box-shadow: inset 2px 0 0 0 $neonblue;
+        margin-bottom: 2em;
+    }
 }
 
+@media (min-width: 800px) and (max-width: 1200px) {
+  .list__card {
+      width: 45%;
+      margin: 1em;
+  }
+}
 
-  
+@media (max-width: 800px) {
+    .list__card {
+        width: 90%;
+    }
+}
   
   
   

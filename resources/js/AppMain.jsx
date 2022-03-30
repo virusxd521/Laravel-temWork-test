@@ -38,9 +38,6 @@ const AppMain = () => {
         Object.keys(responseData).length !== 0 ? settingRouteId(responseData) : null;
     }, [responseData]);
 
-
-     console.log(authenticatedUser);
-
     // function which will set the query parameter 
     // so that it will show the id or name of the right user 
     const settingRouteId = data => { 
@@ -72,8 +69,6 @@ const AppMain = () => {
         }
         return setUser(null)
     }
-
-
 
     useEffect(()=> {
         userLogin()

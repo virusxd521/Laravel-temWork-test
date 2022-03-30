@@ -14,7 +14,7 @@ use App\Models\GameServer;
 use App\Models\Game;
 use App\Models\GameRole;
 use App\Models\GameIndividual;
-
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -31,7 +31,9 @@ class PlayerController extends Controller
 
     public function data_for_advertisement_user()
     {
-        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])->get();
+        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])
+            ->orderBy('individuals.id', 'desc')
+            ->get();
 
 
         $data = [];
@@ -132,9 +134,11 @@ class PlayerController extends Controller
         // Translating the users nationality to the nationality Id
         $nationality_id = Nationality::where('name', $request->nationalities)->get('id')[0];
 
-        // $individuals = new Nationality;
+
+        $individuals = new Individual;
         $individuals->nickname = $request->nick_name;
-        // $individuals->nationality_id = ;
+        $individuals->user_id = Auth::user()->id;
+        $individuals->nationality_id = $nationality_id->id;
         $individuals->date_of_birth = $request->date_of_birth;
         $individuals->save();
         return $request;
@@ -144,27 +148,32 @@ class PlayerController extends Controller
 
         // ----------------------------------- Can be used many times -------------
         // The id of the last individual that has been submited
-        $individuals = new Individual;
+        
         $individuals_id_select = $individuals->orderBy('id', 'desc')->get()[0];
 
         // Inserting the data to the individual language table
         $individual_language = new IndividualLanguage;
         $individual_language->individual_id = $individuals_id_select;
         $individual_language->language_id = $language_id_select;
-
+        $individual_language->save();
         // insering to the rest of the tables
+        
+        // getting the id of the right game which the user individual chose from
+        $game_id_select = Game::where('name', $request->games)->get('id')[0];
+        
+        // getting the id of the right game_role which the user individual chose from
+        $game_id_role = GameRole::where('name', $request->game_roles)->get('id')[0];
 
-        $game_id_select = Game::where('name', $request->languages)->get('id')[0];
 
-
+        // Pushing data to the individual with all the relationships
         $game_individual = new GameIndividual;
         $game_individual->individual_id = $individuals_id_select;
-        $game_individual->language_id = $language_id_select;
-        $game_individual->language_id = $language_id_select;
-        $game_individual->language_id = $language_id_select;
-        $game_individual->language_id = $language_id_select;
-
+        $game_individual->game_id = $game_id_select;
+        $game_individual->server_id = null;
+        $game_individual->game_role_id = $game_id_role;
+        $game_individual->save();
     }
+
 }
 
 

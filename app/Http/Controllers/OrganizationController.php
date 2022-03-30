@@ -63,6 +63,7 @@ class OrganizationController extends Controller
             ->join('contact_organization', 'organizations.id', '=', 'contact_organization.organization_id')
             ->join('contacts', 'contacts.id', '=', 'contact_organization.contact_id')
             ->select('organizations.id as id', 'organizations.name as name', 'positions.name as position', 'games.name as game', 'ranks.name as rank', 'game_roles.name as role', 'languages.name as language', 'advertisements.expectation as expectation', 'advertisements.offer as offer', 'advertisements.availability as availability', 'contact_organization.url as url', 'contacts.name as contact')
+            ->orderBy('id', 'desc')
             ->get();
 
         //dd($organizations[0]->id);
@@ -137,7 +138,7 @@ class OrganizationController extends Controller
         
             // if(!in_array($organizationsForJson))
         }
-        dd($organizationsForJson);
+        // dd($organizationsForJson);
         return $organizationsForJson;
     }
 }

@@ -10,7 +10,9 @@
     &--card__cnt {
         display: flex;
         justify-content: center;
-        margin-top: 5em;
+        margin-top: 5em;    
+        flex-wrap: wrap;
+         
     }
 
     &__title {
@@ -27,7 +29,7 @@
     &__card {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        width: 33%;
         justify-content: space-around;
         align-items: center;
         border: 2px solid white;
@@ -39,6 +41,25 @@
         -moz-transition: ease-out 0.4s;
         transition: ease-out 0.4s;
         cursor: pointer;
+        flex-wrap: wrap;  
+
+        &:hover .UI__card__title {
+            color: black;
+        }
+
+        @media (min-width: 800px) and (max-width: 1200px) {
+            & {
+                width: 45%;
+                margin: 1em;
+            }
+          }
+          
+          @media (max-width: 800px) {
+              & {
+                  width: 90%;
+              }
+          }
+            
 
         &__title {
             font-size: 3em;
@@ -47,14 +68,6 @@
 
         &:hover {
             box-shadow: inset 0 0 0 250px $neonblue;
-        }
-
-        &:hover .UI_card__button {
-        background-color: black;
-        }
-  
-        &:hover .UI_card__title {
-        color: black;
         }
     }
 }

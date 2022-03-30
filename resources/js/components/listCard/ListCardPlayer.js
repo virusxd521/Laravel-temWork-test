@@ -6,10 +6,9 @@ function ListCardPlayer({ item, extractingDate }) {
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
-  console.log(isFlipped);
 
 
-  // extractingDate
+
 
   return (
     <>
@@ -21,7 +20,7 @@ function ListCardPlayer({ item, extractingDate }) {
                 <li>
                   <h2 className="list__card__title">PLAYER</h2>
                 </li>
-                <li>AGE: {item.DateOfBirth}</li>
+                <li><strong>AGE: </strong>{item.DateOfBirth}</li>
                 <li>RANK: {item.rank.map((item, i) => item.name)}</li>
                 <li>NATIONALITY: {item.nationality.name}</li>
                 <li>ROLE: {item.role.map((item, i) => item.name)}</li>
@@ -46,8 +45,8 @@ function ListCardPlayer({ item, extractingDate }) {
                   <li>
                     <strong>GOALS:</strong> <span className="list__card__span"></span>
                   </li>
-                  <li>{/* <strong>DISCORD:</strong> {item.discord}{" "} */}</li>
-                  <li>{/* <strong>EMAIL:</strong> {item.email} */}</li>
+                  <li><strong>DISCORD:</strong> {item.discord}{" "}</li>
+                  <li><strong>EMAIL:</strong> {item.email}</li>
                 </ul>
                 
               </div>

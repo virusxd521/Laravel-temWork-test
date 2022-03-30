@@ -13,7 +13,7 @@ function Header({height, classa, signingOut, authenticatedUser}) {
 
 // user context 
   const { user, setUser} = useContext(UserContext)
-  console.log('hi', user)
+
 
 //   animations logo
 

@@ -2269,8 +2269,7 @@ var AppMain = function AppMain() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     Object.keys(responseData).length !== 0 ? settingRouteId(responseData) : null;
-  }, [responseData]);
-  console.log(authenticatedUser); // function which will set the query parameter 
+  }, [responseData]); // function which will set the query parameter 
   // so that it will show the id or name of the right user 
 
   var settingRouteId = function settingRouteId(data) {
@@ -2609,9 +2608,8 @@ function Header(_ref) {
   // user context 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_context__WEBPACK_IMPORTED_MODULE_1__.UserContext),
       user = _useContext.user,
-      setUser = _useContext.setUser;
+      setUser = _useContext.setUser; //   animations logo
 
-  console.log('hi', user); //   animations logo
 
   gsap__WEBPACK_IMPORTED_MODULE_3__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_4__.ScrollTrigger);
   var ref = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);

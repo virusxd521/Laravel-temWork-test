@@ -24,7 +24,7 @@ function CardWrapperOrg() {
 
   return (
     <section className="players__list" >
-    <Header classa="header-short" />
+    <Header />
     {
       Object.keys(info).length !== 0 ?
       <div className="players__list__card">

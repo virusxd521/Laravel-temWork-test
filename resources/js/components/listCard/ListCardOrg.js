@@ -7,9 +7,6 @@ function ListCardOrg({ item }) {
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
-  console.log(isFlipped);
-  console.log(item);
-
   return (
     <>
       <div className="list__card">

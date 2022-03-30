@@ -534,6 +534,7 @@ span {
 
 .players__list {
   background-image: url("/images/backk.png");
+  margin-top: 5em;
 }
 .players__list__card {
   padding-top: 3em;
@@ -546,12 +547,10 @@ span {
 
 .list__card {
   display: flex;
-  width: 26%;
+  width: 29%;
   min-height: 38em;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 2em auto;
+  margin: 1em auto;
 }
 .list__card__inner {
   width: 100%;
@@ -589,13 +588,8 @@ span {
   font-family: Arial, Helvetica, sans-serif;
 }
 .list__card__cnt--front {
-<<<<<<< HEAD
   font-size: 1.2em;
-  padding: 0.5em;
-  width: 26%;
-=======
-  font-size: 20px;
->>>>>>> master
+  padding: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -605,19 +599,12 @@ span {
 .list__card__cnt--front__ul {
   list-style: none;
   text-decoration: none;
-<<<<<<< HEAD
 }
 .list__card__cnt--front__ul li {
   margin-top: 1em;
-=======
-  max-width: 90%;
-  color: red;
-}
-.list__card__cnt--front__ul li {
-  margin-top: 30px;
->>>>>>> master
   font-weight: bold;
-  color: red;
+  word-wrap: normal;
+  white-space: normal;
 }
 .list__card__cnt--back {
   width: 100%;
@@ -631,11 +618,17 @@ span {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.list__card__cnt--back--content ul {
+  list-style-type: none;
 }
 .list__card__cnt--back--content ul li {
-  margin-top: 15px;
+  margin-top: 1em;
+  font-size: 1.2em;
+  text-align: left;
 }
 .list__card__button {
   height: 3.5em;
@@ -656,11 +649,25 @@ span {
 .list__card__span {
   color: black;
 }
-
 .list__card__title {
-  color: red !important;
+  font-family: "Cornerstone", sans-serif;
+  text-align: center;
+  color: #6ad4db;
+  box-shadow: inset 2px 0 0 0 #6ad4db;
+  margin-bottom: 2em;
 }
 
+@media (min-width: 800px) and (max-width: 1200px) {
+  .list__card {
+    width: 45%;
+    margin: 1em;
+  }
+}
+@media (max-width: 800px) {
+  .list__card {
+    width: 90%;
+  }
+}
 .form__section {
   min-height: 100vh;
   background-image: url(/images/backk.png);

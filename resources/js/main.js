@@ -4,9 +4,10 @@ import {BrowserRouter} from 'react-router-dom';
 import AppMain from './AppMain';
 
 import '/css/index.css'
+
 ReactDom.render(
     <BrowserRouter>
       <AppMain />
-  </BrowserRouter>, 
+    </BrowserRouter>, 
     document.querySelector('#root')
   );

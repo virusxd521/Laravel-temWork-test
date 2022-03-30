@@ -75,7 +75,7 @@
     }
 
     &__cnt--front {
-        color: black;
+        // color: black;
         font-size: 20px;
         display:flex;
         justify-content: center;
@@ -83,18 +83,17 @@
         flex-direction: column;
         font-family: Arial, Helvetica, sans-serif;
 
-        & ul {
+        &__ul {
             list-style: none;
             text-decoration: none;
             max-width: 90%;
+            color: red;
             
 
             & li {
                 margin-top: 30px;
                 font-weight: bold;
-                
-                
-
+                color: red;
             }
         }
     }
@@ -144,7 +143,10 @@
     }
 }
 
-  
+.list__card__title {
+    color: red !important;
+}
+
   
   
   

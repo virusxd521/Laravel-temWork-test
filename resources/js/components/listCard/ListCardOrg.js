@@ -18,7 +18,7 @@ function ListCardOrg({ item }) {
             <div className="list__card__cnt--front">
               <ul className="list__card__cnt--front__ul">
                 <li>
-                  <h1>ORGANIZATION</h1>
+                  <h2 className="list__card__title">ORGANIZATION</h2>
                 </li>
                 <li>AGE: {item.DateOfBirth}</li>
                 <li>RANK: {item.rank.map((item, i) => item.name)}</li>

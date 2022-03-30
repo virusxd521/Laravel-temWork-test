@@ -12,5 +12,12 @@
         color: white;
         margin: 0 auto;
     }
+
+    &__subtitle {
+        font-size: 10em;
+        color: white;
+        margin: 0 auto;
+        z-index: 3;
+    }
 }
 

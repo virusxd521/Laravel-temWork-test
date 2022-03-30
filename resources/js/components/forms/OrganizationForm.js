@@ -79,6 +79,7 @@ function PlayerForm() {
         <div className="form__container">
           <label>What we require</label>
           <input
+            className="form__input"
             autoFocus
             type="text"
             placeholder="What we require"

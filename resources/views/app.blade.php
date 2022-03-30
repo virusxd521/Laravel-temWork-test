@@ -12,6 +12,6 @@
 
     </div>
 
-    <script src="{{ mix('/js/Main.js') }}"></script>
+    <script src="{{ mix('js/main.js') }}"></script>
 </body>
 </html>

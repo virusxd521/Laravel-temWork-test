@@ -20,6 +20,7 @@ function CardWrapperOrg() {
 
   }, []);
   
+  console.log(info);
 
   return (
     <section className="players__list" >

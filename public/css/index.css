@@ -589,12 +589,7 @@ span {
 }
 .list__card__cnt--front {
   font-size: 1.2em;
-<<<<<<< HEAD
   padding: 1em;
-=======
-  padding: 0.5em;
-  width: 26%;
->>>>>>> master
   display: flex;
   justify-content: center;
   align-items: center;
@@ -608,11 +603,8 @@ span {
 .list__card__cnt--front__ul li {
   margin-top: 1em;
   font-weight: bold;
-<<<<<<< HEAD
   word-wrap: normal;
   white-space: normal;
-=======
->>>>>>> master
 }
 .list__card__cnt--back {
   width: 100%;
@@ -657,7 +649,6 @@ span {
 .list__card__span {
   color: black;
 }
-<<<<<<< HEAD
 .list__card__title {
   font-family: "Cornerstone", sans-serif;
   text-align: center;
@@ -677,9 +668,6 @@ span {
     width: 90%;
   }
 }
-=======
-
->>>>>>> master
 .form__section {
   min-height: 100vh;
   background-image: url(/images/backk.png);

@@ -1,17 +1,21 @@
 import axios from "axios";
-import ListCard from "./ListCard";
+import ListCardPlayer from "./ListCardPlayer";
 import { useState,useEffect } from "react";
 import Header from "../Header";
 
 
-function CardWrapper() {
+function CardWrapperPlayer() {
   const [info, setInfo] = useState({});
   const url = "/api/individual_advertisement";
   
 
   useEffect(() => {
+    
+
     axios.get(url).then((response) => {
       setInfo(response.data);
+      
+  
     });
 
   }, []);
@@ -19,12 +23,12 @@ function CardWrapper() {
 
   return (
     <section className="players__list" >
-    <Header className="header-short" />
+    <Header classa="header-short" />
     {
       Object.keys(info).length !== 0 ?
-      <div className="card-wrapper">
+      <div className="players__list__card">
       {info.map((item, i) => (
-        <ListCard item={item}/>
+        <ListCardPlayer item={item}/>
       ))} 
     </div>
     : null
@@ -35,4 +39,4 @@ function CardWrapper() {
   );
 }
 
-export default CardWrapper;
+export default CardWrapperPlayer;

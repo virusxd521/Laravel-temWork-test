@@ -9,8 +9,8 @@ function UI_card({ title,destination }) {
 
     return (
         <>
-            <div className="UI_card" onClick={() => navigate(destination)}>
-                <h2 className="UI_card__title">{title}</h2>
+            <div className="UI__card" onClick={() => navigate(destination)}>
+                <h2 className="UI__card__title">{title}</h2>
             </div>
         </>
     )

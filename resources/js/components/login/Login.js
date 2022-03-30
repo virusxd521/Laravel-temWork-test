@@ -1,5 +1,7 @@
+import { UserContext } from '../../context/context';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import Header from '../Header';
 
 
@@ -13,8 +15,8 @@ export default function Login({responsePassingUp, authenticatedUser}) {
     password: "",
   });
 
- 
-
+  const { user, setUser} = useContext(UserContext)
+  console.log('hi', user)
 
   // const [signedOut, setSignedOut] = useState('Signed');
 
@@ -22,7 +24,8 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   const signingOut = () => {
     axios.get('/api/logout').then( response => {
-    console.log(response);
+    setUser(data.response.s)
+    console.log(response)
   })}
 
   
@@ -64,25 +67,31 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   const configuring_registration = async data => {
         document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        await axios.post('/api/login', {
+        const res = await axios.post('/api/login', {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    }).then(response => {
-      console.log(response.data);
-      responsePassingUp(response.data);
- 
     })
+      console.log('ciao', res.data);
+      responsePassingUp(res.data);
+
+      if (res.data.error) {
+        return
+      } else {
+        setUser(res.data)
+      }
+    
   }
 
   return (
-     <section className="login__section">
-        <Header height="0" classa="header-short" authenticatedUser={authenticatedUser}  />
+     <section className="login">
+        <Header classa="header-short" authenticatedUser={authenticatedUser} signingOut={signingOut} />
         
-        <form className="login" onSubmit={handleSubmit}>
-            <h1 className="login__title">Login</h1>
-            <div className="login__container">
-                <label>Username</label>
+        <form className="login__form" onSubmit={handleSubmit}>
+            <h1 className="login__form__title">Login</h1>
+            <div className="login__form__container">
+                <label className="login__form__label">Username</label>
                 <input 
+                  className="login__form__input"
                   autoFocus
                   type="text"
                   placeholder='Username'
@@ -93,9 +102,10 @@ export default function Login({responsePassingUp, authenticatedUser}) {
             </div>
       
           
-            <div className="login__container">
-                <label>Password</label>
+            <div className="login__form__container">
+                <label className="login__form__label">Password</label>
                 <input 
+                  className="login__form__input"
                   type="password"
                   placeholder='Password'
                   value={password}
@@ -104,7 +114,7 @@ export default function Login({responsePassingUp, authenticatedUser}) {
                 />
             </div>
           
-          <button className="login__button button" type="submit" disabled={!validateForm()}>
+          <button className="login__form__button button" type="submit" disabled={!validateForm()}>
             Login
           </button>
         </form>

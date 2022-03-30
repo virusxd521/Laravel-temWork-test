@@ -2,9 +2,20 @@ import react, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserContext } from '../context/context';
+import { Fragment } from 'react';
 
 
 function Header({height, classa, signingOut, authenticatedUser}) {
+
+    
+
+// user context 
+  const { user, setUser} = useContext(UserContext)
+  console.log('hi', user)
+
+//   animations logo
 
     gsap.registerPlugin(ScrollTrigger);
     const ref = useRef(null);
@@ -24,7 +35,7 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                 top: '1.5rem',
                 left: '-1rem',
                 x: '56%',
-                y: '-45%',
+                y: '5%',
                 position: 'fixed',
                 scrollTrigger: {
                     trigger: element.querySelector(".home"),
@@ -37,22 +48,10 @@ function Header({height, classa, signingOut, authenticatedUser}) {
         )
     }, []);
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', () => {
-    //       setScrollState(window.pageYOffset)
-    //     })
-    // })
-
-    // const divStyle = {
-    //     height: 500-scrollState+"px"
-    // }
-
-     // console.log(window.pageYOffset)
-    
     const navigate = useNavigate(); 
 
     const path = useLocation();
-    console.log('ssssdasdsad', authenticatedUser);
+    console.log(authenticatedUser);
     
     return (
         <section className={classa} ref={ref} style={{height: height + 'em'}}>
@@ -61,14 +60,16 @@ function Header({height, classa, signingOut, authenticatedUser}) {
                 {(path.pathname !== '/') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logo.svg" alt="logo" />)}
 
                 <ul>
-
-                    <Link to={`/login`} className="nav-ltr" >Login</Link>
-                    <Link to={`/register`} className="nav-ltr" >Register</Link>
-                    <Link to={`/profile`} className="nav-ltr" >Profile</Link>
                     {
-                        authenticatedUser !== null && authenticatedUser !== undefined ? <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link> : null
+                        !user && <Fragment>
+
+                            <Link to={`/login`} className="nav-ltr" >Login</Link>
+                            <Link to={`/register`} className="nav-ltr" >Register</Link>
+                        </Fragment>
                     }
-                
+                        <Link to={`/profile`} className="nav-ltr" >Profile</Link>
+                        <Link to={`/logout`} className="nav-ltr" onClick={signingOut} >Logout</Link>
+
                 </ul>
             </nav>
             

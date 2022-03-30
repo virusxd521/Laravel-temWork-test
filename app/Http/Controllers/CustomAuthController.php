@@ -61,7 +61,7 @@ class CustomAuthController extends Controller
             return $user;
             // $request->session()->regenerate();
         }
-        return json_encode(['data' => 'ssssss']);
+        return json_encode(['error' => 'ssssss']);
     }
 
     // Sign out of the app as a user

@@ -16,9 +16,9 @@ class OrganizationController extends Controller
     {
         $organization = new Organization;
 
-        $data = [
-            'number' => $organization->number_organization()
-        ];
+        // gsethrtherh;
+
+        $data = $organization->number_organization();
         return json_encode($data);
     }
 
@@ -60,7 +60,9 @@ class OrganizationController extends Controller
             ->join('positions', 'positions.id','=','advertisements.position_id')
             ->join('advertisement_language', 'advertisement_language.advertisement_id','=','advertisements.id')
             ->join('languages', 'advertisement_language.language_id','=','languages.id')  
-            ->select('organizations.id as id', 'organizations.name as name', 'positions.name as position', 'games.name as game', 'ranks.name as rank', 'game_roles.name as role', 'languages.name as language', 'advertisements.expectation as expectation', 'advertisements.offer as offer', 'advertisements.availability as availability')
+            ->join('contact_organization', 'organizations.id', '=', 'contact_organization.organization_id')
+            ->join('contacts', 'contacts.id', '=', 'contact_organization.contact_id')
+            ->select('organizations.id as id', 'organizations.name as name', 'positions.name as position', 'games.name as game', 'ranks.name as rank', 'game_roles.name as role', 'languages.name as language', 'advertisements.expectation as expectation', 'advertisements.offer as offer', 'advertisements.availability as availability', 'contact_organization.url as url', 'contacts.name as contact')
             ->get();
 
         //dd($organizations[0]->id);
@@ -135,7 +137,7 @@ class OrganizationController extends Controller
         
             // if(!in_array($organizationsForJson))
         }
-        //dd($organizationsForJson);
+        dd($organizationsForJson);
         return $organizationsForJson;
     }
 }

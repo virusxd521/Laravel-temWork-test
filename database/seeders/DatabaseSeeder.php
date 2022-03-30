@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdvertisementSeeder::class,
             AdvertisementLanguageSeeder::class,
+            ContactsSeeder::class,
             GameIndividualsSeeder::class,
             GameRoleSeeder::class,
             GameSeeder::class,

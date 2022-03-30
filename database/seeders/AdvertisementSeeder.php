@@ -24,12 +24,12 @@ class AdvertisementSeeder extends Seeder
             $organization = new Advertisement;
             $organization->position_id = rand(1,8);
             //$organization->language_id = rand(1, 148);
-            $organization->game_id = rand(1,4);
+            //$organization->game_id = rand(1,4);
             $organization->organization_id = rand(1,97);
-            $organization->game_id = rand(1,4);
+            $organization->game_id = rand(1,3);
             $organization->individual_id = $i;
-            $organization->status_id = rand(1,2);$organization->rank_id = rand(1, 34);
-            $organization->rank_id = rand(1, 34);
+            $organization->status_id = rand(1,2);
+            $organization->rank_id = rand(1, 25);
             $organization->game_role_id = rand(1, 15);
             
             $organization->save();

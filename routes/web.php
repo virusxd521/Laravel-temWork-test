@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\PlayerController;
 use App\Models\User;
 
 /*
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
     return json_encode(['user' => Auth::user()]);
 });
 
+// Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_data']);
 
 
 

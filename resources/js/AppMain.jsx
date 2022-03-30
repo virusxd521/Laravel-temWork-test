@@ -8,10 +8,14 @@ import UserInterface from './components/userInterface/UserInterface'
 import CardWrapperPlayer from './components/listCard/CardWrapperPlayer';
 import PlayerForm from './components/forms/PlayerForm';
 import Page404 from './components/page404/Page404';
-import Organization from './components/forms/Organization';
+import OrganizationForm from './components/forms/OrganizationForm';
 import StaffForm from './components/forms/StaffForm';
 import CardWrapperStaff from './components/listCard/CardWrapperStaff';
 import CardWrapperOrg from './components/listCard/CardWrapperOrg';
+import { useMemo } from 'react';
+import { UserContext } from './context/context';
+import axios from 'axios';
+
 
 const AppMain = () => {
 
@@ -49,28 +53,46 @@ const AppMain = () => {
         SetAuthenticatedUser(data);
     }
 
-    
+    // user context
+    const [user, setUser] = useState(null);
 
+    const value = useMemo(() => ({user,setUser}), [user]);
+    
+    const userLogin = async() => {
+        
+        const res=await axios.get('/api/user')
+        console.log('/api/user',res.data)
+        setUser(res.data)
+    }
+
+
+
+    useEffect(()=> {
+        userLogin()
+    }, [])
 
     return (
-        <Routes>
-            <Route path="/" element={ <Homepage />} />
-            <Route path="/login" element={<Login responsePassingUp={functSettingData}
-            authenticatedUser={authenticatedUser}
-                
-            /> }   /> 
-            <Route path="/register" element={<Register />} /> 
-            <Route path="/register/player" element={<PlayerForm />} />
-            <Route path="/register/team" element={<Organization />} />
-            <Route path="/register/staff" element={<StaffForm />} />
-            <Route path="/list/players" element={<CardWrapperPlayer />} />
-            <Route path="/list/staff" element={<CardWrapperStaff />} />
-            <Route path="/list/org" element={<CardWrapperOrg />} />
-            <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
-                <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
-            </Route>
-            <Route path="/logout" element={<Page404 authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />
-        </Routes>
+        <UserContext.Provider value={value}>
+            <Routes>
+                <Route path="/" element={ <Homepage />} />
+                <Route path="/login" element={<Login responsePassingUp={functSettingData}
+                authenticatedUser={authenticatedUser}
+                    
+                /> }   /> 
+                <Route path="/register" element={<Register />} /> 
+                <Route path="/register/player" element={<PlayerForm />} />
+                <Route path="/register/team" element={<OrganizationForm />} />
+                <Route path="/register/staff" element={<StaffForm />} />
+                <Route path="/list/players" element={<CardWrapperPlayer />} />
+                <Route path="/list/staff" element={<CardWrapperStaff />} />
+                <Route path="/list/org" element={<CardWrapperOrg />} />
+                <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
+                    <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
+                </Route>
+                <Route path="/logout" element={<Homepage authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />
+                <Route path="/*" element={<Page404 />} />
+            </Routes>
+        </UserContext.Provider>
     )
 }
 

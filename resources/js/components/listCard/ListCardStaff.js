@@ -15,10 +15,10 @@ function ListCardStaff({ item }) {
       <div className="list__card">
         <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list__card__face list__card__face--front">
-            <div className="list__card__cnt">
-              <ul className="list__card__cnt__ul">
+            <div className="list__card__cnt--front">
+              <ul className="list__card__cnt--front__ul">
                 
-                  <h1>STAFF</h1>
+                  <h2 className="list__card__title">STAFF</h2>
                 
                 <li>AGE: {item.DateOfBirth}</li>
                 {/* <li>RANK: {item.rank.map((item, i) => item.name)}</li> */}

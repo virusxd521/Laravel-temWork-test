@@ -1,5 +1,7 @@
+import { UserContext } from '../../context/context';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import Header from '../Header';
 
 
@@ -13,8 +15,8 @@ export default function Login({responsePassingUp, authenticatedUser}) {
     password: "",
   });
 
- 
-
+  const { user, setUser} = useContext(UserContext)
+  console.log('hi', user)
 
   // const [signedOut, setSignedOut] = useState('Signed');
 
@@ -22,7 +24,8 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   const signingOut = () => {
     axios.get('/api/logout').then( response => {
-    console.log(response);
+    setUser(data.response.s)
+    console.log(response)
   })}
 
   
@@ -64,19 +67,24 @@ export default function Login({responsePassingUp, authenticatedUser}) {
 
   const configuring_registration = async data => {
         document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        await axios.post('/api/login', {
+        const res = await axios.post('/api/login', {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    }).then(response => {
-      console.log(response.data);
-      responsePassingUp(response.data);
- 
     })
+      console.log('ciao', res.data);
+      responsePassingUp(res.data);
+
+      if (res.data.error) {
+        return
+      } else {
+        setUser(res.data)
+      }
+    
   }
 
   return (
      <section className="login">
-        <Header height="0" classa="header-short" authenticatedUser={authenticatedUser}  />
+        <Header classa="header-short" authenticatedUser={authenticatedUser} signingOut={signingOut} />
         
         <form className="login__form" onSubmit={handleSubmit}>
             <h1 className="login__form__title">Login</h1>

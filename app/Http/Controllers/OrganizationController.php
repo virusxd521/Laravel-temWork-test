@@ -138,7 +138,7 @@ class OrganizationController extends Controller
         
             // if(!in_array($organizationsForJson))
         }
-        dd($organizationsForJson);
+        // dd($organizationsForJson);
         return $organizationsForJson;
     }
 }

@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-function ListCardPlayer({ item }) {
+function ListCardPlayer({ item, extractingDate }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
   console.log(isFlipped);
-  console.log(item);
+
+
+  // extractingDate
 
   return (
     <>

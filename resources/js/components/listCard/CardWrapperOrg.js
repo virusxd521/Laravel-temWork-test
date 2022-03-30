@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import Header from "../Header";
 
 
-function CardWrapperOrg() {
+function CardWrapperOrg({extractingDate}) {
   const [info, setInfo] = useState({});
   const url = "/api/martin";
   
@@ -28,7 +28,9 @@ function CardWrapperOrg() {
       Object.keys(info).length !== 0 ?
       <div className="players__list__card">
       {info.map((item, i) => (
-        <ListCardOrg item={item}/>
+        <ListCardOrg item={item}
+          extractingDate={extractingDate}
+        />
       ))} 
     </div>
     : null

@@ -1,13 +1,14 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCardStaff({ item }) {
+function ListCardStaff({ item, extractingDate}) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
   
+  // extractingDate
 
   return (
     <>

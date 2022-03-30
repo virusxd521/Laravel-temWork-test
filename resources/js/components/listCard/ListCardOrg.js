@@ -1,12 +1,16 @@
 // import "./ListCard.css";
 import { useState } from "react";
 
-function ListCardOrg({ item }) {
+function ListCardOrg({ item, extractingDate }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const flip = () => {
     setIsFlipped(!isFlipped);
   };
+
+
+// extractingDate
+
   return (
     <>
       <div className="list__card">

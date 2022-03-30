@@ -2339,7 +2339,16 @@ var AppMain = function AppMain() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     userLogin();
-  }, []);
+  }, []); // item.DateOfBirth
+  // function for extracting the year from the date
+
+  var extractingDate = function extractingDate(year_data) {
+    var pattern = year_data;
+    var regex = /(\d{1,})(-)/;
+    var result = pattern.match(regex);
+    return result[1];
+  };
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_context_context__WEBPACK_IMPORTED_MODULE_14__.UserContext.Provider, {
     value: value,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Routes, {
@@ -2366,13 +2375,19 @@ var AppMain = function AppMain() {
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_forms_StaffForm__WEBPACK_IMPORTED_MODULE_11__["default"], {})
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
         path: "/list/players",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperPlayer__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperPlayer__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          extractingDate: extractingDate
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
         path: "/list/staff",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperStaff__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperStaff__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          extractingDate: extractingDate
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
         path: "/list/org",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperOrg__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_listCard_CardWrapperOrg__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          extractingDate: extractingDate
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_17__.Route, {
         path: "/profile",
         element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_16__.jsx)(_components_userInterface_UserInterface__WEBPACK_IMPORTED_MODULE_6__["default"], {
@@ -3417,7 +3432,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function CardWrapperOrg() {
+function CardWrapperOrg(_ref) {
+  var extractingDate = _ref.extractingDate;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       info = _useState2[0],
@@ -3437,7 +3454,8 @@ function CardWrapperOrg() {
       className: "players__list__card",
       children: info.map(function (item, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListCardOrg__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          item: item
+          item: item,
+          extractingDate: extractingDate
         });
       })
     }) : null]
@@ -3484,7 +3502,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function CardWrapperPlayer() {
+function CardWrapperPlayer(_ref) {
+  var extractingDate = _ref.extractingDate;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       info = _useState2[0],
@@ -3504,7 +3524,8 @@ function CardWrapperPlayer() {
       className: "players__list__card",
       children: info.map(function (item, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListCardPlayer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          item: item
+          item: item,
+          extractingDate: extractingDate
         });
       })
     }) : null]
@@ -3551,7 +3572,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function CardWrapperStaff() {
+function CardWrapperStaff(_ref) {
+  var extractingDate = _ref.extractingDate;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       info = _useState2[0],
@@ -3572,7 +3595,8 @@ function CardWrapperStaff() {
       className: "players__list__card",
       children: info.map(function (item, i) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_ListCardStaff__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          item: item
+          item: item,
+          extractingDate: extractingDate
         });
       })
     }) : null]
@@ -3615,7 +3639,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ListCardOrg(_ref) {
-  var item = _ref.item;
+  var item = _ref.item,
+      extractingDate = _ref.extractingDate;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3624,7 +3649,8 @@ function ListCardOrg(_ref) {
 
   var flip = function flip() {
     setIsFlipped(!isFlipped);
-  };
+  }; // extractingDate
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -3734,7 +3760,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ListCardPlayer(_ref) {
-  var item = _ref.item;
+  var item = _ref.item,
+      extractingDate = _ref.extractingDate;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3745,8 +3772,8 @@ function ListCardPlayer(_ref) {
     setIsFlipped(!isFlipped);
   };
 
-  console.log(isFlipped);
-  console.log(item);
+  console.log(isFlipped); // extractingDate
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "list__card",
@@ -3856,7 +3883,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ListCardStaff(_ref) {
-  var item = _ref.item;
+  var item = _ref.item,
+      extractingDate = _ref.extractingDate;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -3865,7 +3893,8 @@ function ListCardStaff(_ref) {
 
   var flip = function flip() {
     setIsFlipped(!isFlipped);
-  };
+  }; // extractingDate
+
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

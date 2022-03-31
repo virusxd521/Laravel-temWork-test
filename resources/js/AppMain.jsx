@@ -93,7 +93,6 @@ const AppMain = () => {
                 <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                     <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
                 </Route>
-                {/* {<Route path="/logout" element={<Homepage authenticatedUser={authenticatedUser} signingOut={signingOut}  />} />} */}
                 <Route path="/*" element={<Page404 />} />
             </Routes>
         </UserContext.Provider>

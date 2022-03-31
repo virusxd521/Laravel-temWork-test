@@ -77,11 +77,7 @@ class OrganizationController extends Controller
 
         //looping through every single row of the output table from query
         foreach($organizations as $organization) {
-         
-            //dd($organization);
-            //   foreach($organization as $key=>$value){
-            //       var_dump( $key." => ".$value.'\n');
-            //   }
+        
 
             //if processed or doesn't contain org ID it will be injected into organizaitonsForJson array with all the "properties"
             if (!in_array($organization->id, $processedOrgs)){
@@ -103,18 +99,6 @@ class OrganizationController extends Controller
                     $organizationsForJson[] = $dummyArray;
                     //dd($organizationsForJson);
                 
-                // $organizationsForJson[] = [
-                //     "id" => $organization->id,
-                //     "name" => $organization->name,
-                //     "language" => [],
-                //     "position" => [],
-                //     "game" => [],
-                //     "rank" => [],
-                //     "role" => [],
-                //     "expectation" => [],
-                //     "offer" => [],
-                //     "availability" => [],
-                // ];
                 $currentOrgIndex++;
             }
             //dd($organizationsForJson);
@@ -130,13 +114,8 @@ class OrganizationController extends Controller
                     $organizationsForJson[$currentOrgIndex][$key][] = $value;
                 }
 
-                // if(!in_array($organization->language, $organizationsForJson[$currentOrgIndex]["languages"])) {
-                    
-                //     $organizationsForJson[$currentOrgIndex]["languages"][] = $organization->language;
-                // }
             }
         
-            // if(!in_array($organizationsForJson))
         }
         // dd($organizationsForJson);
         return $organizationsForJson;

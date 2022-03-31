@@ -26,11 +26,6 @@ body {
     width: 100%;
 }
 
-/* code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
-} */
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -54,7 +49,7 @@ nav {
     position: fixed;
     width: 8%;
     height: 8%;
-    top: 1.5rem;
+    top: 2rem;
     left: 2.7rem;
     transform: translate(-0%, -45%);
     z-index: 4;
@@ -158,10 +153,6 @@ nav ul a {
 nav ul a:hover {
     color: $neonblue;
     transform: scale(1.2);
-    /* -moz-transition: all 0.3s ease-in-out; */
-    /* -webkit-transition: all 0.3s ease-in-out; */
-    /* -ms-transition: all 0.3s ease-in-out; */
-    /* -o-transition: all 0.3s ease-in-out; */
     transition: all 0.3s ease-in-out;
     transition: cubic-bezier(.17,.67,.83,.67) 0.1s
 }
@@ -218,4 +209,3 @@ button:hover {
 @import "./listCard.scss";
 @import "./form.scss";
 @import "./page404.scss";
-// @import "./colors.scss";

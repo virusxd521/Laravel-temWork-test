@@ -25,7 +25,7 @@ function ListCardPlayer({ item }) {
   }, []);
 
   // importing UserContext
-  const { user, setUser} = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
   return (
     <>
@@ -56,13 +56,7 @@ function ListCardPlayer({ item }) {
             <div className="list__card__cnt--back">        
               <div className="list__card__cnt--back--content">
                 <ul>
-                  <li>
-                    <strong>ABOUT:</strong> <span className="list__card__span"> </span>
-                  </li>
-                  <li>
-                    <strong>GOALS:</strong> <span className="list__card__span"></span>
-                  </li>
-                  <li><strong>DISCORD:</strong> {item.discord}{" "}</li>
+                  <li><strong>CONTACT:</strong> {item.contact.map((item, i) => item.name)}</li>
                   <li><strong>EMAIL:</strong> {item.email}</li>
                 </ul>
                 

@@ -15,6 +15,7 @@ function CardWrapperPlayer() {
     axios.get(url).then((response) => {
       setInfo(response.data);
       
+      
   
     });
 
@@ -23,6 +24,7 @@ function CardWrapperPlayer() {
 
   return (
     <section className="players__list" >
+      {console.log(info)}
     <Header classa="header-short" />
     {
       Object.keys(info).length !== 0 ?

@@ -3,13 +3,7 @@ import React, { useState } from "react";
 import Header from "../Header";
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
-
+  
   return (
     <section className="form__section">
       <Header height="0" />
@@ -23,8 +17,6 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="Nickname"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
             name="nick_name"
           />
         </div>
@@ -70,8 +62,6 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="What we offer"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
             name="offer"
           />
         </div>
@@ -83,8 +73,6 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="What we require"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
             name="requirement"
           />
         </div>
@@ -92,7 +80,6 @@ function PlayerForm() {
         <button
           className="form__button button"
           type="submit"
-          // disabled={!validateForm()}
         >
           Submit
         </button>

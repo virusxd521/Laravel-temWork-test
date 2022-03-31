@@ -1,16 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { useNavigate } from 'react-router-dom'
 
 function Card({title, number, img, delay, location}) {
-  // const [isFlipped, setIsFlipped] = useState(false);
 
-  // const flip = () => {
-  //   setIsFlipped(!isFlipped);
-  // };
-  // console.log(isFlipped);
-  
   useEffect(() => {
     Aos.init({ duration: 500 })
   }, [])

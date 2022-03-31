@@ -17,10 +17,6 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 40);
-            //$table->string('code', 10);
-            //$table->string('url', 127)->nullable();
-            
-            
         });
     }
 

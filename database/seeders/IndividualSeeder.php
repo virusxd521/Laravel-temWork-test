@@ -27,6 +27,7 @@ class IndividualSeeder extends Seeder
             $individual->last_name = $faker->lastName;
             $individual->date_of_birth = $faker->dateTimeBetween('1990-01-01', '2012-12-31');
             $individual->nationality_id = rand(1, 163);
+            $individual->contact_url = $faker->url;
             $individual->save();
         }
     }

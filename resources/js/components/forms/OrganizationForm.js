@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import Header from "../Header";
 
 function PlayerForm() {
+<<<<<<< HEAD
   
+=======
+>>>>>>> master
   return (
     <section className="form__section">
       <Header height="0" />
 
-      <form className="form" >
+      <form className="form">
         <h1 className="form__title">Organization register</h1>
         <div className="form__container">
           <label>Name</label>
@@ -45,7 +48,7 @@ function PlayerForm() {
             <option>CS:GO</option>
           </select>
         </div>
-        
+
         <div className="form__container">
           <label>Server</label>
           <select className="form__select">
@@ -77,10 +80,14 @@ function PlayerForm() {
           />
         </div>
 
+<<<<<<< HEAD
         <button
           className="form__button button"
           type="submit"
         >
+=======
+        <button className="form__button button" type="submit">
+>>>>>>> master
           Submit
         </button>
       </form>

@@ -24,6 +24,11 @@ class Rank extends Model
         return $this->hasMany(Advertisement::class);
     }
 
+    public function individual()
+    {
+        return $this->belongsToMany(Individual::class, 'game_individual');
+    }
+
 }
 
 

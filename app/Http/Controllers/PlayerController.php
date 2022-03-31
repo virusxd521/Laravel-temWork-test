@@ -204,7 +204,6 @@ class PlayerController extends Controller
         $game_individual->server_id = null;
         $game_individual->game_role_id = $game_id_role;
         $game_individual->save();
-
         
     }
 

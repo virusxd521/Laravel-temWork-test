@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('last_name', 30)->nullable();
             $table->date('date_of_birth');
             $table->foreignId('nationality_id');
+            $table->string('contact_url',125)->nullable();
+            $table->string('opgg', 125)->nullable();
+            $table->string('lolpros', 125)->nullable();
             $table->timestamps();
         });
     }

@@ -117,7 +117,6 @@ const Register = () => {
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }
     )
-    console.log(res)
     if (res.data.error) {
       setUser(null)
       return

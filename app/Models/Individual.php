@@ -24,6 +24,12 @@ class Individual extends Model
         return $this->belongsToMany(Position::class, 'individual_position', 'individual_id', 'position_id');
     }
 
+
+    public function individual_position()
+    {
+        return $this->hasMany(IndividualPosition::class);
+    }
+
     public function language()
     {
         return $this->belongsToMany(Language::class, 'individual_language', 'individual_id', 'language_id');
@@ -36,7 +42,7 @@ class Individual extends Model
 
     public function contact()
     {
-        return $this->belongsToMany(Contact::class);
+        return $this->belongsToMany(Contact::class, 'contact_individual');
     }
 
     public function advertisement()
@@ -46,7 +52,8 @@ class Individual extends Model
 
     public function rank()
     {
-        return $this->belongsToMany(Rank::class, 'game_individual', 'individual_id', 'rank_id');
+        return $this->belongsToMany(Rank::class, 'game_individual');
+        
     }
 
     // Role is not position!!

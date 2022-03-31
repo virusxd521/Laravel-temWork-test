@@ -47,8 +47,6 @@ export default function Login() {
           ...data,
         'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     })
-      console.log('ciao', res.data);
-
       if (res.data.error) {
         setUser(null)
         alert('Wrong username or password, try it again')

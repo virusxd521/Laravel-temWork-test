@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/context";
 
-function ListCardStaff({ item }) {
+function ListCardStaff({ item, extractingDate}) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // function for flipping, runs only if user is logged in (means that its value is not null)
@@ -27,6 +27,7 @@ function ListCardStaff({ item }) {
   // importing UserContext
   const { user, setUser} = useContext(UserContext)
   
+  // extractingDate
 
   return (
     <>

@@ -7,6 +7,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\PlayerController;
 use App\Models\User;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,10 +32,11 @@ Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
 
 // Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_data']);
 
-
+Route::get('/daniel_contact', [PlayerController::class, 'data_for_advertisement_user']);
 
 // Route::view('/', 'app');
 Route::view('/{any?}', 'app')->where('any', '.*');
 // Route::view('/{any}/{any}', 'app');
+
 
 

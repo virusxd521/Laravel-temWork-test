@@ -75,6 +75,19 @@ const AppMain = () => {
         
     }, [])
 
+    // item.DateOfBirth
+    // function for extracting the year from the date
+    const extractingDate = year_data => {
+        const pattern = year_data;
+        const regex = /(\d{1,})(-)/;
+        const result = pattern.match(regex);
+        return result[1];
+    }
+
+
+
+
+
     return (
         <UserContext.Provider value={value}>
             <Routes>
@@ -87,9 +100,9 @@ const AppMain = () => {
                 <Route path="/register/player" element={<PlayerForm />} />
                 <Route path="/register/team" element={<OrganizationForm />} />
                 <Route path="/register/staff" element={<StaffForm />} />
-                <Route path="/list/players" element={<CardWrapperPlayer />} />
-                <Route path="/list/staff" element={<CardWrapperStaff />} />
-                <Route path="/list/org" element={<CardWrapperOrg />} />
+                <Route path="/list/players" element={<CardWrapperPlayer extractingDate={extractingDate} />} />
+                <Route path="/list/staff" element={<CardWrapperStaff extractingDate={extractingDate} />} />
+                <Route path="/list/org" element={<CardWrapperOrg extractingDate={extractingDate} />} />
                 <Route path="/profile" element={<UserInterface responseData={responseData} authenticatedUser={authenticatedUser} />} >
                     <Route path=":user_id" element={<UserInterface responseData={responseData}/>} />
                 </Route>

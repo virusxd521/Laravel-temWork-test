@@ -15,6 +15,7 @@ function ListCardOrg({ item, extractingDate }) {
 
   return (
     <>
+    {console.log('sssssssssssssssssssssssssssssssss',item)}
       <div className="list__card">
         <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list__card__face list__card__face--front">

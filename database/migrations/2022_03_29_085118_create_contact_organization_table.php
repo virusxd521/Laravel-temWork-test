@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('organization_id');
             $table->foreignId('contact_id');
-            $table->string('url', 127);
+            $table->string('url', 127)->nullable();
         });
     }
 

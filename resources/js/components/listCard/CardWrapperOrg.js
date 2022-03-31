@@ -11,19 +11,18 @@ function CardWrapperOrg({extractingDate}) {
 
   useEffect(() => {
     
-
+// Fix this shit -----------------> Daniel
     axios.get(url).then((response) => {
       setInfo(response.data);
-      
-  
     });
 
   }, []);
   
-  console.log(info);
+  
 
   return (
     <section className="players__list" >
+      {console.log('ffff', info)}
     <Header />
     {
       Object.keys(info).length !== 0 ?
@@ -32,6 +31,7 @@ function CardWrapperOrg({extractingDate}) {
         <ListCardOrg item={item}
           extractingDate={extractingDate}
         />
+        
       ))} 
     </div>
     : null

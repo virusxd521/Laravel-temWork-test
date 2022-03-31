@@ -2,11 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Header from "../Header";
 
-function PlayerForm() {
-<<<<<<< HEAD
-
-=======
->>>>>>> master
+function StaffForm() {
   return (
     <section className="form__section">
       <Header height="0" />
@@ -26,15 +22,7 @@ function PlayerForm() {
 
         <div className="form__container">
           <label>Date of birth</label>
-<<<<<<< HEAD
-          <input
-            className="form__input"
-            type="date"
-            name="date_of_birth"
-          />
-=======
           <input className="form__input" type="date" name="date_of_birth" />
->>>>>>> master
         </div>
         <div className="form__container">
           <label>Nationality</label>
@@ -82,14 +70,7 @@ function PlayerForm() {
           />
         </div>
 
-<<<<<<< HEAD
-        <button
-          className="form__button button"
-          type="submit"
-        >
-=======
         <button className="form__button button" type="submit">
->>>>>>> master
           Submit
         </button>
       </form>
@@ -97,4 +78,4 @@ function PlayerForm() {
   );
 }
 
-export default PlayerForm;
+export default StaffForm;

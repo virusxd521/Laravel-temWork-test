@@ -153,7 +153,6 @@ class PlayerController extends Controller
 
         // Translating the users nationality to the nationality Id
         $nationality_id = Nationality::where('name', $request->nationalities)->get('id')[0];
-        return json_encode(["data"=> Auth::id()]);
         // Save the position as a player
         $individual_position = new IndividualPosition;
         $individual_position->position_id = '8';
@@ -173,7 +172,6 @@ class PlayerController extends Controller
         $individuals->lolpros = $request->lol_pros;
         $individuals->save();
         
-        return $request;
 
         // Setting the Individual's language, so it will be inserted to the individual language pivot table
         $language_id_select = Language::where('name', $request->languages)->get('id')[0];
@@ -182,12 +180,16 @@ class PlayerController extends Controller
         // The id of the last individual that has been submited
         
         $individuals_id_select = $individuals->orderBy('id', 'desc')->get()[0];
-
+        
         // Inserting the data to the individual language table
-        $individual_language = new IndividualLanguage;
-        $individual_language->individual_id = $individuals_id_select;
-        $individual_language->language_id = $language_id_select;
-        $individual_language->save();
+        DB::table('individual_language')->insert([
+            'individual_id' => $individuals_id_select,
+            'language_id'=> '20'
+        ]);
+        // $individual_language = new IndividualLanguage;
+        // $individual_language->individual_id = $individuals_id_select;
+        // $individual_language->language_id = $language_id_select;
+        // $individual_language->save();
         // insering to the rest of the tables
         
         // getting the id of the right game which the user individual chose from
@@ -204,6 +206,7 @@ class PlayerController extends Controller
         $game_individual->server_id = null;
         $game_individual->game_role_id = $game_id_role;
         $game_individual->save();
+        return $request;
         
     }
 

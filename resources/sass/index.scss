@@ -65,7 +65,7 @@ nav {
     height: 120vh;
     width: 100%;
     background-image: url("../../public/images/backround.svg");
-    background-size: contain;
+    background-size: 100vh;
     background-repeat: no-repeat;
     background-position: bottom;
     color: white;
@@ -76,6 +76,7 @@ nav {
     @media (max-width: 768px) {
         padding: 2em;
         height: 70vh;
+        background-size: contain;
     }
 }
 

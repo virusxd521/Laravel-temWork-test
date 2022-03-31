@@ -8,11 +8,11 @@ function ListCardPlayer({ item, extractingDate }) {
   };
 
 
-
-
   return (
     <>
-      <div className="list__card">
+    {!!item ?
+
+  <div className="list__card">
         <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list__card__face list__card__face--front">
             <div className="list__card__cnt--front">
@@ -57,6 +57,10 @@ function ListCardPlayer({ item, extractingDate }) {
           </div>
         </div>
       </div>
+    
+    
+    : null}
+
     </>
   );
 }

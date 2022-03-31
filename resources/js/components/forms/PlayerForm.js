@@ -104,7 +104,25 @@ function PlayerForm() {
             <option>NA</option>
           </select>
         </div>
+        <div className="form__container">
+          <label htmlFor="contacts">Contact</label>
+          <Option responseData={responseData} propOption={'contacts'} />
+        </div>
+        <div className="form__container">
+          <label htmlFor="communication">Communication URL</label>
+          <input className="form__select" id="communication" name="communication" placeholder="Please enter a url..."/>
+        </div>
 
+
+
+        <div className="form__container">
+            <label htmlFor="opgg">OPGG</label>
+            <input className="form__select" name="opgg" id="opgg" placeholder="Please enter a url..."/>
+        </div>
+        <div className="form__container">
+          <label htmlFor="lol_pros">LoL PROS</label>
+          <input className="form__select" id="lol_pros" name="lol_pros" placeholder="Please enter a url..."/>
+        </div>
         <button
           className="form__button button"
           type="submit"

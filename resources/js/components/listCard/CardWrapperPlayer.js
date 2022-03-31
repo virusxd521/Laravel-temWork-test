@@ -10,14 +10,9 @@ function CardWrapperPlayer({extractingDate}) {
   
 
   useEffect(() => {
-    
-
     axios.get(url).then((response) => {
       setInfo(response.data);
-      
-  
     });
-
   }, []);
   
 
@@ -25,8 +20,10 @@ function CardWrapperPlayer({extractingDate}) {
 
   return (
     <section className="players__list" >
+      
     <Header classa="header-short" />
     {
+      
       Object.keys(info).length !== 0 ?
       <div className="players__list__card">
       {info.map((item, i) => (

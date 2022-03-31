@@ -32,23 +32,6 @@ class OrganizationController extends Controller
     public function data_for_advertisement_organization()
     {
 
-        //     $rank = new Rank;
-        //     //dd($rank->all());
-
-        //   $organizations = Organization::with(
-        //         [
-        //             'game',
-        //             'language',
-        //             'user',
-        //             'contact',
-        //             'advertisement',
-        //             'position',
-        //             'status',
-        //             'rank',
-        //             'role'
-        //         ]
-        //       )->get();
-
         //query providing a complex information to displayed on organization card
         //table contains every unique combination from advertisements table and will need to be processed
         //into an array so that it can be JSONized
@@ -63,11 +46,10 @@ class OrganizationController extends Controller
             ->join('contact_organization', 'organizations.id', '=', 'contact_organization.organization_id')
             ->join('contacts', 'contacts.id', '=', 'contact_organization.contact_id')
             ->select('organizations.id as id', 'organizations.name as name', 'positions.name as position', 'games.name as game', 'ranks.name as rank', 'game_roles.name as role', 'languages.name as language', 'advertisements.expectation as expectation', 'advertisements.offer as offer', 'advertisements.availability as availability', 'contact_organization.url as url', 'contacts.name as contact')
-            ->orderBy('id', 'desc')
+            // ->orderBy('id', 'desc')
             ->get();
 
-        //dd($organizations[0]->id);
-        //dd($organizations);
+
 
         //desired structure of output an associated array with single org ID and NAME and all other "properties" values to be conatined in an array (multiple languages, positions... from adverts) 
         //declaration of dummy array processedOrgs to determin which oorganizaiton IDs hasve been inserted already
@@ -77,19 +59,9 @@ class OrganizationController extends Controller
 
         //looping through every single row of the output table from query
         foreach($organizations as $organization) {
-         
-            //dd($organization);
-            //   foreach($organization as $key=>$value){
-            //       var_dump( $key." => ".$value.'\n');
-            //   }
-
-            //if processed or doesn't contain org ID it will be injected into organizaitonsForJson array with all the "properties"
             if (!in_array($organization->id, $processedOrgs)){
                 $processedOrgs[] = $organization->id;
                 $dummyArray = [];
-
-                //take all columns from the a single row of output, if they are ID or NAME inject it with values into dummy associated array,
-                //for the rest declare empty field as value for respective key
                 foreach($organization as $key=>$value) {
                     if($key == "id" || $key == "name"){
                         $dummyArray[$key] = $value;
@@ -98,28 +70,9 @@ class OrganizationController extends Controller
                     }
 
                 }
-
-                    //insert the dummy array into final array
                     $organizationsForJson[] = $dummyArray;
-                    //dd($organizationsForJson);
-                
-                // $organizationsForJson[] = [
-                //     "id" => $organization->id,
-                //     "name" => $organization->name,
-                //     "language" => [],
-                //     "position" => [],
-                //     "game" => [],
-                //     "rank" => [],
-                //     "role" => [],
-                //     "expectation" => [],
-                //     "offer" => [],
-                //     "availability" => [],
-                // ];
                 $currentOrgIndex++;
             }
-            //dd($organizationsForJson);
-
-            // for each row of the query output inject respective values into the empty arrays under respective key of the prepared final array
             foreach($organization as $key=>$value){
 
                 if($key == "id" || $key == "name") {
@@ -129,16 +82,9 @@ class OrganizationController extends Controller
                 if(!in_array($value, $organizationsForJson[$currentOrgIndex][$key])) {
                     $organizationsForJson[$currentOrgIndex][$key][] = $value;
                 }
-
-                // if(!in_array($organization->language, $organizationsForJson[$currentOrgIndex]["languages"])) {
-                    
-                //     $organizationsForJson[$currentOrgIndex]["languages"][] = $organization->language;
-                // }
             }
-        
-            // if(!in_array($organizationsForJson))
         }
-        // dd($organizationsForJson);
-        return $organizationsForJson;
+
+        return json_encode($organizationsForJson);
     }
 }

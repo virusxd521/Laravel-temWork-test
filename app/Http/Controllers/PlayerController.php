@@ -162,6 +162,7 @@ class PlayerController extends Controller
 
         
             
+        
         $individuals = new Individual;
         $individuals->nickname = $request->nick_name;
         $individuals->user_id = Auth::id();
@@ -169,10 +170,10 @@ class PlayerController extends Controller
         $individuals->date_of_birth = $request->date_of_birth;
         $individuals->contact_url = $request->communication;
         $individuals->opgg = $request->opgg;
-        $individuals->lolpros = $request->lolpros;
+        $individuals->lolpros = $request->lol_pros;
         $individuals->save();
         
-        
+        return $request;
 
         // Setting the Individual's language, so it will be inserted to the individual language pivot table
         $language_id_select = Language::where('name', $request->languages)->get('id')[0];
@@ -188,7 +189,7 @@ class PlayerController extends Controller
         $individual_language->language_id = $language_id_select;
         $individual_language->save();
         // insering to the rest of the tables
-        return $request;
+        
         // getting the id of the right game which the user individual chose from
         $game_id_select = Game::where('name', $request->games)->get('id')[0];
         

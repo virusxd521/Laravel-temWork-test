@@ -19,6 +19,9 @@ function ListCardPlayer({ item, extractingDate }) {
     }
   }
 
+  // importing UserContext
+  const { user, setUser} = useContext(UserContext)
+
   return (
     <>
     {!!item ?

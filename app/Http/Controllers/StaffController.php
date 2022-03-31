@@ -94,7 +94,7 @@ class StaffController extends Controller
             }
         
         }
-        dd($staffForJson);
+    
         return $staffForJson;
     }   
 

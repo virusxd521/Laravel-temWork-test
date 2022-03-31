@@ -59,12 +59,6 @@ class OrganizationController extends Controller
 
         //looping through every single row of the output table from query
         foreach($organizations as $organization) {
-<<<<<<< HEAD
-        
-
-            //if processed or doesn't contain org ID it will be injected into organizaitonsForJson array with all the "properties"
-=======
->>>>>>> Daniel/before-present
             if (!in_array($organization->id, $processedOrgs)){
                 $processedOrgs[] = $organization->id;
                 $dummyArray = [];
@@ -77,11 +71,6 @@ class OrganizationController extends Controller
 
                 }
                     $organizationsForJson[] = $dummyArray;
-<<<<<<< HEAD
-                    //dd($organizationsForJson);
-                
-=======
->>>>>>> Daniel/before-present
                 $currentOrgIndex++;
             }
             foreach($organization as $key=>$value){
@@ -93,13 +82,7 @@ class OrganizationController extends Controller
                 if(!in_array($value, $organizationsForJson[$currentOrgIndex][$key])) {
                     $organizationsForJson[$currentOrgIndex][$key][] = $value;
                 }
-<<<<<<< HEAD
-
             }
-        
-=======
-            }
->>>>>>> Daniel/before-present
         }
 
         return json_encode($organizationsForJson);

@@ -13,6 +13,7 @@ use App\Models\Nationality;
 use App\Models\GameServer;
 use App\Models\Game;
 use App\Models\GameRole;
+use App\Models\Contact;
 use App\Models\GameIndividual;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,27 +32,44 @@ class PlayerController extends Controller
 
     public function data_for_advertisement_user()
     {
-        $individuals = Individual::with([ 'position' ,'game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])
-            ->orderBy('individuals.id', 'desc')
+        
+        $individuals_position = new IndividualPosition;
+        $individuals_position->only_player()->get();
+
+        // dd($individuals_position->only_player()->get());
+        
+        $individuals = Individual::with(['position','game_individual', 'nationality','language', 'contact', 'rank','server', 'role', 'games'])
+            // ->dd($id)
+            ->orderBy('id', 'desc')
             ->get();
+            // dd($individuals->all());
 
-
-        $data = [];
+            $data = [];
         foreach($individuals as $key => $individual){
             $user_data = [
+                
                 'UserName' => $individual->first_name,
+                'id' => $individual->id,
                 'NickName' => $individual->nickname,
                 'DateOfBirth' => $individual->date_of_birth,
                 'nationality' =>  $individual->nationality,
                 'role' => $individual->role,
                 'rank' => $individual->rank->all(),
-                'contact' => $individual->contact->all() ,
-                'contact_url' => $individual->contact->all(),
-                'language' => $individual->language->all()
+                'contact' => $individual->contact,
+                'contact_url' => $individual->contact_url,
+                'language' => $individual->language->all(),
+                'opgg' => $individual->opgg,
+                'lolpros' => $individual->lolpros,
             ];
 
-            array_push($data, $user_data);
+            foreach($individual->position as $position){
+                if($position->name === 'Player'){
+                array_push($data, $user_data); 
+            }
+        }
+
         };
+        
         return json_encode($data);
     }
 
@@ -79,11 +97,12 @@ class PlayerController extends Controller
         // Models instantiation and queries
         $nationality = new Nationality;
         $language = new Language;
+        $contact = new Contact;
 
         $all_form_data = [
             $this->loopingOverData($nationality->getTable() , $nationality->all()),
             $this->loopingOverData($language->getTable() , $language->all()),
-
+            $this->loopingOverData($contact->getTable() , $contact->all()),
             $this->loopingOverData($game->getModel()->getTable() , $game->get()),
 
             $this->loopingOverData($game->get()[0]->rank[0]->getModel()->getTable() , $game->get()),
@@ -119,7 +138,6 @@ class PlayerController extends Controller
 
     public function submiting_a_player(Request $request)
     {
-        
         $this->validate($request, [
             'date_of_birth' => 'required',
             'game_roles' => 'required',
@@ -128,19 +146,33 @@ class PlayerController extends Controller
             'nationalities' => 'required',
             'nick_name' => 'required',
             'ranks' => 'required',
-            'server' => 'required'
+            'server' => 'required',
+            'contacts' => 'required',
+            'communication' => 'required',
         ]);
 
         // Translating the users nationality to the nationality Id
         $nationality_id = Nationality::where('name', $request->nationalities)->get('id')[0];
 
+        // Save the position as a player
+        $individual_position = new IndividualPosition;
+        $individual_position->position_id = '8';
+        $individual_position->individual_id = Auth::id();
+        $individual_position->save();
 
+        
+            
+        
         $individuals = new Individual;
         $individuals->nickname = $request->nick_name;
-        $individuals->user_id = Auth::user()->id;
+        $individuals->user_id = Auth::id();
         $individuals->nationality_id = $nationality_id->id;
         $individuals->date_of_birth = $request->date_of_birth;
+        $individuals->contact_url = $request->communication;
+        $individuals->opgg = $request->opgg;
+        $individuals->lolpros = $request->lol_pros;
         $individuals->save();
+        
         return $request;
 
         // Setting the Individual's language, so it will be inserted to the individual language pivot table
@@ -172,6 +204,8 @@ class PlayerController extends Controller
         $game_individual->server_id = null;
         $game_individual->game_role_id = $game_id_role;
         $game_individual->save();
+
+        
     }
 
 }

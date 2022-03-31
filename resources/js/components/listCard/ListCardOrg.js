@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/context";
 
-function ListCardOrg({ item }) {
+function ListCardOrg({ item, extractingDate }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // function for flipping, runs only if user is logged in (means that its value is not null)
@@ -10,6 +10,7 @@ function ListCardOrg({ item }) {
     !user && alert("You need to be registered to see the contact info");
   };
 
+<<<<<<< HEAD
   // checking if user is logged in or not and pass it to our user context
   const getUser = () => {
     if (res.data.error) {
@@ -26,9 +27,14 @@ function ListCardOrg({ item }) {
 
   // importing UserContext
   const { user, setUser } = useContext(UserContext);
+=======
+
+// extractingDate
+>>>>>>> master
 
   return (
     <>
+    {console.log('sssssssssssssssssssssssssssssssss',item)}
       <div className="list__card">
         <div className={`list__card__inner ${isFlipped ? "is-flipped" : ""}`}>
           <div className="list__card__face list__card__face--front">

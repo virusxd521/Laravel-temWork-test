@@ -3,12 +3,8 @@ import ListCardStaff from "./ListCardStaff";
 import { useState, useEffect } from "react";
 import Header from "../Header";
 
-<<<<<<< HEAD
-function CardWrapperStaff() {
-=======
 
 function CardWrapperStaff({extractingDate}) {
->>>>>>> master
   const [info, setInfo] = useState({});
   const url = "/api/individual_advertisement";
 
@@ -19,17 +15,6 @@ function CardWrapperStaff({extractingDate}) {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <section className="players__list">
-      <Header className="header-short" />
-      {Object.keys(info).length !== 0 ? (
-        <div className="players__list__card">
-          {info.map((item, i) => (
-            <ListCardStaff item={item} />
-          ))}
-        </div>
-      ) : null}
-=======
     <section className="players__list" >
     <Header className="header-short" />
     {
@@ -43,7 +28,6 @@ function CardWrapperStaff({extractingDate}) {
     </div>
     : null
     }
->>>>>>> master
     </section>
   );
 }

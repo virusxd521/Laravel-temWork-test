@@ -10,7 +10,6 @@ function ListCardOrg({ item, extractingDate }) {
     !user && alert("You need to be registered to see the contact info");
   };
 
-<<<<<<< HEAD
   // checking if user is logged in or not and pass it to our user context
   const getUser = () => {
     if (res.data.error) {
@@ -27,10 +26,6 @@ function ListCardOrg({ item, extractingDate }) {
 
   // importing UserContext
   const { user, setUser } = useContext(UserContext);
-=======
-
-// extractingDate
->>>>>>> master
 
   return (
     <>

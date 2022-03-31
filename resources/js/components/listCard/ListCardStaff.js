@@ -25,13 +25,9 @@ function ListCardStaff({ item, extractingDate}) {
   }, []);
 
   // importing UserContext
-<<<<<<< HEAD
-  const { user, setUser } = useContext(UserContext);
-=======
   const { user, setUser} = useContext(UserContext)
   
   // extractingDate
->>>>>>> master
 
   return (
     <>

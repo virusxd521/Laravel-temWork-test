@@ -153,7 +153,7 @@ class PlayerController extends Controller
 
         // Translating the users nationality to the nationality Id
         $nationality_id = Nationality::where('name', $request->nationalities)->get('id')[0];
-
+        return json_encode(["data"=> Auth::id()]);
         // Save the position as a player
         $individual_position = new IndividualPosition;
         $individual_position->position_id = '8';

@@ -19,14 +19,11 @@ function ListCardPlayer({ item, extractingDate }) {
     }
   };
 
-<<<<<<< HEAD
   // calling the function getUser on every rerender of the page
   useEffect(() => {
     getUser;
   }, []);
 
-=======
->>>>>>> master
   // importing UserContext
   const { user, setUser } = useContext(UserContext);
 

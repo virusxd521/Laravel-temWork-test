@@ -4,7 +4,7 @@ import { useState,useEffect } from "react";
 import Header from "../Header";
 
 
-function CardWrapperPlayer() {
+function CardWrapperPlayer({extractingDate}) {
   const [info, setInfo] = useState({});
   const url = "/api/individual_advertisement";
   
@@ -21,6 +21,8 @@ function CardWrapperPlayer() {
   }, []);
   
 
+
+
   return (
     <section className="players__list" >
     <Header classa="header-short" />
@@ -28,7 +30,9 @@ function CardWrapperPlayer() {
       Object.keys(info).length !== 0 ?
       <div className="players__list__card">
       {info.map((item, i) => (
-        <ListCardPlayer item={item}/>
+        <ListCardPlayer item={item}
+          extractingDate={extractingDate}
+        />
       ))} 
     </div>
     : null

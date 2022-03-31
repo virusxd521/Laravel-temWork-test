@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/context";
 
-function ListCardPlayer({ item }) {
+function ListCardPlayer({ item, extractingDate }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   // function for flipping, runs only if user is logged in (means that its value is not null)

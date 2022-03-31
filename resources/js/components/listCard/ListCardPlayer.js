@@ -25,7 +25,11 @@ function ListCardPlayer({ item, extractingDate }) {
   }, []);
 
   // importing UserContext
+<<<<<<< HEAD
+  const { user, setUser } = useContext(UserContext)
+=======
   const { user, setUser } = useContext(UserContext);
+>>>>>>> master
 
   return (
     <>
@@ -58,12 +62,17 @@ function ListCardPlayer({ item, extractingDate }) {
             <div className="list__card__cnt--back">
               <div className="list__card__cnt--back--content">
                 <ul>
+<<<<<<< HEAD
+                  <li><strong>CONTACT:</strong> {item.contact.map((item, i) => item.name)}</li>
+                  <li><strong>EMAIL:</strong> {item.email}</li>
+=======
                   <li>
                     <strong>DISCORD:</strong> {item.discord}{" "}
                   </li>
                   <li>
                     <strong>EMAIL:</strong> {item.email}
                   </li>
+>>>>>>> master
                 </ul>
               </div>
               <button className="list__card__button button" onClick={flip}>

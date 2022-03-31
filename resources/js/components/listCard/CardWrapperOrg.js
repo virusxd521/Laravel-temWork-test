@@ -20,7 +20,6 @@ function CardWrapperOrg({extractingDate}) {
 
   return (
     <section className="players__list" >
-      {console.log('ffff', info)}
     <Header />
     {
       Object.keys(info).length !== 0 ?

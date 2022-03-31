@@ -27,7 +27,7 @@ Route::get('/logout', [CustomAuthController::class, 'signOut']);
 
 // Like twitter every authenticated user can acccess the profile pannel and 
 Route::middleware('auth:sanctum')->get('/profile', function (Request $request) {
-    return json_encode(['user' => Auth::user()]);
+    return view('app');
 });
 
 // Route::get('/player_form_data', [PlayerController::class, 'populating_form_with_data']);

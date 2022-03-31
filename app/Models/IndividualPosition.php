@@ -39,8 +39,10 @@ class IndividualPosition extends Model
         return $this::where('position_id', '!=' ,'8')->count();
     }
 
-
-
-
+    // fetching only player 
+    public function only_player()
+    {
+        return $this::where('position_id', '8');
+    }
 
 }

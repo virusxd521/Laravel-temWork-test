@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FormInput from "./FormInput";
 import Header from "../Header"
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext } from "../../context/context";
@@ -92,8 +92,6 @@ const Register = () => {
   const getValue = (e) => {
     e.preventDefault();
 
-    
-
     const data = {
       username: '',
       email: '',
@@ -128,12 +126,6 @@ const Register = () => {
     }
     
   }
-
-
-
-
-
-  const path = useLocation();
 
   return (
     <section className="register">

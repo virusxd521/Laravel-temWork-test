@@ -9,7 +9,7 @@ function FirstPage() {
     }, []);
 
     return(
-        <section className="first-page">
+        <section className="first-page" id="bg">
             <div className="intro">
                 <h1 data-aos="fade-up" data-aos-anchor-placement="top-center" className="connections_header">We are connecting all professionals and organizations in the gaming industry</h1>
             </div>

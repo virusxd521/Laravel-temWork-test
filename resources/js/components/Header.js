@@ -1,4 +1,4 @@
-import react, { useRef, useEffect } from 'react';
+import react, { useRef, useEffect, useState, useLayoutEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,8 +8,7 @@ import { Fragment } from 'react';
 import axios from 'axios';
 
 
-function Header({height, classa}) {
-
+function Header({classa}) {
     
     const signingOut = async(e) => {
         console.log("clicked")
@@ -25,6 +24,20 @@ function Header({height, classa}) {
     // user context 
     const { user, setUser} = useContext(UserContext)
 
+    // const screen = useMemo(() => ({ screenSize, setScreenSize }), [screenSize]);
+    // console.log(screen)
+
+    const [screenSize, setScreenSize] = useState([])
+
+    useLayoutEffect(() => {
+    
+        window.addEventListener('resize', () => setScreenSize([window.innerWidth]));
+    
+        setScreenSize([window.innerWidth])
+    
+        return () => window.removeEventListener('resize', () => setScreenSize([window.innerWidth]));
+    
+      }, []);
 
     //   logo animation
     gsap.registerPlugin(ScrollTrigger);
@@ -40,7 +53,7 @@ function Header({height, classa}) {
             {
                 width: '8%',
                 height: '8%',
-                top: '2rem',
+                top: '1.5rem',
                 left: '1rem',
                 x: '70%',
                 y: '5%',
@@ -54,18 +67,19 @@ function Header({height, classa}) {
                 }
             }
         )
-    }, []);
+    }, [ref.current]);
+
+    
 
     const navigate = useNavigate(); 
 
     const path = useLocation();
     
     return (
-        <section className={classa} ref={ref} style={{height: height + 'em'}}>
+        <section className={classa} ref={ref} >
             <nav>
-                {(path.pathname === '/') && (<img onClick={() => navigate('/')} className="logo" src="/images/logonew.svg" alt="logo" />)}
+                {(path.pathname === '/') && (<img onClick={() => navigate('/')} className={screenSize[0] > 1023 ? "logo" : "logo-fixed"} src="/images/logonew.svg" alt="logo" />)}
                 {(path.pathname !== '/') && (<img onClick={() => navigate('/')} className="logo-fixed" src="/images/logonew.svg" alt="logo" />)}
-
                 <ul>
                     {
                         user ? <Fragment>

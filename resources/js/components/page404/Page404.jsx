@@ -1,20 +1,6 @@
-import axios from 'axios';
-import { useEffect } from 'react';
 import Header from '../Header'
 
-function Page404({authenticatedUser, signingOut}) {
-    
-
-
-    
-
-    // Signing out the user when we move to this route
-    useEffect(() => {
-        axios.get('/api/logout').then( response => {
-            signingOut(response.signed_out);
-            // console.log('sss',response);
-        });
-    },[]);
+function Page404() { 
 
     return (
         <>

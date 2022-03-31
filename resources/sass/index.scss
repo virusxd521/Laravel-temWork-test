@@ -47,27 +47,36 @@ nav {
 
 .logo-fixed {
     position: fixed;
-    width: 8%;
-    height: 8%;
-    top: 2rem;
+    width: 9em;
+    height: 9em;
+    top: 1.5rem;
     left: 2.7rem;
     transform: translate(-0%, -45%);
     z-index: 4;
     padding-left: 1em;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+        left: 1rem;
+    }
 }
 
 .first-page {
     height: 120vh;
     width: 100%;
     background-image: url("../../public/images/backround.svg");
-    background-size: 100vh;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
     color: white;
     display: flex;
     justify-content: space-around;
     background-color: black;
+
+    @media (max-width: 768px) {
+        padding: 2em;
+        height: 70vh;
+    }
 }
 
 .first-page h1 {
@@ -75,6 +84,11 @@ nav {
     text-align: center;
     padding: 2em;
     color: white;
+
+    @media (max-width: 768px) {
+        padding: 2em 0;
+        font-size: 2em;
+    }
 }
 
 .connections {
@@ -97,6 +111,11 @@ nav {
     font-size: 3em;
     padding: 2em;
     text-align: center;
+
+    @media (max-width: 768px) {
+        // padding: 0;
+        font-size: 2em;
+    }
 }
 
 .card_cnt {
@@ -121,6 +140,10 @@ nav {
     height: 100vh;
     width: 100%;
     background-color: black;
+
+    @media (max-width: 1023px) {
+        height: 10vh;
+    }
 }
 
 .header-short {
@@ -140,6 +163,10 @@ nav ul {
     padding: 1.5em 5rem;
     z-index: 3;
     background-color: black;
+
+    @media (max-width: 768px) {
+        padding: 1.5rem 1rem;
+    }
 }
 nav ul a {
     text-decoration: none;
@@ -148,6 +175,14 @@ nav ul a {
     margin-left: 5rem;
     z-index: 2;
     transition: transform 100ms ease-in;
+
+    @media (max-width: 1023px) {
+        margin-left: 3rem;
+    }
+
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+    }
 }
 
 nav ul a:hover {
@@ -199,7 +234,6 @@ button:hover {
     border: 2px solid black;
     box-shadow: inset 15.8em 0 0 0 $neonblue;
 }
-
 
 @import "./card.scss";
 @import "./login.scss";

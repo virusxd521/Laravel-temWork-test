@@ -44,21 +44,35 @@ nav {
 
 .logo-fixed {
   position: fixed;
-  width: 8%;
-  height: 8%;
-  top: 2rem;
+  width: 9em;
+  height: 9em;
+  top: 1.5rem;
   left: 2.7rem;
   transform: translate(0%, -45%);
   z-index: 4;
   padding-left: 1em;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .logo-fixed {
+    left: 1rem;
+  }
+}
 
 .first-page {
   height: 120vh;
   width: 100%;
+<<<<<<< HEAD
   background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
+=======
+<<<<<<< HEAD
+  background-image: url(/images/backround.svg?48ce2cafcc4e8b7beb4d3b3033b74ace);
+  background-size: contain;
+=======
+  background-image: url(/images/backround.svg?1b0925b30232e0adf15d10d190083f2a);
+>>>>>>> master
   background-size: 100vh;
+>>>>>>> master
   background-repeat: no-repeat;
   background-position: bottom;
   color: white;
@@ -66,12 +80,24 @@ nav {
   justify-content: space-around;
   background-color: black;
 }
+@media (max-width: 768px) {
+  .first-page {
+    padding: 2em;
+    height: 70vh;
+  }
+}
 
 .first-page h1 {
   font-size: 3em;
   text-align: center;
   padding: 2em;
   color: white;
+}
+@media (max-width: 768px) {
+  .first-page h1 {
+    padding: 2em 0;
+    font-size: 2em;
+  }
 }
 
 .connections {
@@ -94,6 +120,11 @@ nav {
   font-size: 3em;
   padding: 2em;
   text-align: center;
+}
+@media (max-width: 768px) {
+  .second-page h2 {
+    font-size: 2em;
+  }
 }
 
 .card_cnt {
@@ -119,6 +150,11 @@ nav {
   width: 100%;
   background-color: black;
 }
+@media (max-width: 1023px) {
+  .header {
+    height: 10vh;
+  }
+}
 
 .header-short {
   height: 4.5vh;
@@ -138,6 +174,11 @@ nav ul {
   z-index: 3;
   background-color: black;
 }
+@media (max-width: 768px) {
+  nav ul {
+    padding: 1.5rem 1rem;
+  }
+}
 
 nav ul a {
   text-decoration: none;
@@ -146,6 +187,16 @@ nav ul a {
   margin-left: 5rem;
   z-index: 2;
   transition: transform 100ms ease-in;
+}
+@media (max-width: 1023px) {
+  nav ul a {
+    margin-left: 3rem;
+  }
+}
+@media (max-width: 768px) {
+  nav ul a {
+    margin-left: 1rem;
+  }
 }
 
 nav ul a:hover {

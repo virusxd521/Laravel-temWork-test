@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header";
 import Option from "./Option";
 
@@ -43,7 +43,11 @@ function PlayerForm() {
     submitionDataUser();
   };
 
+<<<<<<< HEAD
+  return(
+=======
   return (
+>>>>>>> master
     <section className="form__section">
       <Header height="0" />
       <form className="form" id="player_form" onSubmit={(e) => hydrator(e)}>
@@ -104,9 +108,12 @@ function PlayerForm() {
           <label htmlFor="communication">Communication URL</label>
           <input className="form__select" id="communication" name="communication" placeholder="Please enter a url..."/>
         </div>
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> master
         <div className="form__container">
             <label htmlFor="opgg">OPGG</label>
             <input className="form__select" name="opgg" id="opgg" placeholder="Please enter a url..."/>
@@ -125,7 +132,8 @@ function PlayerForm() {
         </button>
       </form>
     </section>
-  );
+  )
+    
 }
 
 export default PlayerForm;

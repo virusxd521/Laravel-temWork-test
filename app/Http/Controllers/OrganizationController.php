@@ -67,7 +67,7 @@ class OrganizationController extends Controller
             ->get();
 
         //dd($organizations[0]->id);
-        //dd($organizations);
+        dd($organizations);
 
         //desired structure of output an associated array with single org ID and NAME and all other "properties" values to be conatined in an array (multiple languages, positions... from adverts) 
         //declaration of dummy array processedOrgs to determin which oorganizaiton IDs hasve been inserted already

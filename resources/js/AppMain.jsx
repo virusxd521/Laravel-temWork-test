@@ -42,7 +42,6 @@ const AppMain = () => {
     // so that it will show the id or name of the right user 
     const settingRouteId = data => { 
         SetAuthenticatedUser(data);
-        console.log(data);
         navigate(`/profile/${data.id}`);
     }
     
@@ -58,7 +57,6 @@ const AppMain = () => {
     const userLogin = async() => {
         
         axios.get('/sanctum/csrf-cookie').then(response => {
-            console.log('session', response);
           });
 
 

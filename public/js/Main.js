@@ -2274,7 +2274,6 @@ var AppMain = function AppMain() {
 
   var settingRouteId = function settingRouteId(data) {
     SetAuthenticatedUser(data);
-    console.log(data);
     navigate("/profile/".concat(data.id));
   };
 
@@ -2304,9 +2303,7 @@ var AppMain = function AppMain() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              axios__WEBPACK_IMPORTED_MODULE_15___default().get('/sanctum/csrf-cookie').then(function (response) {
-                console.log('session', response);
-              });
+              axios__WEBPACK_IMPORTED_MODULE_15___default().get('/sanctum/csrf-cookie').then(function (response) {});
               _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_15___default().get('/api/user');
 
@@ -2804,11 +2801,6 @@ function Card(_ref) {
       img = _ref.img,
       delay = _ref.delay,
       location = _ref.location;
-  // const [isFlipped, setIsFlipped] = useState(false);
-  // const flip = () => {
-  //   setIsFlipped(!isFlipped);
-  // };
-  // console.log(isFlipped);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     aos__WEBPACK_IMPORTED_MODULE_1___default().init({
       duration: 500
@@ -2915,12 +2907,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
     className: "form__section",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -2938,9 +2924,7 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "Nickname" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "Nickname",
           name: "nick_name"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -3009,9 +2993,7 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "What we offer" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "What we offer",
           name: "offer"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -3022,15 +3004,12 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "What we require" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "What we require",
           name: "requirement"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "form__button button",
-        type: "submit" // disabled={!validateForm()}
-        ,
+        type: "submit",
         children: "Submit"
       })]
     })]
@@ -3082,13 +3061,13 @@ function PlayerForm() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       responseData = _useState2[0],
-      setResponseData = _useState2[1]; // prepering a form object since axios cannot handle forms 
+      setResponseData = _useState2[1]; // prepering a form object since axios cannot handle forms
 
 
   var loginFormData = new FormData(); // fetching data to populate the form
 
   var fetchingData = function fetchingData() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/player_form_data').then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/player_form_data").then(function (response) {
       console.log(response.data);
       setResponseData(response.data);
     });
@@ -3099,9 +3078,9 @@ function PlayerForm() {
   }, []);
 
   var submitionDataUser = function submitionDataUser() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/submiting_player_advertisement', loginFormData, {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/submiting_player_advertisement", loginFormData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        "Content-Type": "multipart/form-data"
       }
     }).then(function (res) {
       console.log(res);
@@ -3112,7 +3091,7 @@ function PlayerForm() {
   var hydrator = function hydrator(e) {
     e.preventDefault();
     Array.from(e.target).map(function (item) {
-      loginFormData.append(item['name'], item.value);
+      loginFormData.append(item["name"], item.value);
     });
     submitionDataUser();
   };
@@ -3138,9 +3117,7 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "Nickname" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "Nickname",
           name: "nick_name"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -3149,9 +3126,7 @@ function PlayerForm() {
           children: "Date of birth"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
           className: "form__input",
-          type: "date" // value={password}
-          // onChange={(e) => setPassword(e.target.value)}
-          ,
+          type: "date",
           name: "date_of_birth"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -3161,7 +3136,7 @@ function PlayerForm() {
           children: "Nationality"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
           responseData: responseData,
-          propOption: 'nationalities'
+          propOption: "nationalities"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
@@ -3170,7 +3145,7 @@ function PlayerForm() {
           children: "Languages"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
           responseData: responseData,
-          propOption: 'languages'
+          propOption: "languages"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
@@ -3179,7 +3154,7 @@ function PlayerForm() {
           children: "Game"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
           responseData: responseData,
-          propOption: 'games'
+          propOption: "games"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
@@ -3188,7 +3163,7 @@ function PlayerForm() {
           children: "Game role"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
           responseData: responseData,
-          propOption: 'game_roles'
+          propOption: "game_roles"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
@@ -3197,7 +3172,7 @@ function PlayerForm() {
           children: "Rank"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Option__WEBPACK_IMPORTED_MODULE_3__["default"], {
           responseData: responseData,
-          propOption: 'ranks'
+          propOption: "ranks"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "form__container",
@@ -3219,8 +3194,7 @@ function PlayerForm() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
         className: "form__button button",
-        type: "submit" // disabled={!validateForm()}
-        ,
+        type: "submit",
         placeholder: "Submit",
         value: "some_value",
         children: "Submit"
@@ -3256,12 +3230,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
     className: "form__section",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -3279,9 +3247,7 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "Nickname" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "Nickname",
           name: "nick_name"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -3290,9 +3256,7 @@ function PlayerForm() {
           children: "Date of birth"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
           className: "form__input",
-          type: "date" // value={password}
-          // onChange={(e) => setPassword(e.target.value)}
-          ,
+          type: "date",
           name: "date_of_birth"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -3361,15 +3325,12 @@ function PlayerForm() {
           className: "form__input",
           autoFocus: true,
           type: "text",
-          placeholder: "Experience" // value={username}
-          // onChange={(e) => setUsername(e.target.value)}
-          ,
+          placeholder: "Experience",
           name: "experience"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         className: "form__button button",
-        type: "submit" // disabled={!validateForm()}
-        ,
+        type: "submit",
         children: "Submit"
       })]
     })]
@@ -3428,7 +3389,6 @@ function CardWrapperOrg() {
       setInfo(response.data);
     });
   }, []);
-  console.log(info);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     className: "players__list",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {}), Object.keys(info).length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -3561,7 +3521,6 @@ function CardWrapperStaff() {
       setInfo(response.data);
     });
   }, []);
-  console.log(info[0]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
     className: "players__list",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -3624,7 +3583,7 @@ function ListCardOrg(_ref) {
 
   var flip = function flip() {
     user && setIsFlipped(!isFlipped);
-    !user && alert('You need to be registered to see the contact info');
+    !user && alert("You need to be registered to see the contact info");
   }; // checking if user is logged in or not and pass it to our user context
 
 
@@ -3685,7 +3644,7 @@ function ListCardOrg(_ref) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "list__card__cnt--back--content",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {})]
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {})]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "list__card__button button",
@@ -3746,7 +3705,7 @@ function ListCardPlayer(_ref) {
 
   var flip = function flip() {
     user && setIsFlipped(!isFlipped);
-    !user && alert('You need to be registered to see the contact info');
+    !user && alert("You need to be registered to see the contact info");
   }; // checking if user is logged in or not and pass it to our user context
 
 
@@ -3817,19 +3776,6 @@ function ListCardPlayer(_ref) {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
-                    children: "ABOUT:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                    className: "list__card__span",
-                    children: " "
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
-                    children: "GOALS:"
-                  }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-                    className: "list__card__span"
-                  })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("strong", {
                     children: "DISCORD:"
                   }), " ", item.discord, " "]
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
@@ -3897,7 +3843,7 @@ function ListCardStaff(_ref) {
 
   var flip = function flip() {
     user && setIsFlipped(!isFlipped);
-    !user && alert('You need to be registered to see the contact info');
+    !user && alert("You need to be registered to see the contact info");
   }; // checking if user is logged in or not and pass it to our user context
 
 
@@ -3967,7 +3913,7 @@ function ListCardStaff(_ref) {
                   }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
                     className: "list__card__span"
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {})]
+                })]
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "list__card__button button",
@@ -4102,23 +4048,22 @@ function Login() {
 
             case 3:
               res = _context.sent;
-              console.log('ciao', res.data);
 
               if (!res.data.error) {
-                _context.next = 10;
+                _context.next = 9;
                 break;
               }
 
               setUser(null);
               alert('Wrong username or password, try it again');
-              _context.next = 12;
+              _context.next = 11;
               break;
 
-            case 10:
+            case 9:
               setUser(res.data);
               return _context.abrupt("return", navigate('/'));
 
-            case 12:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -4209,8 +4154,7 @@ __webpack_require__.r(__webpack_exports__);
 function Page404(_ref) {
   var authenticatedUser = _ref.authenticatedUser,
       signingOut = _ref.signingOut;
-  console.log('xxxx', authenticatedUser); // Signing out the user when we move to this route
-
+  // Signing out the user when we move to this route
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/logout').then(function (response) {
       signingOut(response.signed_out); // console.log('sss',response);
@@ -4490,21 +4434,20 @@ var Register = function Register() {
 
             case 3:
               res = _context.sent;
-              console.log(res);
 
               if (!res.data.error) {
-                _context.next = 10;
+                _context.next = 9;
                 break;
               }
 
               setUser(null);
               return _context.abrupt("return");
 
-            case 10:
+            case 9:
               alert('You have successfully registered');
               return _context.abrupt("return", navigate('/login'));
 
-            case 12:
+            case 11:
             case "end":
               return _context.stop();
           }

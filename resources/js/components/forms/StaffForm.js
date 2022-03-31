@@ -3,18 +3,11 @@ import React, { useState } from "react";
 import Header from "../Header";
 
 function PlayerForm() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [values, setValues] = useState({
-  //   user_name: "",
-  //   password: "",
-  // });
-
   return (
     <section className="form__section">
       <Header height="0" />
 
-      <form className="form" >
+      <form className="form">
         <h1 className="form__title">Staff register</h1>
         <div className="form__container">
           <label>Nickname</label>
@@ -23,21 +16,13 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="Nickname"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
             name="nick_name"
           />
         </div>
 
         <div className="form__container">
           <label>Date of birth</label>
-          <input
-            className="form__input"
-            type="date"
-            // value={password}
-            // onChange={(e) => setPassword(e.target.value)}
-            name="date_of_birth"
-          />
+          <input className="form__input" type="date" name="date_of_birth" />
         </div>
         <div className="form__container">
           <label>Nationality</label>
@@ -64,7 +49,7 @@ function PlayerForm() {
             <option>CS:GO</option>
           </select>
         </div>
-        
+
         <div className="form__container">
           <label>Server</label>
           <select className="form__select">
@@ -81,17 +66,11 @@ function PlayerForm() {
             autoFocus
             type="text"
             placeholder="Experience"
-            // value={username}
-            // onChange={(e) => setUsername(e.target.value)}
             name="experience"
           />
         </div>
 
-        <button
-          className="form__button button"
-          type="submit"
-          // disabled={!validateForm()}
-        >
+        <button className="form__button button" type="submit">
           Submit
         </button>
       </form>

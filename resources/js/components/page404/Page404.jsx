@@ -6,7 +6,7 @@ function Page404({authenticatedUser, signingOut}) {
     
 
 
-    console.log('xxxx', authenticatedUser);
+    
 
     // Signing out the user when we move to this route
     useEffect(() => {

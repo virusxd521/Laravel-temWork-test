@@ -4458,8 +4458,8 @@ var Register = function Register() {
     placeholder: "Password",
     errorMessage: "Password should be 6-10 characters and include at least 1 letter, 1 number and 1 special character!",
     label: "Password",
-    pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,10}$" // required: true,
-
+    // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,10}$`,
+    required: true
   }, {
     id: 5,
     name: "confirmPassword",
@@ -4467,8 +4467,8 @@ var Register = function Register() {
     placeholder: "Confirm Password",
     errorMessage: "Passwords don't match!",
     label: "Confirm Password",
-    pattern: values.password // required: true,
-
+    pattern: values.password,
+    required: true
   }];
 
   var handleSubmit = function handleSubmit(e) {
